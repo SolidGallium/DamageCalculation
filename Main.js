@@ -320,7 +320,7 @@ var critSkillDisplay = [];
 // classes:
 // archer v
 // berserker v
-// brawler x
+// brawler v
 // gunner x
 // lancer x
 // mystic x
