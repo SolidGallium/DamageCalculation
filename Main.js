@@ -23,7 +23,6 @@ var classes = [
   {
     name: "Archer",
     baseCrit: 60,
-
     skills: [
       // radiant arrow
       {
@@ -49,7 +48,7 @@ var classes = [
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
-        addCrit: 0.2,
+        addCrit: 0.18,
         damagePortion: 0
       },
       // thunderbolt
@@ -97,13 +96,13 @@ var classes = [
         addCrit: 0.05,
         damagePortion: 0
       }],
-
     buffs: [
       // rapid fire pummle stack
       {
         name: "Rapid Fire: Pummel Stack",
         addCrit: 0.28,
         glyphBaseCrit: 0,
+        bonusCrit: 0,
         uptime: 0.4 // approximation
       }
     ]
@@ -112,7 +111,6 @@ var classes = [
   {
     name: "Berserker",
     baseCrit: 58,
-
     skills: [
       // thunder strike
       {
@@ -214,16 +212,105 @@ var classes = [
         damagePortion: 0
       }
     ],
-
     buffs: [
       // fiery rage
       {
         name: "Fiery Rage",
         addCrit: 0,
         glyphBaseCrit: 0.1,
+        bonusCrit: 0,
         uptime: 1
       }
       // bloodshed (missing)
+    ]
+  },
+  // brawler
+  {
+    name: "Brawler",
+    baseCrit: 50,
+    skills: [
+      // haymaker
+      {
+        name: "Haymaker",
+        glyphCrit: 3,
+        innateSkillCrit: 5,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // jackhammer
+      {
+        name: "Jackhammer",
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // piledriver
+      {
+        name: "Piledriver",
+        glyphCrit: 3,
+        innateSkillCrit: 1.3333, // approximation (4 hits, first 3 @ 1.0, last hit @ 2.0)
+        glyphBaseCrit: 1,
+        addCrit: 0.03,
+        damagePortion: 0
+      },
+      // counter punch
+      {
+        name: "Counter Punch",
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // flying kick
+      {
+        name: "Flying Kick",
+        glyphCrit: 1,
+        innateSkillCrit: 2,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // one-inch punch
+      {
+        name: "One-Inch Punch",
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // rhythmic blows
+      {
+        name: "Rhythmic Blows",
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // roundhouse kick
+      {
+        name: "Roundhouse Kick",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // growing fury
+      {
+        name: "Growing Fury",
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 50,
+        uptime: 1
+      }
     ]
   }
 ];
@@ -283,6 +370,7 @@ function setup() {
   classSelection.position(20, 80);
   classSelection.option("Archer");
   classSelection.option("Berserker");
+  classSelection.option("Brawler");
   classSelection.selected("Berserker");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
@@ -310,6 +398,7 @@ function critCalculation() {
   var direction = position;
   var classCF = classes[currentClass].baseCrit;
   var bonusCrit;
+  var tmpBonusCrit;
 
   if (priest == true) {
     bonusCrit = input.value() - classCF + classCF * 0.36;
@@ -319,9 +408,7 @@ function critCalculation() {
     bonusCrit = input.value() - classCF;
   }
 
-  if (bonusCrit < classCF) {
-    bonusCrit = classCF;
-  }
+  tmpBonusCrit = bonusCrit;
 
   var critResist = 220;
 
@@ -357,11 +444,13 @@ function critCalculation() {
     for (var j = 0; j < classes[currentClass].buffs.length; j++) {
       addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
       glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
+      bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
     }
 
     //                       ((    D     * (  Cfo   *       B       +     Cf   )) / (5.625 *    CR     )) *     G     *       I         +    A    +     F
     critChance = Math.trunc((((direction * (classCF * glyphBaseCrit + bonusCrit)) / (5.625 * critResist)) * glyphCrit * innateSkillCrit + addCrit + levelDiff + castanic) * 100);
     critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
+    bonusCrit = tmpBonusCrit;
   }
 }
 
@@ -441,6 +530,9 @@ function changeClass() {
       break;
     case "Berserker":
       currentClass = 1;
+      break;
+    case "Brawler":
+      currentClass = 2;
       break;
   }
 }
