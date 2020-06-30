@@ -217,8 +217,8 @@ var classes = [
       {
         name: "Fiery Rage",
         addCrit: 0,
-        glyphBaseCrit: 0.1, // double check this
-        bonusCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 5,
         uptime: 1
       }
       // bloodshed (missing)
@@ -455,6 +455,50 @@ var classes = [
       }
     ]
   },
+  // mystic
+  {
+    name: "Mystic",
+    baseCrit: 35,
+    skills: [
+      // heals
+      {
+        name: "Heals",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // arunic release
+      {
+        name: "Arunic Release",
+        glyphCrit: 1,
+        innateSkillCrit: 2,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // boomerang pulse
+      {
+        name: "Boomerang Pulse",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // volley of curses
+      {
+        name: "Volley of Curses",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: []
+  }
 ];
 
 var critSkillDisplay = [];
@@ -464,8 +508,8 @@ var critSkillDisplay = [];
 // berserker v
 // brawler v
 // gunner x
-// lancer x
-// mystic x
+// lancer v
+// mystic v
 // ninja x
 // priest x
 // reaper x
@@ -515,6 +559,7 @@ function setup() {
   classSelection.option("Brawler");
   // classSelection.option("Gunner");
   classSelection.option("Lancer");
+  classSelection.option("Mystic");
   classSelection.selected("Berserker");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
@@ -593,6 +638,11 @@ function critCalculation() {
 
     //                       ((    D     * (  Cfo   *       B       +     Cf   )) / (5.625 *    CR     )) *     G     *       I         +    A    +     F
     critChance = Math.trunc((((direction * (classCF * glyphBaseCrit + bonusCrit)) / (5.625 * critResist)) * glyphCrit * innateSkillCrit + addCrit + levelDiff + castanic) * 100);
+
+    if ((classes[currentClass].name == "Mystic" || classes[currentClass].name == "Priest") && i == 0){
+      critChance = Math.trunc((bonusCrit + classes[currentClass].baseCrit) * 0.2);
+    }
+
     critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
     bonusCrit = tmpBonusCrit;
   }
@@ -683,6 +733,9 @@ function changeClass() {
       break;
     case "Lancer":
       currentClass = 4;
+      break;
+    case "Mystic":
+      currentClass = 5;
       break;
   }
 }
