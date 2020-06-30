@@ -649,7 +649,7 @@ var classes = [
         addCrit: 0.1,
         glyphBaseCrit: 0,
         bonusCrit: 0,
-        uptime: 0.55,  // to double check
+        uptime: 1,  // to double check (thanks to redkillerdragon for his input)
         skillsAffected: [
           "Burning Heart",
           "Harmonious Burning Heart"
@@ -661,7 +661,7 @@ var classes = [
         addCrit: 0.3,
         glyphBaseCrit: 0,
         bonusCrit: 0,
-        uptime: 0.9, // to double check
+        uptime: 0.8, // to double check (thanks to redkillerdragon for his input)
         skillsAffected: [
           "Boomerang Shuriken",
           "Burning Heart",
@@ -670,6 +670,102 @@ var classes = [
         ]
       }
 
+    ]
+  },
+  // priest (super flawed, to be reviewed)
+  {
+    name: "Priest",
+    baseCrit: 33,
+    skills: [
+      // heals
+      {
+        name: "Heals",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // holy burst
+      {
+        name: "Holy Burst",
+        glyphCrit: 1,
+        innateSkillCrit: 1.5, // needs new data, all that is known is: <3
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // zenobia's vortex
+      {
+        name: "Zenobia's Vortex",
+        glyphCrit: 1,
+        innateSkillCrit: 1.25, // needs new data, all that is known is: >1
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // shocking implosion
+      {
+        name: "Shocking Implosion",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // final reprisal
+      {
+        name: "Final Reprisal",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // metamorphic blast
+      {
+        name: "Metamorphic Blast",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // triple nemesis
+      {
+        name: "Triple Nemesis",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // Energy Stars
+      {
+        name: "Energy Stars",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // aura of retribution
+      {
+        name: "Aura of Retribution",
+        addCrit: 0.5,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.7,  // to double check
+        skillsAffected: [
+          "Holy Burst",
+          "Zenobia's Vortex",
+          "Shocking Implosion",
+          "Final Reprisal",
+          "Metamorphic Blast"
+        ],
+      }
     ]
   }
 ];
@@ -680,7 +776,7 @@ var critSkillDisplay = [];
 // archer v
 // berserker v
 // brawler v
-// gunner x
+// gunner x (fuck this class)
 // lancer v
 // mystic v
 // ninja v (double check bufftimes)
@@ -688,7 +784,7 @@ var critSkillDisplay = [];
 // reaper x
 // slayer x
 // sorcerer x
-// valkyrie x
+// valkyrie x (fuck this class)
 // warrior x
 // ---------------------------------
 // warrior tank x
@@ -740,6 +836,7 @@ function setup() {
   classSelection.option("Lancer");
   classSelection.option("Mystic");
   classSelection.option("Ninja");
+  classSelection.option("Priest");
   classSelection.selected("Berserker");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
@@ -829,6 +926,11 @@ function critCalculation() {
         addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
         glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
         bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
+      }
+
+      // priest edict crit buff, to be better implemented with edict times
+      if (priest == true) {
+        bonusCrit += 38 * 0.3; // 80k magic res priest with 30% edict
       }
     }
 
@@ -939,6 +1041,9 @@ function changeClass() {
       break;
     case "Ninja":
       currentClass = 6;
+      break;
+    case "Priest":
+      currentClass = 7;
       break;
   }
 }
