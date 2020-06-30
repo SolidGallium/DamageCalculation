@@ -18,6 +18,8 @@ var kaiasjudgement = true;
 var triplenem = true;
 var currentClass = 1;
 
+// ----------------------------------------------------------------------------------------------------------------------------------- //
+
 var classes = [
   // archer
   {
@@ -44,7 +46,7 @@ var classes = [
       },
       // rain of arrows
       {
-        name: "Rain Of Arrows",
+        name: "Rain of Arrows",
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -103,7 +105,17 @@ var classes = [
         addCrit: 0.28,
         glyphBaseCrit: 0,
         bonusCrit: 0,
-        uptime: 0.4 // approximation
+        uptime: 0.4, // approximation
+        skillsAffected: [
+          "Radiant Arrow",
+          "Penetrating Arrow",
+          "Rain of Arrows",
+          "Thunderbold",
+          "Rapid Fire",
+          "Wind Walk",
+          "Gust Arrow",
+          "Crackshot"
+        ]
       }
     ]
   },
@@ -219,7 +231,20 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 5,
-        uptime: 1
+        uptime: 1,
+        skillsAffected: [
+          "Thunder Strike",
+          "Cyclone",
+          "Lethal Strike",
+          "Sinister",
+          "Dexter",
+          "Rampage",
+          "Beast Fury",
+          "Vampiric Blow",
+          "Flatten",
+          "Raze",
+          "Tackle"
+        ],
       }
       // bloodshed (missing)
     ]
@@ -309,7 +334,17 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 50,
-        uptime: 1
+        uptime: 1,
+        skillsAffected: [
+          "Haymaker",
+          "Jackhammer",
+          "Piledriver",
+          "Counter Punch",
+          "Flying Kick",
+          "One-Inch Punch",
+          "Rhythmic Blows",
+          "Roundhouse Kick"
+        ]
       }
     ]
   },
@@ -451,7 +486,19 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 50,
-        uptime: 1
+        uptime: 1,
+        skillsAffected: [
+          "Super Leap",
+          "Wallop",
+          "Spring Attack",
+          "Shield Counter",
+          "Onslaught",
+          "Shield Barrage",
+          "Lockdown Blow",
+          "Debilitate",
+          "Stand Fast",
+          "Guardian Barrier"
+        ]
       }
     ]
   },
@@ -498,6 +545,132 @@ var classes = [
       }
     ],
     buffs: []
+  },
+  // ninja
+  {
+    name: "Ninja",
+    baseCrit: 54,
+    skills: [
+      // boomerang shuriken
+      {
+        name: "Boomerang Shuriken",
+        glyphCrit: 1,
+        innateSkillCrit: 1.5,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // burning heart
+      {
+        name: "Burning Heart",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0.1,
+        damagePortion: 0
+      },
+      // harmonious burning heart
+      {
+        name: "Harmonious Burning Heart",
+        glyphCrit: 1,
+        innateSkillCrit: 1.5,
+        glyphBaseCrit: 1,
+        addCrit: 0.1,
+        damagePortion: 0
+      },
+      // skyfall
+      {
+        name: "Skyfall",
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // leaves on the wind
+      {
+        name: "Leaves on the Wind",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // quick attack
+      {
+        name: "Quick Attack",
+        glyphCrit: 1,
+        innateSkillCrit: 1.5,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // harmonious quick attack
+      {
+        name: "Harmonious Quick Attack",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // harmonious fire avalanche
+      {
+        name: "Harmonious Fire Avalanche",
+        glyphCrit: 3,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // double cut
+      {
+        name: "Double Cut",
+        glyphCrit: 3,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // impact bomb
+      {
+        name: "Impact Bomb",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // attunement: burning spirit
+      {
+        name: "Attunement: Burning Spirit",
+        addCrit: 0.1,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.55,  // to double check
+        skillsAffected: [
+          "Burning Heart",
+          "Harmonious Burning Heart"
+        ]
+      },
+      // cyclic chi
+      {
+        name: "Cyclic Chi",
+        addCrit: 0.3,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.9, // to double check
+        skillsAffected: [
+          "Boomerang Shuriken",
+          "Burning Heart",
+          "Harmonious Burning Heart",
+          "Leaves on the Wind"
+        ]
+      }
+
+    ]
   }
 ];
 
@@ -510,13 +683,19 @@ var critSkillDisplay = [];
 // gunner x
 // lancer v
 // mystic v
-// ninja x
+// ninja v (double check bufftimes)
 // priest x
 // reaper x
 // slayer x
 // sorcerer x
 // valkyrie x
 // warrior x
+// ---------------------------------
+// warrior tank x
+// brawler dps x
+// zerk tank x
+
+// ----------------------------------------------------------------------------------------------------------------------------------- //
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -560,6 +739,7 @@ function setup() {
   // classSelection.option("Gunner");
   classSelection.option("Lancer");
   classSelection.option("Mystic");
+  classSelection.option("Ninja");
   classSelection.selected("Berserker");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
@@ -567,10 +747,18 @@ function setup() {
 }
 
 function draw() {
+  var maxWidth = 0;
   resizeCanvas(windowWidth, windowHeight);
   background(backgroundR, backgroundG, backgroundB);
   fill(255);
   text("Crit:", 20, 40);
+
+  for (var i = 0; i < critSkillDisplay.length; i++) {
+    if (textWidth(critSkillDisplay[i].name + ": ") > maxWidth) {
+      maxWidth = textWidth(critSkillDisplay[i].name + ": ");
+    }
+  }
+
   for (var i = 0; i < critSkillDisplay.length; i++) {
     text(critSkillDisplay[i].name + ": ", 350, 65 + 30 * i);
     if (critSkillDisplay[i].value >= 100) {
@@ -578,10 +766,12 @@ function draw() {
     } else if (critSkillDisplay[i].value <= 50) {
       fill(255, 71, 71);
     }
-    text(critSkillDisplay[i].value + "%", 350 + textWidth(critSkillDisplay[i].name + ": "), 65 + 30 * i);
+    text(critSkillDisplay[i].value + "%", 350 + maxWidth, 65 + 30 * i);
     fill(255);
   }
 }
+
+// ----------------------------------------------------------------------------------------------------------------------------------- //
 
 function critCalculation() {
   var direction = position;
@@ -624,21 +814,29 @@ function critCalculation() {
 
   critSkillDisplay = [];
 
+  // scroll through the skills
   for (var i = 0; i < classes[currentClass].skills.length; i++) {
+    // calculation variables take the skill values
     glyphBaseCrit = classes[currentClass].skills[i].glyphBaseCrit;
     addCrit = classes[currentClass].skills[i].addCrit;
     glyphCrit = classes[currentClass].skills[i].glyphCrit;
     innateSkillCrit = classes[currentClass].skills[i].innateSkillCrit;
 
+    // scroll through the buffs
     for (var j = 0; j < classes[currentClass].buffs.length; j++) {
-      addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
-      glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
-      bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
+      // check if the current skill being calculated is affected by the current buff being applied
+      if (classes[currentClass].buffs[j].skillsAffected.includes(classes[currentClass].skills[i].name)) {
+        addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
+        glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
+        bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
+      }
     }
 
+    // crit chance calculation formula
     //                       ((    D     * (  Cfo   *       B       +     Cf   )) / (5.625 *    CR     )) *     G     *       I         +    A    +     F
     critChance = Math.trunc((((direction * (classCF * glyphBaseCrit + bonusCrit)) / (5.625 * critResist)) * glyphCrit * innateSkillCrit + addCrit + levelDiff + castanic) * 100);
 
+    // crit calculation in case of healing skills
     if ((classes[currentClass].name == "Mystic" || classes[currentClass].name == "Priest") && i == 0){
       critChance = Math.trunc((bonusCrit + classes[currentClass].baseCrit) * 0.2);
     }
@@ -647,6 +845,8 @@ function critCalculation() {
     bonusCrit = tmpBonusCrit;
   }
 }
+
+// ----------------------------------------------------------------------------------------------------------------------------------- //
 
 function switchMystic() {
   if (mystic == false) {
@@ -737,5 +937,10 @@ function changeClass() {
     case "Mystic":
       currentClass = 5;
       break;
+    case "Ninja":
+      currentClass = 6;
+      break;
   }
 }
+
+// end :3
