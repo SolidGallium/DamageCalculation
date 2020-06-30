@@ -217,7 +217,7 @@ var classes = [
       {
         name: "Fiery Rage",
         addCrit: 0,
-        glyphBaseCrit: 0.1,
+        glyphBaseCrit: 0.1, // double check this
         bonusCrit: 0,
         uptime: 1
       }
@@ -312,7 +312,149 @@ var classes = [
         uptime: 1
       }
     ]
-  }
+  },
+  // gunner (to be better implemented)
+  {
+    name: "Gunner",
+    baseCrit: 47,
+    skills: [
+      // bombardment
+      {
+        name: "Bombardment",
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // mana missiles
+      {
+        name: "Mana Missiles",
+        glyphCrit: 3,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // remote trigger
+      {
+        name: "Remote Trigger",
+        glyphCrit: 1,
+        innateSkillCrit: 3,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+    ],
+    buffs: []
+  },
+  // lancer
+  {
+    name: "Lancer",
+    baseCrit: 50,
+    skills: [
+      // super leap
+      {
+        name: "Super Leap",
+        glyphCrit: 1,
+        innateSkillCrit: 3,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // wallop
+      {
+        name: "Wallop",
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // spring attack
+      {
+        name: "Spring Attack",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // shield counter
+      {
+        name: "Shield Counter",
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // onslaught
+      {
+        name: "Onslaught",
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // shield barrage
+      {
+        name: "Shield Barrage",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // lockdown blow
+      {
+        name: "Lockdown Blow",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0.36,
+        damagePortion: 0
+      },
+      // debilitate
+      {
+        name: "Debilitate",
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // stand fast
+      {
+        name: "Stand Fast",
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // guardian barrier
+      {
+        name: "Guardian Barrier",
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // hold the line
+      {
+        name: "Hold The Line",
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 50,
+        uptime: 1
+      }
+    ]
+  },
 ];
 
 var critSkillDisplay = [];
@@ -371,6 +513,8 @@ function setup() {
   classSelection.option("Archer");
   classSelection.option("Berserker");
   classSelection.option("Brawler");
+  // classSelection.option("Gunner");
+  classSelection.option("Lancer");
   classSelection.selected("Berserker");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
@@ -533,6 +677,12 @@ function changeClass() {
       break;
     case "Brawler":
       currentClass = 2;
+      break;
+    case "Gunner":
+      currentClass = 3;
+      break;
+    case "Lancer":
+      currentClass = 4;
       break;
   }
 }
