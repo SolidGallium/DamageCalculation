@@ -16,7 +16,7 @@ var castanicBool = false;
 var position = 1.6;
 var kaiasjudgement = true;
 var triplenem = true;
-var currentClass = 9;
+var currentClass = 10;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -1097,7 +1097,158 @@ var classes = [
   },
   // sorcerer
   {
-
+    name: "Sorcerer",
+    baseCrit: "50",
+    skills: [
+      // elemental fusion
+      {
+        name: "Elemental Fusion",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 2.4,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // fusion
+      {
+        name: "Fusion",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 2.4,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // meteor strike
+      {
+        name: "Meteor Strike",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1.1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // arcane pulse
+      {
+        name: "Arcane Pulse",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // ice lance
+      {
+        name: "Ice Lance",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // lightning strike
+      {
+        name: "Lightning Strike",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // nova
+      {
+        name: "Nova",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // implosion
+      {
+        name: "Implosion",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // hail storm
+      {
+        name: "Hail Storm",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.1,
+        glyphBaseCrit: 1,
+        addCrit: 0.15,
+        damagePortion: 0
+      },
+      // void pulse
+      {
+        name: "Void Pulse",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1.1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // frost sphere
+      {
+        name: "Frost Sphere",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // flaming barrage
+      {
+        name: "Flaming Barrage",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+    ],
+    buffs: [
+      // keen arcane pulse
+      {
+        name: "Keen Arcane Pulse",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 75,
+        uptime: 0.4,
+        skillsAffected: [
+          "All"
+        ]
+      },
+      // keen nova
+      {
+        name: "Keen Nova",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 75,
+        uptime: 0.4,
+        skillsAffected: [
+          "All"
+        ]
+      }
+    ]
   }
 ];
 
@@ -1113,8 +1264,8 @@ var critSkillDisplay = [];
 // ninja v (double check bufftimes, boomerang and burning heart see too high)
 // priest v (to review)
 // reaper v (double check buffs)
-// slayer x
-// sorcerer x
+// slayer v
+// sorcerer v
 // valkyrie x (fuck this class)
 // warrior x
 // ---------------------------------
@@ -1170,7 +1321,8 @@ function setup() {
   classSelection.option("Priest");
   classSelection.option("Reaper");
   classSelection.option("Slayer");
-  classSelection.selected("Slayer");
+  classSelection.option("Sorcerer");
+  classSelection.selected("Sorcerer");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
   textSize(20);
@@ -1219,7 +1371,7 @@ function critCalculation() {
 
   tmpBonusCrit = bonusCrit;
 
-  var critResist = 220;
+  var critResist = 300;
 
   if (triplenem == true) {
     critResist -= 12;
@@ -1384,6 +1536,9 @@ function changeClass() {
       break;
     case "Slayer":
       currentClass = 9;
+      break;
+    case "Sorcerer":
+      currentClass = 10;
       break;
   }
 }
