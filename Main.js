@@ -16,7 +16,7 @@ var castanicBool = false;
 var position = 1.6;
 var kaiasjudgement = true;
 var triplenem = true;
-var currentClass = 1;
+var currentClass = 9;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -29,6 +29,7 @@ var classes = [
       // radiant arrow
       {
         name: "Radiant Arrow",
+        guaranteedCrit: false,
         glyphCrit: 3,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -38,6 +39,7 @@ var classes = [
       // penetrating arrow
       {
         name: "Penetrating Arrow",
+        guaranteedCrit: false,
         glyphCrit: 2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -47,6 +49,7 @@ var classes = [
       // rain of arrows
       {
         name: "Rain of Arrows",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -56,6 +59,7 @@ var classes = [
       // thunderbolt
       {
         name: "Thunderbolt",
+        guaranteedCrit: false,
         glyphCrit: 3,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -65,6 +69,7 @@ var classes = [
       // rapid fire
       {
         name: "Rapid Fire",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
@@ -74,6 +79,7 @@ var classes = [
       // wind walk
       {
         name: "Wind Walk",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -83,6 +89,7 @@ var classes = [
       // gust arrow
       {
         name: "Gust Arrow",
+        guaranteedCrit: false,
         glyphCrit: 10,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -92,16 +99,20 @@ var classes = [
       // crackshot
       {
         name: "Crackshot",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0.05,
         damagePortion: 0
-      }],
+      }
+    ],
     buffs: [
       // rapid fire pummle stack
       {
         name: "Rapid Fire: Pummel Stack",
+        guaranteedCrit: false,
+        glyphCrit: 0,
         addCrit: 0.28,
         glyphBaseCrit: 0,
         bonusCrit: 0,
@@ -127,6 +138,7 @@ var classes = [
       // thunder strike
       {
         name: "Thunder Strike",
+        guaranteedCrit: false,
         glyphCrit: 2.2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -136,6 +148,7 @@ var classes = [
       // cyclone
       {
         name: "Cyclone",
+        guaranteedCrit: false,
         glyphCrit: 2.2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -145,6 +158,7 @@ var classes = [
       // lethal strike
       {
         name: "Lethal Strike",
+        guaranteedCrit: false,
         glyphCrit: 2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -154,6 +168,7 @@ var classes = [
       // sinister
       {
         name: "Sinister",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
@@ -163,6 +178,7 @@ var classes = [
       // dexter
       {
         name: "Dexter",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
@@ -172,6 +188,7 @@ var classes = [
       // rampage
       {
         name: "Rampage",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
@@ -181,6 +198,7 @@ var classes = [
       // beast fury
       {
         name: "Beast Fury",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
@@ -190,6 +208,7 @@ var classes = [
       // vampiric blow
       {
         name: "Vampiric Blow",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -199,6 +218,7 @@ var classes = [
       // flatten
       {
         name: "Flatten",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -208,6 +228,7 @@ var classes = [
       // raze
       {
         name: "Raze",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -217,6 +238,7 @@ var classes = [
       // tackle
       {
         name: "Tackle",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1 + 1,
@@ -228,6 +250,8 @@ var classes = [
       // fiery rage
       {
         name: "Fiery Rage",
+        guaranteedCrit: false,
+        glyphCrit: 0,
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 5,
@@ -257,6 +281,7 @@ var classes = [
       // haymaker
       {
         name: "Haymaker",
+        guaranteedCrit: false,
         glyphCrit: 3,
         innateSkillCrit: 5,
         glyphBaseCrit: 1,
@@ -266,6 +291,7 @@ var classes = [
       // jackhammer
       {
         name: "Jackhammer",
+        guaranteedCrit: false,
         glyphCrit: 2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -275,6 +301,7 @@ var classes = [
       // piledriver
       {
         name: "Piledriver",
+        guaranteedCrit: false,
         glyphCrit: 3,
         innateSkillCrit: 1.3333, // approximation (4 hits, first 3 @ 1.0, last hit @ 2.0)
         glyphBaseCrit: 1,
@@ -284,6 +311,7 @@ var classes = [
       // counter punch
       {
         name: "Counter Punch",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
@@ -293,6 +321,7 @@ var classes = [
       // flying kick
       {
         name: "Flying Kick",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
@@ -302,6 +331,7 @@ var classes = [
       // one-inch punch
       {
         name: "One-Inch Punch",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
@@ -311,6 +341,7 @@ var classes = [
       // rhythmic blows
       {
         name: "Rhythmic Blows",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
@@ -320,6 +351,7 @@ var classes = [
       // roundhouse kick
       {
         name: "Roundhouse Kick",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -331,6 +363,8 @@ var classes = [
       // growing fury
       {
         name: "Growing Fury",
+        guaranteedCrit: false,
+        glyphCrit: 0,
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 50,
@@ -391,6 +425,7 @@ var classes = [
       // super leap
       {
         name: "Super Leap",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
@@ -400,6 +435,7 @@ var classes = [
       // wallop
       {
         name: "Wallop",
+        guaranteedCrit: false,
         glyphCrit: 2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -409,6 +445,7 @@ var classes = [
       // spring attack
       {
         name: "Spring Attack",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -418,6 +455,7 @@ var classes = [
       // shield counter
       {
         name: "Shield Counter",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
@@ -427,6 +465,7 @@ var classes = [
       // onslaught
       {
         name: "Onslaught",
+        guaranteedCrit: false,
         glyphCrit: 2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -436,6 +475,7 @@ var classes = [
       // shield barrage
       {
         name: "Shield Barrage",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -445,6 +485,7 @@ var classes = [
       // lockdown blow
       {
         name: "Lockdown Blow",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -454,6 +495,7 @@ var classes = [
       // debilitate
       {
         name: "Debilitate",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -463,6 +505,7 @@ var classes = [
       // stand fast
       {
         name: "Stand Fast",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
@@ -472,6 +515,7 @@ var classes = [
       // guardian barrier
       {
         name: "Guardian Barrier",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
@@ -483,6 +527,8 @@ var classes = [
       // hold the line
       {
         name: "Hold The Line",
+        guaranteedCrit: false,
+        glyphCrit: 0,
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 50,
@@ -510,6 +556,7 @@ var classes = [
       // heals
       {
         name: "Heals",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -519,6 +566,7 @@ var classes = [
       // arunic release
       {
         name: "Arunic Release",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
@@ -528,6 +576,7 @@ var classes = [
       // boomerang pulse
       {
         name: "Boomerang Pulse",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -537,6 +586,7 @@ var classes = [
       // volley of curses
       {
         name: "Volley of Curses",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -554,6 +604,7 @@ var classes = [
       // boomerang shuriken
       {
         name: "Boomerang Shuriken",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
@@ -563,6 +614,7 @@ var classes = [
       // burning heart
       {
         name: "Burning Heart",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -572,6 +624,7 @@ var classes = [
       // harmonious burning heart
       {
         name: "Harmonious Burning Heart",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
@@ -581,6 +634,7 @@ var classes = [
       // skyfall
       {
         name: "Skyfall",
+        guaranteedCrit: false,
         glyphCrit: 2,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -590,6 +644,7 @@ var classes = [
       // leaves on the wind
       {
         name: "Leaves on the Wind",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -599,6 +654,7 @@ var classes = [
       // quick attack
       {
         name: "Quick Attack",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
@@ -608,6 +664,7 @@ var classes = [
       // harmonious quick attack
       {
         name: "Harmonious Quick Attack",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -617,6 +674,7 @@ var classes = [
       // harmonious fire avalanche
       {
         name: "Harmonious Fire Avalanche",
+        guaranteedCrit: false,
         glyphCrit: 3,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -626,6 +684,7 @@ var classes = [
       // double cut
       {
         name: "Double Cut",
+        guaranteedCrit: false,
         glyphCrit: 3,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -635,6 +694,7 @@ var classes = [
       // impact bomb
       {
         name: "Impact Bomb",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -646,6 +706,8 @@ var classes = [
       // attunement: burning spirit
       {
         name: "Attunement: Burning Spirit",
+        guaranteedCrit: false,
+        glyphCrit: 0,
         addCrit: 0.1,
         glyphBaseCrit: 0,
         bonusCrit: 0,
@@ -658,6 +720,8 @@ var classes = [
       // cyclic chi
       {
         name: "Cyclic Chi",
+        guaranteedCrit: false,
+        glyphCrit: 0,
         addCrit: 0.3,
         glyphBaseCrit: 0,
         bonusCrit: 0,
@@ -689,6 +753,7 @@ var classes = [
       // holy burst
       {
         name: "Holy Burst",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1.5, // needs new data, all that is known is: <3
         glyphBaseCrit: 1,
@@ -698,6 +763,7 @@ var classes = [
       // zenobia's vortex
       {
         name: "Zenobia's Vortex",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1.25, // needs new data, all that is known is: >1
         glyphBaseCrit: 1,
@@ -707,6 +773,7 @@ var classes = [
       // shocking implosion
       {
         name: "Shocking Implosion",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -716,6 +783,7 @@ var classes = [
       // final reprisal
       {
         name: "Final Reprisal",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -725,6 +793,7 @@ var classes = [
       // metamorphic blast
       {
         name: "Metamorphic Blast",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -734,6 +803,7 @@ var classes = [
       // triple nemesis
       {
         name: "Triple Nemesis",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -743,6 +813,7 @@ var classes = [
       // Energy Stars
       {
         name: "Energy Stars",
+        guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
@@ -754,6 +825,8 @@ var classes = [
       // aura of retribution
       {
         name: "Aura of Retribution",
+        guaranteedCrit: false,
+        glyphCrit: 0,
         addCrit: 0.5,
         glyphBaseCrit: 0,
         bonusCrit: 0,
@@ -767,6 +840,264 @@ var classes = [
         ],
       }
     ]
+  },
+  // reaper
+  {
+    name: "Reaper",
+    baseCrit: 52,
+    skills: [
+      // sundering strike
+      {
+        name: "Sundering Strike",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0.1,
+        damagePortion: 0
+      },
+      // grim strike
+      {
+        name: "Grim Strike",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.3,
+        glyphBaseCrit: 3,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // dark harvest
+      {
+        name: "Dark Harvest",
+        guaranteedCrit: true,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // spiral barrage
+      {
+        name: "Spiral Barrage",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1, // 0.5 according to data sheet, need to check
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // blinding scythes
+      {
+        name: "Blinding Scythes",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // double sheer
+      {
+        name: "Double Sheer",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // whipsaw
+      {
+        name: "Whipsaw",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0.3, // pendulum strike
+        damagePortion: 0
+      },
+      // recall scythes
+      {
+        name: "Recall Scythes",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // death spiral
+      {
+        name: "Death Spiral",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // retribution
+      {
+        name: "Retribution",
+        guaranteedCrit: true,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // assassination (not applied yet)
+      {
+        name: "Assassination",
+        guaranteedCrit: true,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.15,
+        skillsAffected: [
+          "Grim Strike",
+          "Dark Harvest",
+          "Shadow Burst",
+          "Sundering Strike"
+        ]
+      }
+      // shadow reaping: weak point (missing info)
+    ]
+  },
+  // slayer
+  {
+    name: "Slayer",
+    baseCrit: 56,
+    skills: [
+      // punishing blow
+      {
+        name: "Punishing Blow",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 3,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // overhand strike
+      {
+        name: "Overhand Strike",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.3,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // measured slice
+      {
+        name: "Measured Slice",
+        guaranteedCrit: false,
+        glyphCrit: 3,
+        innateSkillCrit: 1.5,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // whirlwind
+      {
+        name: "Whirlwind",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 3,
+        addCrit: 0.1,
+        damagePortion: 0
+      },
+      // unsheathe
+      {
+        name: "Unsheathe",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 50, // double check
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // eviscerate
+      {
+        name: "Eviscerate",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.5,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // heart thrust
+      {
+        name: "Heart Thrust",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.4,
+        glyphBaseCrit: 3,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // savage strike
+      {
+        name: "Savage Strike",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // knockdown strike
+      {
+        name: "Knockdown Strike",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 3,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // energy rush
+      {
+        name: "Energy Rush",
+        guaranteedCrit: 0,
+        glyphCrit: 0.25,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.3,
+        skillsAffected: [
+          "All"
+        ]
+      },
+      // knockdown strike (missing)
+      // whirlwind: critical pummel
+      {
+        name: "Whirlwind: Critical Pummel",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 20,
+        uptime: 0.2,
+        skillsAffected: [
+          "Overhand Strike",
+          "Eviscerate",
+          "Measured Slice"
+        ]
+      }
+    ]
+  },
+  // sorcerer
+  {
+
   }
 ];
 
@@ -779,9 +1110,9 @@ var critSkillDisplay = [];
 // gunner x (fuck this class)
 // lancer v
 // mystic v
-// ninja v (double check bufftimes)
-// priest x
-// reaper x
+// ninja v (double check bufftimes, boomerang and burning heart see too high)
+// priest v (to review)
+// reaper v (double check buffs)
 // slayer x
 // sorcerer x
 // valkyrie x (fuck this class)
@@ -800,7 +1131,7 @@ function setup() {
   button.position(20, 105);
   button.size(80, 20);
   button.mousePressed(critCalculation);
-  input = createInput();
+  input = createInput(200);
   input.size(72, 20);
   input.position(20, 50);
   checkboxMystic = createCheckbox("Mystic", true);
@@ -837,7 +1168,9 @@ function setup() {
   classSelection.option("Mystic");
   classSelection.option("Ninja");
   classSelection.option("Priest");
-  classSelection.selected("Berserker");
+  classSelection.option("Reaper");
+  classSelection.option("Slayer");
+  classSelection.selected("Slayer");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
   textSize(20);
@@ -922,7 +1255,8 @@ function critCalculation() {
     // scroll through the buffs
     for (var j = 0; j < classes[currentClass].buffs.length; j++) {
       // check if the current skill being calculated is affected by the current buff being applied
-      if (classes[currentClass].buffs[j].skillsAffected.includes(classes[currentClass].skills[i].name)) {
+      if (classes[currentClass].buffs[j].skillsAffected.includes(classes[currentClass].skills[i].name) || classes[currentClass].buffs[j].skillsAffected.includes("All")) {
+        glyphCrit += (classes[currentClass].buffs[j].glyphCrit * classes[currentClass].buffs[j].uptime);
         addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
         glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
         bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
@@ -1044,6 +1378,12 @@ function changeClass() {
       break;
     case "Priest":
       currentClass = 7;
+      break;
+    case "Reaper":
+      currentClass = 8;
+      break;
+    case "Slayer":
+      currentClass = 9;
       break;
   }
 }
