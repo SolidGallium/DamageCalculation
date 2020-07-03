@@ -16,7 +16,7 @@ var castanicBool = false;
 var position = 1.6;
 var kaiasjudgement = true;
 var triplenem = true;
-var currentClass = 10;
+var currentClass = 11;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -711,7 +711,7 @@ var classes = [
         addCrit: 0.1,
         glyphBaseCrit: 0,
         bonusCrit: 0,
-        uptime: 1,  // to double check (thanks to redkillerdragon for his input)
+        uptime: 1,  // to double check (thanks to roy and redkillerdragon for their input)
         skillsAffected: [
           "Burning Heart",
           "Harmonious Burning Heart"
@@ -725,7 +725,7 @@ var classes = [
         addCrit: 0.3,
         glyphBaseCrit: 0,
         bonusCrit: 0,
-        uptime: 0.8, // to double check (thanks to redkillerdragon for his input)
+        uptime: 0.8, // to double check (thanks to roy and redkillerdragon for their input)
         skillsAffected: [
           "Boomerang Shuriken",
           "Burning Heart",
@@ -1249,6 +1249,165 @@ var classes = [
         ]
       }
     ]
+  },
+  // valkyrie
+  {
+    name: "Valkyrie",
+    baseCrit: 58,
+    skills: [
+      // shining crescent
+      {
+        name: "Shining Crescent",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 3,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // twilight waltz
+      {
+        name: "Twilight Waltz",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 4,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // ground bash
+      {
+        name: "Ground Bash",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 4, // data says 5, but 4 feels more accurate
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // maelstrom
+      {
+        name: "Maelstrom",
+        guaranteedCrit: false,
+        glyphCrit: 3, // 5 hits @ 3 +  last hit @ 6 = 3.5 average (not applied rn)
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // leaping slash
+      {
+        name: "Leaping Slash",
+        guaranteedCrit: false,
+        glyphCrit: 3,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // gnugnir's bite
+      {
+        name: "Gugnir's Bite",
+        guaranteedCrit: false,
+        glyphCrit: 3, // makes the thingy about right
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // godsfall
+      {
+        name: "Godsfall",
+        guaranteedCrit: true,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // glaive strike
+      {
+        name: "Glaive Strike",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 5,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // runeburst
+      {
+        name: "Runeburst",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 3,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // blood flower
+      {
+        name: "Blood Flower",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 2,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // dream slash
+      {
+        name: "Dream Slash",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // enhanced runeburst
+      {
+        name: "Enhanced Runeburst",
+        guaranteedCrit: false,
+        glyphCrit: 4,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 1,
+        skillsAffected: [
+          "Shining Crescent",
+          "Runeburst"
+        ]
+      },
+      // carving spinning death
+      {
+        name: "Carving Spinning Death",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0.3,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.3,
+        skillsAffected: [
+          "All"
+        ]
+      },
+      // spinning death: critical pummel
+      {
+        name: "Spinning Death: Critical Pummel",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 20,
+        uptime: 0.3,
+        skillsAffected: [
+          "All"
+        ]
+      },
+    ]
   }
 ];
 
@@ -1261,12 +1420,12 @@ var critSkillDisplay = [];
 // gunner x (fuck this class)
 // lancer v
 // mystic v
-// ninja v (double check bufftimes, boomerang and burning heart see too high)
+// ninja v (double check bufftimes, boomerang and burning heart seem too high)
 // priest v (to review)
 // reaper v (double check buffs)
 // slayer v
 // sorcerer v
-// valkyrie x (fuck this class)
+// valkyrie v (fuck this class)
 // warrior x
 // ---------------------------------
 // warrior tank x
@@ -1322,7 +1481,8 @@ function setup() {
   classSelection.option("Reaper");
   classSelection.option("Slayer");
   classSelection.option("Sorcerer");
-  classSelection.selected("Sorcerer");
+  classSelection.option("Valkyrie");
+  classSelection.selected("Valkyrie");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
   textSize(20);
@@ -1398,39 +1558,45 @@ function critCalculation() {
 
   // scroll through the skills
   for (var i = 0; i < classes[currentClass].skills.length; i++) {
-    // calculation variables take the skill values
-    glyphBaseCrit = classes[currentClass].skills[i].glyphBaseCrit;
-    addCrit = classes[currentClass].skills[i].addCrit;
-    glyphCrit = classes[currentClass].skills[i].glyphCrit;
-    innateSkillCrit = classes[currentClass].skills[i].innateSkillCrit;
+    // check if the skill is a guaranteed crit
+    if (classes[currentClass].skills[i].guaranteedCrit == true) {
+      critChance = 100;
+      critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
+    } else {
+      // calculation variables take the skill values
+      glyphBaseCrit = classes[currentClass].skills[i].glyphBaseCrit;
+      addCrit = classes[currentClass].skills[i].addCrit;
+      glyphCrit = classes[currentClass].skills[i].glyphCrit;
+      innateSkillCrit = classes[currentClass].skills[i].innateSkillCrit;
 
-    // scroll through the buffs
-    for (var j = 0; j < classes[currentClass].buffs.length; j++) {
-      // check if the current skill being calculated is affected by the current buff being applied
-      if (classes[currentClass].buffs[j].skillsAffected.includes(classes[currentClass].skills[i].name) || classes[currentClass].buffs[j].skillsAffected.includes("All")) {
-        glyphCrit += (classes[currentClass].buffs[j].glyphCrit * classes[currentClass].buffs[j].uptime);
-        addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
-        glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
-        bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
+      // scroll through the buffs
+      for (var j = 0; j < classes[currentClass].buffs.length; j++) {
+        // check if the current skill being calculated is affected by the current buff being applied
+        if (classes[currentClass].buffs[j].skillsAffected.includes(classes[currentClass].skills[i].name) || classes[currentClass].buffs[j].skillsAffected.includes("All")) {
+          glyphCrit += (classes[currentClass].buffs[j].glyphCrit * classes[currentClass].buffs[j].uptime);
+          addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
+          glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
+          bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
+        }
+
+        // priest edict crit buff, to be better implemented with edict times
+        if (priest == true) {
+          bonusCrit += 38 * 0.3; // 80k magic res priest with 30% edict
+        }
       }
 
-      // priest edict crit buff, to be better implemented with edict times
-      if (priest == true) {
-        bonusCrit += 38 * 0.3; // 80k magic res priest with 30% edict
+      // crit chance calculation formula
+      //                       ((    D     * (  Cfo   *       B       +     Cf   )) / (5.625 *    CR     )) *     G     *       I         +    A    +     F
+      critChance = Math.trunc((((direction * (classCF * glyphBaseCrit + bonusCrit)) / (5.625 * critResist)) * glyphCrit * innateSkillCrit + addCrit + levelDiff + castanic) * 100);
+
+      // crit calculation in case of healing skills
+      if ((classes[currentClass].name == "Mystic" || classes[currentClass].name == "Priest") && i == 0){
+        critChance = Math.trunc((bonusCrit + classes[currentClass].baseCrit) * 0.2);
       }
+
+      bonusCrit = tmpBonusCrit;
+      critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
     }
-
-    // crit chance calculation formula
-    //                       ((    D     * (  Cfo   *       B       +     Cf   )) / (5.625 *    CR     )) *     G     *       I         +    A    +     F
-    critChance = Math.trunc((((direction * (classCF * glyphBaseCrit + bonusCrit)) / (5.625 * critResist)) * glyphCrit * innateSkillCrit + addCrit + levelDiff + castanic) * 100);
-
-    // crit calculation in case of healing skills
-    if ((classes[currentClass].name == "Mystic" || classes[currentClass].name == "Priest") && i == 0){
-      critChance = Math.trunc((bonusCrit + classes[currentClass].baseCrit) * 0.2);
-    }
-
-    critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
-    bonusCrit = tmpBonusCrit;
   }
 }
 
@@ -1539,6 +1705,9 @@ function changeClass() {
       break;
     case "Sorcerer":
       currentClass = 10;
+      break;
+    case "Valkyrie":
+      currentClass = 11;
       break;
   }
 }
