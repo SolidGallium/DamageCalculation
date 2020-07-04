@@ -17,10 +17,10 @@ var position = 1.6;
 var kaiasjudgement = true;
 var triplenem = true;
 var classSelection;
-var currentClass = 1;
+var currentClass = 2;
 var critSkillDisplay = [];
 var bossSelection;
-var currentBoss = 0;
+var currentBoss = 9;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -33,7 +33,7 @@ function setup() {
   button.size(80, 20);
   button.mousePressed(critCalculation);
 
-  input = createInput("150");
+  input = createInput("145");
   input.size(72, 20);
   input.position(20, 50);
 
@@ -67,7 +67,7 @@ function setup() {
   for (var i = 0; i < classes.length; i++) {
     classSelection.option(classes[i].name);
   }
-  classSelection.selected("Berserker");
+  classSelection.selected("Brawler");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
 
@@ -77,7 +77,7 @@ function setup() {
     bossSelection.option(bosses[i].name);
   }
   bossSelection.size(80, 20);
-  bossSelection.selected("Nightmare Kalligar");
+  bossSelection.selected("Akalath Kashir (AQ)");
   bossSelection.changed(changeBoss);
 
   textSize(20);

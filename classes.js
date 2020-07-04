@@ -284,10 +284,10 @@ var classes = [
       {
         name: "Piledriver",
         guaranteedCrit: false,
-        glyphCrit: 3,
+        glyphCrit: 2,
         innateSkillCrit: 1.3333, // approximation (4 hits, first 3 @ 1.0, last hit @ 2.0)
         glyphBaseCrit: 1,
-        addCrit: 0.03,
+        addCrit: 0.09,
         damagePortion: 0
       },
       // counter punch
