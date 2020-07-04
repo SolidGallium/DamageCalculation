@@ -16,21 +16,27 @@ var castanicBool = false;
 var position = 1.6;
 var kaiasjudgement = true;
 var triplenem = true;
-var currentClass = 12;
+var classSelection;
+var currentClass = 1;
 var critSkillDisplay = [];
+var bossSelection;
+var currentBoss = 0;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(backgroundR, backgroundG, backgroundB);
+
   button = createButton('calculate');
-  button.position(20, 105);
+  button.position(20, 130);
   button.size(80, 20);
   button.mousePressed(critCalculation);
-  input = createInput(150);
+
+  input = createInput("150");
   input.size(72, 20);
   input.position(20, 50);
+
   checkboxMystic = createCheckbox("Mystic", true);
   checkboxMystic.position(100 + 10, 50);
   checkboxMystic.changed(switchMystic);
@@ -55,24 +61,25 @@ function setup() {
   checkboxTriplenem = createCheckbox("Triple Nem / Volley", true);
   checkboxTriplenem.position(100 + 10, 170);
   checkboxTriplenem.changed(switchTriplenem);
+
   classSelection = createSelect();
   classSelection.position(20, 80);
-  classSelection.option("Archer");
-  classSelection.option("Berserker");
-  classSelection.option("Brawler");
-  // classSelection.option("Gunner");
-  classSelection.option("Lancer");
-  classSelection.option("Mystic");
-  classSelection.option("Ninja");
-  classSelection.option("Priest");
-  classSelection.option("Reaper");
-  classSelection.option("Slayer");
-  classSelection.option("Sorcerer");
-  classSelection.option("Valkyrie");
-  classSelection.option("Warrior");
-  classSelection.selected("Warrior");
+  for (var i = 0; i < classes.length; i++) {
+    classSelection.option(classes[i].name);
+  }
+  classSelection.selected("Berserker");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
+
+  bossSelection = createSelect();
+  bossSelection.position(20, 105);
+  for (var i = 0; i < bosses.length; i++) {
+    bossSelection.option(bosses[i].name);
+  }
+  bossSelection.size(80, 20);
+  bossSelection.selected("Nightmare Kalligar");
+  bossSelection.changed(changeBoss);
+
   textSize(20);
 }
 
@@ -128,7 +135,7 @@ function critCalculation() {
 
   tmpBonusCrit = bonusCrit;
 
-  var critResist = 220;
+  var critResist = bosses[currentBoss].critResist;
 
   if (triplenem == true) {
     critResist -= 12;
@@ -141,7 +148,13 @@ function critCalculation() {
   var addCrit;
   var glyphCrit;
   var innateSkillCrit;
-  var levelDiff = -0.005;
+  var levelDiff = 0;
+
+  if (70 - bosses[currentBoss].level > 0) {
+    levelDiff = (70 - bosses[currentBoss].level) * 0.015;
+  } else if (70 - bosses[currentBoss].level < 0) {
+    levelDiff = (70 - bosses[currentBoss].level) * 0.005;
+  }
 
   var castanic;
 
@@ -310,6 +323,80 @@ function changeClass() {
       break;
     case "Warrior":
       currentClass = 12;
+      break;
+  }
+}
+
+function changeBoss() {
+  switch (bossSelection.value()) {
+    case "Nightmare Kalligar (DAH)":
+      currentBoss = 0;
+      break;
+    case "Kalligar (DANM)":
+      currentBoss = 1;
+      break;
+    case "Immortal Kelsaik (CSHM)":
+      currentBoss = 2;
+      break;
+    case "Kelsaik (CSNM)":
+      currentBoss = 3;
+      break;
+    case "Hagufna (FA)":
+      currentBoss = 4;
+      break;
+    case "Ironfang Dixie (SOH)":
+      currentBoss = 5;
+      break;
+    case "Bahaar":
+      currentBoss = 6;
+      break;
+    case "Akalath Travan (AQ)":
+      currentBoss = 7;
+      break;
+    case "Akalath Kashir (AQ)":
+      currentBoss = 8;
+      break;
+    case "Hellgramite (GVH)":
+      currentBoss = 9;
+      break;
+    case "Nightmare Gossamer Reagent (GVH)":
+      currentBoss = 10;
+      break;
+    case "Nightmare Nedra (GLSH)":
+      currentBoss = 11;
+      break;
+    case "Nightmare Ptakum (GLSH)":
+      currentBoss = 12;
+      break;
+    case "Nightmare Kylos (GLSH)":
+      currentBoss = 13;
+      break;
+    case "Nightmare Ghergof (AAH)":
+      currentBoss = 14;
+      break;
+    case "Nightmare Kalioth (AAH)":
+      currentBoss = 15;
+      break;
+    case "Nightmare Antaroth (AAH)":
+      currentBoss = 16;
+      break;
+    case "Kalavese (RR)":
+      currentBoss = 17;
+      break;
+    case "Thormentum (RR)":
+      currentBoss = 18;
+      break;
+    case "Argog (RR)":
+      currentBoss = 19;
+      break;
+    case "Ventarun (RK9)":
+      currentBoss = 19;
+      break;
+    case "Hexapleon (RK9)":
+      currentBoss = 19;
+      break;
+    case "RK-9 (RK9)":
+      currentBoss = 19;
       break;
   }
 }
