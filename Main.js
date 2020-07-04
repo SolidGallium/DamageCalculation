@@ -16,7 +16,7 @@ var castanicBool = false;
 var position = 1.6;
 var kaiasjudgement = true;
 var triplenem = true;
-var currentClass = 11;
+var currentClass = 12;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -241,7 +241,7 @@ var classes = [
         guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
-        glyphBaseCrit: 1 + 1,
+        glyphBaseCrit: 1,
         addCrit: 0,
         damagePortion: 0
       }
@@ -257,20 +257,22 @@ var classes = [
         bonusCrit: 5,
         uptime: 1,
         skillsAffected: [
-          "Thunder Strike",
-          "Cyclone",
-          "Lethal Strike",
-          "Sinister",
-          "Dexter",
-          "Rampage",
-          "Beast Fury",
-          "Vampiric Blow",
-          "Flatten",
-          "Raze",
-          "Tackle"
+          "All"
+        ],
+      },
+      // bloodshed
+      {
+        name: "Bloodshed",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0.1,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.1,
+        skillsAffected: [
+          "All"
         ],
       }
-      // bloodshed (missing)
     ]
   },
   // brawler
@@ -1408,6 +1410,151 @@ var classes = [
         ]
       },
     ]
+  },
+  // warrior
+  {
+    name: "Warrior",
+    baseCrit: 52,
+    skills: [
+      // aerial scythe
+      {
+        name: "Aerial Scythe",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // scythe
+      {
+        name: "Scythe",
+        guaranteedCrit: false,
+        glyphCrit: 3,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // blade draw
+      {
+        name: "Blade Draw",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // blade waltz
+      {
+        name: "Blade Waltz",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 2,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // rain of blows
+      {
+        name: "Rain of Blows",
+        guaranteedCrit: false,
+        glyphCrit: 2, // skill advancement
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // blade frenzy
+      {
+        name: "Blade Frenzy",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      },
+      // combative strike
+      {
+        name: "Combative Strike",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0
+      }
+    ],
+    buffs: [
+      // assault stance
+      {
+        name: "Assault Stance",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 55,
+        uptime: 1,
+        skillsAffected: [
+          "All"
+        ]
+      },
+      // edge aerial scythe
+      {
+        name: "Edge Aerial Scythe",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 1,
+        skillsAffected: [
+          "Aerial Scythe"
+        ]
+      },
+      // edge scythe
+      {
+        name: "Edge Scythe",
+        guaranteedCrit: false,
+        glyphCrit: 3,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 1,
+        skillsAffected: [
+          "Scythe"
+        ]
+      },
+      // deadly gamble
+      {
+        name: "Deadly Gamble",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0.5,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.3,
+        skillsAffected: [
+          "All"
+        ]
+      },
+      // blade waltz chained: critical
+      {
+        name: "Blade Waltz Chained: Critical",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        uptime: 0.5, // just an estimate
+        skillsAffected: [
+          "Blade Draw",
+          "Rain of Blows"
+        ]
+      }
+    ]
   }
 ];
 
@@ -1426,7 +1573,7 @@ var critSkillDisplay = [];
 // slayer v
 // sorcerer v
 // valkyrie v (fuck this class)
-// warrior x
+// warrior v
 // ---------------------------------
 // warrior tank x
 // brawler dps x
@@ -1441,7 +1588,7 @@ function setup() {
   button.position(20, 105);
   button.size(80, 20);
   button.mousePressed(critCalculation);
-  input = createInput(200);
+  input = createInput(150);
   input.size(72, 20);
   input.position(20, 50);
   checkboxMystic = createCheckbox("Mystic", true);
@@ -1482,7 +1629,8 @@ function setup() {
   classSelection.option("Slayer");
   classSelection.option("Sorcerer");
   classSelection.option("Valkyrie");
-  classSelection.selected("Valkyrie");
+  classSelection.option("Warrior");
+  classSelection.selected("Warrior");
   classSelection.changed(changeClass);
   classSelection.size(80, 20);
   textSize(20);
@@ -1518,27 +1666,36 @@ function draw() {
 function critCalculation() {
   var direction = position;
   var classCF = classes[currentClass].baseCrit;
+  var inputValue = input.value();
   var bonusCrit;
   var tmpBonusCrit;
 
+  if (inputValue < classCF) {
+    inputValue = classCF;
+  }
+
   if (priest == true) {
-    bonusCrit = input.value() - classCF + classCF * 0.36;
+    bonusCrit = inputValue - classCF + classCF * 0.36;
   } else if (mystic == true) {
-    bonusCrit = input.value() - classCF + classCF * 1.2;
+    bonusCrit = inputValue - classCF + classCF * 1.2;
   } else if (priest == false && mystic == false){
-    bonusCrit = input.value() - classCF;
+    bonusCrit = inputValue - classCF;
+  }
+
+  if (bonusCrit <= 0) {
+    bonusCrit = 0;
   }
 
   tmpBonusCrit = bonusCrit;
 
-  var critResist = 300;
+  var critResist = 220;
 
   if (triplenem == true) {
     critResist -= 12;
   }
 
   if (kaiasjudgement == true) {
-    critResist -= 25;
+    critResist -= 25 * 0.8;
   }
 
   var addCrit;
@@ -1573,6 +1730,7 @@ function critCalculation() {
       for (var j = 0; j < classes[currentClass].buffs.length; j++) {
         // check if the current skill being calculated is affected by the current buff being applied
         if (classes[currentClass].buffs[j].skillsAffected.includes(classes[currentClass].skills[i].name) || classes[currentClass].buffs[j].skillsAffected.includes("All")) {
+          console.log("Skill: " + classes[currentClass].skills[i].name + " > Buff: " + classes[currentClass].buffs[j].name);
           glyphCrit += (classes[currentClass].buffs[j].glyphCrit * classes[currentClass].buffs[j].uptime);
           addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
           glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
@@ -1594,6 +1752,7 @@ function critCalculation() {
         critChance = Math.trunc((bonusCrit + classes[currentClass].baseCrit) * 0.2);
       }
 
+      console.log("Total Crit: " + (bonusCrit + classes[currentClass].baseCrit));
       bonusCrit = tmpBonusCrit;
       critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
     }
@@ -1708,6 +1867,9 @@ function changeClass() {
       break;
     case "Valkyrie":
       currentClass = 11;
+      break;
+    case "Warrior":
+      currentClass = 12;
       break;
   }
 }
