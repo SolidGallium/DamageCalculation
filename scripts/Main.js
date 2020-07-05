@@ -21,92 +21,94 @@ var currentClass = 2;
 var critSkillDisplay = [];
 var bossSelection;
 var currentBoss = 9;
+var classSelectionCanvas;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(backgroundR, backgroundG, backgroundB);
+// function setup() {
+//   classSelectionCanvas = createCanvas();
+//   classSelectionCanvas.parent('class');
+//   background(backgroundR, backgroundG, backgroundB);
 
-  button = createButton('calculate');
-  button.position(20, 130);
-  button.size(80, 20);
-  button.mousePressed(critCalculation);
+//   button = createButton('calculate');
+//   // button.position(20, 130);
+//   // button.size(80, 20);
+//   button.mousePressed(critCalculation);
 
-  input = createInput("145");
-  input.size(72, 20);
-  input.position(20, 50);
+//   input = createInput("145");
+//   // input.size(72, 20);
+//   // input.position(20, 50);
 
-  checkboxMystic = createCheckbox("Mystic", true);
-  checkboxMystic.position(100 + 10, 50);
-  checkboxMystic.changed(switchMystic);
-  checkboxPriest = createCheckbox("Priest", false);
-  checkboxPriest.position(170 + 10, 50);
-  checkboxPriest.changed(switchPriest);
-  checkboxCastanic = createCheckbox("Castanic", false);
-  checkboxCastanic.position(100 + 10, 80);
-  checkboxCastanic.changed(switchCastanic);
-  checkboxPositionBack = createCheckbox("Back", true);
-  checkboxPositionBack.position(100 + 10, 110);
-  checkboxPositionBack.changed(switchPosition);
-  checkboxPositionSide = createCheckbox("Side", false);
-  checkboxPositionSide.position(170 + 10, 110);
-  checkboxPositionSide.changed(switchPosition);
-  checkboxPositionFront = createCheckbox("Front", false);
-  checkboxPositionFront.position(240 + 10, 110);
-  checkboxPositionFront.changed(switchPosition);
-  checkboxKaiasjudgement = createCheckbox("Kaia's Judgement", true);
-  checkboxKaiasjudgement.position(100 + 10, 140);
-  checkboxKaiasjudgement.changed(switchKaiasjudgement);
-  checkboxTriplenem = createCheckbox("Triple Nem / Volley", true);
-  checkboxTriplenem.position(100 + 10, 170);
-  checkboxTriplenem.changed(switchTriplenem);
+//   checkboxMystic = createCheckbox("Mystic", true);
+//   checkboxMystic.position(100 + 10, 50);
+//   checkboxMystic.changed(switchMystic);
+//   checkboxPriest = createCheckbox("Priest", false);
+//   checkboxPriest.position(170 + 10, 50);
+//   checkboxPriest.changed(switchPriest);
+//   checkboxCastanic = createCheckbox("Castanic", false);
+//   checkboxCastanic.position(100 + 10, 80);
+//   checkboxCastanic.changed(switchCastanic);
+//   checkboxPositionBack = createCheckbox("Back", true);
+//   checkboxPositionBack.position(100 + 10, 110);
+//   checkboxPositionBack.changed(switchPosition);
+//   checkboxPositionSide = createCheckbox("Side", false);
+//   checkboxPositionSide.position(170 + 10, 110);
+//   checkboxPositionSide.changed(switchPosition);
+//   checkboxPositionFront = createCheckbox("Front", false);
+//   checkboxPositionFront.position(240 + 10, 110);
+//   checkboxPositionFront.changed(switchPosition);
+//   checkboxKaiasjudgement = createCheckbox("Kaia's Judgement", true);
+//   checkboxKaiasjudgement.position(100 + 10, 140);
+//   checkboxKaiasjudgement.changed(switchKaiasjudgement);
+//   checkboxTriplenem = createCheckbox("Triple Nem / Volley", true);
+//   checkboxTriplenem.position(100 + 10, 170);
+//   checkboxTriplenem.changed(switchTriplenem);
 
-  classSelection = createSelect();
-  classSelection.position(20, 80);
-  for (var i = 0; i < classes.length; i++) {
-    classSelection.option(classes[i].name);
-  }
-  classSelection.selected("Brawler");
-  classSelection.changed(changeClass);
-  classSelection.size(80, 20);
+//   classSelection = createSelect();
+//   classSelection.position(20, 80);
+//   for (var i = 0; i < classes.length; i++) {
+//     classSelection.option(classes[i].name);
+//   }
+//   classSelection.selected("Brawler");
+//   classSelection.changed(changeClass);
+//   classSelection.size(80, 20);
 
-  bossSelection = createSelect();
-  bossSelection.position(20, 105);
-  for (var i = 0; i < bosses.length; i++) {
-    bossSelection.option(bosses[i].name);
-  }
-  bossSelection.size(80, 20);
-  bossSelection.selected("Akalath Kashir (AQ)");
-  bossSelection.changed(changeBoss);
+//   bossSelection = createSelect();
+//   bossSelection.position(20, 105);
+//   for (var i = 0; i < bosses.length; i++) {
+//     bossSelection.option(bosses[i].name);
+//   }
+//   bossSelection.size(80, 20);
+//   bossSelection.selected("Akalath Kashir (AQ)");
+//   bossSelection.changed(changeBoss);
 
-  textSize(20);
-}
+//   textSize(20);
+// }
 
-function draw() {
-  var maxWidth = 0;
-  resizeCanvas(windowWidth, windowHeight);
-  background(backgroundR, backgroundG, backgroundB);
-  fill(255);
-  text("Crit:", 20, 40);
+// function draw() {
+//   var maxWidth = 0;
+//   resizeCanvas(windowWidth, windowHeight);
+//   // background(backgroundR, backgroundG, backgroundB);
+//   fill(255);
+//   text("Crit:", 20, 40);
 
-  for (var i = 0; i < critSkillDisplay.length; i++) {
-    if (textWidth(critSkillDisplay[i].name + ": ") > maxWidth) {
-      maxWidth = textWidth(critSkillDisplay[i].name + ": ");
-    }
-  }
+//   for (var i = 0; i < critSkillDisplay.length; i++) {
+//     if (textWidth(critSkillDisplay[i].name + ": ") > maxWidth) {
+//       maxWidth = textWidth(critSkillDisplay[i].name + ": ");
+//     }
+//   }
 
-  for (var i = 0; i < critSkillDisplay.length; i++) {
-    text(critSkillDisplay[i].name + ": ", 350, 65 + 30 * i);
-    if (critSkillDisplay[i].value >= 100) {
-      fill(0, 255, 0);
-    } else if (critSkillDisplay[i].value <= 50) {
-      fill(255, 71, 71);
-    }
-    text(critSkillDisplay[i].value + "%", 350 + maxWidth, 65 + 30 * i);
-    fill(255);
-  }
-}
+//   for (var i = 0; i < critSkillDisplay.length; i++) {
+//     text(critSkillDisplay[i].name + ": ", 350, 65 + 30 * i);
+//     if (critSkillDisplay[i].value >= 100) {
+//       fill(0, 255, 0);
+//     } else if (critSkillDisplay[i].value <= 50) {
+//       fill(255, 71, 71);
+//     }
+//     text(critSkillDisplay[i].value + "%", 350 + maxWidth, 65 + 30 * i);
+//     fill(255);
+//   }
+// }
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 

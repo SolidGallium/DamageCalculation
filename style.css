@@ -1,20 +1,20 @@
 html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  display: flex;
-
-  /* This centers our sketch horizontally. */
-  justify-content: center;
-
-  /* This centers our sketch vertically. */
-  align-items: center;
-}
-
-div {
+  background: rgb(66, 66, 66);
+  color: rgb(49, 121, 255);
   font-family: 'Open Sans';
   font-style: sans-serif;
-  color: white;
+}
+
+#test {
+  background: rgb(26, 26, 26);
+  height: 200px;
+}
+
+#class {
+  background: rgb(26, 26, 26);
+  /* height: 200px; */
+}
+
+#container {
+  width: 100%;
 }
