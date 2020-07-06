@@ -24,7 +24,7 @@
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-2">
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "class" class = "col-2 ml-2 mr-1 rounded">
+        <div id = "class" class = "col-2 ml-2 mr-1 rounded h-100">
           <div class = "row">
             <div class = "col mt-1">
               <h3>Class</h3>
@@ -76,7 +76,7 @@
           </div>
         </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "buffs" class = "col ml-1 mr-1 rounded">
+        <div id = "buffs" class = "col ml-1 mr-1 rounded h-100">
           <div class = "row">
             <div class = "col mt-1">
               <h3>Buffs</h3>
@@ -88,41 +88,20 @@
                 <div class = "dropdown-menu" aria-labelledby = "healerButton">
                   <a class = "dropdown-item healerSelection" href = "#">Mystic</a>
                   <a class = "dropdown-item healerSelection" href = "#">Priest</a>
-                  <a class = "dropdown-item healerSelection" href = "#">Mystic + Priest</a>    
+                  <a class = "dropdown-item healerSelection" href = "#">Mystic + Priest</a>  
+                  <a class = "dropdown-item healerSelection" href = "#">None</a>  
                 </div>
-            </div>
-          </div>
-          <div class = "row pt-2 pb-2 align-items-center invisible" id = "edict" style = "background: rgb(40, 40, 40);">
-            <div class = "col-2">
-              <img src="https://teralore.com/items/icon_skills/judgment_tex.png" class="img-fluid rounded" alt="Responsive image">
-            </div>
-            <div class = "col">
-              <h5 class = "text-light m-0">Edict of Judgement</h5>
-            </div>
-            <div class = "col-5">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text text-white bg-primary border-0 responsiveText">Uptime: </span>
-                </div>
-                <input type="text" value = "33" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default" id = "edictUptime">
-                <!-- <label for="edictUptime">33</label> -->
-                <div class = "input-group-append">
-                  <span class = "input-group-text text-white bg-primary border-0 responsiveTextHide">
-                    %
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "test" class = "col-3 ml-1 mr-1 rounded">
+        <div id = "test" class = "col-3 ml-1 mr-1 rounded h-100">
           <div class = "row">
             <div class = "col mt-1">
               <h3>Boss</h3>
             </div>
           </div>
-          <div class = "row">
+          <div class = "row mb-3">
             <div class = "col">
               <button type = "button" class = "btn btn-primary dropdown-toggle" data-toggle = "dropdown" aria-hashpopup = "true" aria-expanded="false" id = "bossButton">Boss</button>
               <div class = "dropdown-menu" aria-labelledby = "bossButton">
@@ -154,13 +133,13 @@
           </div>
         </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "test" class = "col ml-1 mr-2 rounded">
+        <div id = "test" class = "col ml-1 mr-2 rounded h-100">
           <h3 class = "mt-1">Debuffs</h3>
         </div>
       </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-3">
-        <div id = "test" class = "col ml-4 mr-4 rounded">
+        <div id = "test" class = "col ml-4 mr-4 rounded h-100">
           <h3 class = "mt-1">SKILLS</h3>
         </div>
       </div>
@@ -169,22 +148,80 @@
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
     <script>
-      // $(document).ready(function() {
-      //   $('#edictUptime').val(33);
-      // })
-
       $('.classSelection').on('click', function() {
         $('#classButton').text($(this).text());
         changeClass($(this).text());
 
+        renderBuffs()
+
+        // console.log($('#critInput').val());
+        // changeBuffs();
+        $('#baseCrit').text(classes[currentClass].baseCrit);
+      });
+
+      $('.bossSelection').on('click', function() {
+        $('#bossButton').text($(this).text());
+        changeBoss($(this).text());
+      });
+
+      $('.critSelection').on('click', function() {
+        $('#critButton').text($(this).text());
+      });
+
+      $('.healerSelection').on('click', function() {
+        $('#healerButton').text($(this).text());
+        if ($(this).text() == "Priest") {
+          //$('#edict').removeClass("invisible");
+          priest = true;
+
+        } else if ($(this).text() == "Mystic + Priest") {
+          priest = true;
+          mystic = true;
+        } else if ($(this).text() == "Mystic") {
+          //$('#edict').addClass("invisible");
+          mystic = true;
+          priest = false;
+        } else {
+          mystic = false;
+          priest = false;
+        }
+        renderBuffs();
+      });
+
+      function renderBuffs() {
         $('.createdBuffs').remove();
 
         var r;
         var g;
         var b;
 
+        if (priest == true) {
+          $('#buffs').append(
+            "<div class = 'row pt-2 pb-2 align-items-center createdBuffs' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+              "<div class = 'col-2'>" +
+                "<img src = 'https://teralore.com/items/icon_skills/judgment_tex.png' class = 'img-fluid rounded' alt = 'missing image'>" +
+              "</div>" +
+              "<div class = 'col'>" + 
+                "<h5 class = 'text-light m-0'>Edict of Judgement</h5>" +
+              "</div>" +
+              "<div class = 'col-5'>" +
+                "<div class = 'input-group'>" +
+                  "<div class = 'input-group-prepend'>" +
+                    "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
+                  "</div>" +
+                  "<input type = 'text' value = '33' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+                  "<div class = 'input-group-append'>" + 
+                    "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
+                      "%" +
+                    "</span>" +
+                  "</div>" +
+                "</div>" +
+              "</div>" +
+            "</div>");
+        }
+
         for (var i = 0; i < classes[currentClass].buffs.length; i++) {
-          if (i % 2 == 1) {
+          if (i % 2 == 0) {
             r = 40;
             b = 40;
             g = 40;
@@ -216,31 +253,8 @@
                 "</div>" +
               "</div>" +
             "</div>");
-        }
-
-        // console.log($('#critInput').val());
-        // changeBuffs();
-        $('#baseCrit').text(classes[currentClass].baseCrit);
-      });
-
-      $('.bossSelection').on('click', function() {
-        $('#bossButton').text($(this).text());
-        changeBoss($(this).text());
-      });
-
-      $('.critSelection').on('click', function() {
-        $('#critButton').text($(this).text());
-      });
-
-      $('.healerSelection').on('click', function() {
-        $('#healerButton').text($(this).text());
-        if ($(this).text() == "Priest" || $(this).text() == "Mystic + Priest") {
-          $('#edict').removeClass("invisible");
-        } else {
-          $('#edict').addClass("invisible");
-        }
-      });
-
+      }
+    }
     </script>
 
   </body>

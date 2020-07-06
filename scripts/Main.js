@@ -17,7 +17,7 @@ var position = 1.6;
 var kaiasjudgement = true;
 var triplenem = true;
 var classSelection;
-var currentClass = 2;
+var currentClass = -1;
 var critSkillDisplay = [];
 var bossSelection;
 var currentBoss = 9;
