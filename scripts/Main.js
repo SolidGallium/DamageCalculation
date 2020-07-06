@@ -285,8 +285,8 @@ function switchTriplenem() {
   }
 }
 
-function changeClass() {
-  switch (classSelection.value()) {
+function changeClass(className) {
+  switch (className) {
     case "Archer":
       currentClass = 0;
       break;
@@ -327,11 +327,12 @@ function changeClass() {
       currentClass = 12;
       break;
   }
+  console.log(currentClass + " - " + className);
 }
 
-function changeBoss() {
-  switch (bossSelection.value()) {
-    case "Nightmare Kalligar (DAH)":
+function changeBoss(bossName) {
+  switch (bossName) {
+    case "Nightmare Kalligar (DAHM)":
       currentBoss = 0;
       break;
     case "Kalligar (DANM)":
@@ -401,6 +402,7 @@ function changeBoss() {
       currentBoss = 19;
       break;
   }
+  console.log(currentBoss + " - " + bossName);
 }
 
 // end :3

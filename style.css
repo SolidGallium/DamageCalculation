@@ -1,13 +1,17 @@
 html, body {
-  background: rgb(66, 66, 66);
-  color: rgb(49, 121, 255);
+  background: rgb(46, 46, 46);
+  color: rgb(0, 123, 255);
   font-family: 'Open Sans';
   font-style: sans-serif;
 }
 
 #test {
   background: rgb(26, 26, 26);
-  height: 200px;
+  /* height: 200px; */
+}
+
+#buffs {
+  background: rgb(26, 26, 26);
 }
 
 #class {
@@ -18,3 +22,32 @@ html, body {
 #container {
   width: 100%;
 }
+
+@media (max-width: 1500px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:75%;
+    line-height: 1;
+    border-radius:3px;
+  }
+  h5 {
+    font-size: 100%;
+  }
+  .responsiveText {
+    font-size: 68%;
+  }
+}
+
+@media (max-width: 1800px) {
+  .responsiveTextHide {
+    display: none;
+  }
+}
+
+/* @media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+  }
+} */

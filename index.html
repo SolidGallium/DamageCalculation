@@ -16,59 +16,231 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
   </head>
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
   <body>
 
     <div class = "container-fluid m-0 w-100 text-center" id = "container">
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-2">
-        <div id = "class" class = "col-1 ml-4 mr-2 rounded">
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div id = "class" class = "col-2 ml-2 mr-1 rounded">
           <div class = "row">
-            <div class = "col">
-              <h3>CLASS</h3>
+            <div class = "col mt-1">
+              <h3>Class</h3>
             </div>
           </div>
           <div class = "row text-center">
-            <div class = "col mb-2">
+            <div class = "col mb-1 mt-1">
               <button type = "button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "classButton">Class</button>
               <div class = "dropdown-menu" aria-labelledby = "classButton">
-                <a class = "dropdown-item" href = "#">Archer</a>
-                <a class = "dropdown-item" href = "#">Berserker</a>
-                <a class = "dropdown-item" href = "#">Brawler</a>
-                <a class = "dropdown-item" href = "#">Gunner</a>
-                <a class = "dropdown-item" href = "#">Lancer</a>
-                <a class = "dropdown-item" href = "#">Mystic</a>
-                <a class = "dropdown-item" href = "#">Ninja</a>
-                <a class = "dropdown-item" href = "#">Priest</a>
-                <a class = "dropdown-item" href = "#">Reaper</a>
-                <a class = "dropdown-item" href = "#">Slayer</a>
-                <a class = "dropdown-item" href = "#">Sorcerer</a>
-                <a class = "dropdown-item" href = "#">Valkyrie</a>
-                <a class = "dropdown-item" href = "#">Warrior</a>
+                <a class = "dropdown-item classSelection" href = "#">Archer</a>
+                <a class = "dropdown-item classSelection" href = "#">Berserker</a>
+                <a class = "dropdown-item classSelection" href = "#">Brawler</a>
+                <a class = "dropdown-item classSelection" href = "#">Gunner</a>
+                <a class = "dropdown-item classSelection" href = "#">Lancer</a>
+                <a class = "dropdown-item classSelection" href = "#">Mystic</a>
+                <a class = "dropdown-item classSelection" href = "#">Ninja</a>
+                <a class = "dropdown-item classSelection" href = "#">Priest</a>
+                <a class = "dropdown-item classSelection" href = "#">Reaper</a>
+                <a class = "dropdown-item classSelection" href = "#">Slayer</a>
+                <a class = "dropdown-item classSelection" href = "#">Sorcerer</a>
+                <a class = "dropdown-item classSelection" href = "#">Valkyrie</a>
+                <a class = "dropdown-item classSelection" href = "#">Warrior</a>
+              </div>
+            </div>
+          </div>
+          <div class = "row mt-2 align-items-center">
+            <div class = "col text-center">
+              <h5>Base Crit: 
+                <span class = "text-white" id = "baseCrit">0</span>
+              </h5>
+            </div>
+          </div>
+          <div class = "row mt-2 mb-3">
+            <div class = "col">
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Crit:</span>
+                </div>
+                <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default" id = "critInput">
+                <div class = "input-group-append">
+                  <button type = "button" class = "btn btn-primary dropdown-toggle responsiveText" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "critButton">Total Crit</button>
+                  <div class = "dropdown-menu" aria-labelledby = "critButton">
+                    <a class = "dropdown-item critSelection" href = "#">Total Crit</a>
+                    <a class = "dropdown-item critSelection" href = "#">Bonus Crit</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div id = "test" class = "col ml-2 mr-2 rounded">
-          <h3>BUFFS</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div id = "buffs" class = "col ml-1 mr-1 rounded">
+          <div class = "row">
+            <div class = "col mt-1">
+              <h3>Buffs</h3>
+            </div>
+          </div>
+          <div class = "row mt-1 mb-2">
+            <div class = "col">
+              <button type = "button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "healerButton">Healer</button>
+                <div class = "dropdown-menu" aria-labelledby = "healerButton">
+                  <a class = "dropdown-item healerSelection" href = "#">Mystic</a>
+                  <a class = "dropdown-item healerSelection" href = "#">Priest</a>
+                  <a class = "dropdown-item healerSelection" href = "#">Mystic + Priest</a>    
+                </div>
+            </div>
+          </div>
+          <div class = "row pt-2 pb-2 align-items-center invisible" id = "edict" style = "background: rgb(40, 40, 40);">
+            <div class = "col-2">
+              <img src="https://teralore.com/items/icon_skills/judgment_tex.png" class="img-fluid rounded" alt="Responsive image">
+            </div>
+            <div class = "col">
+              <h5 class = "text-light m-0">Edict of Judgement</h5>
+            </div>
+            <div class = "col-5">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-white bg-primary border-0 responsiveText">Uptime: </span>
+                </div>
+                <input type="text" value = "33" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default" id = "edictUptime">
+                <!-- <label for="edictUptime">33</label> -->
+                <div class = "input-group-append">
+                  <span class = "input-group-text text-white bg-primary border-0 responsiveTextHide">
+                    %
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id = "test" class = "col-1 ml-2 mr-2 rounded">
-          <h3>BOSS</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div id = "test" class = "col-3 ml-1 mr-1 rounded">
+          <div class = "row">
+            <div class = "col mt-1">
+              <h3>Boss</h3>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col">
+              <button type = "button" class = "btn btn-primary dropdown-toggle" data-toggle = "dropdown" aria-hashpopup = "true" aria-expanded="false" id = "bossButton">Boss</button>
+              <div class = "dropdown-menu" aria-labelledby = "bossButton">
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Kalligar (DAHM)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Kalligar (DANM)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Immortal Kelsaik (CSHM)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Kelsaik (CSNM)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Hagufna (FA)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Ironfang Dixie (SOH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Bahaar</a>
+                <a class = "dropdown-item bossSelection" href = "#">Akalath Travan (AQ)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Akalath Kashir (AQ)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Hellgramite (GVH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Gossamer Reagent (GVH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Nedra (GLSH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Ptakum (GLSH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Kylos (GLSH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Ghergof (AAH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Kalioth (AAH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Nightmare Antaroth (AAH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Kalavese (RR)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Thormentum (RR)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Argog (RR)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Ventarun (RK9)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Hexapleon (RK9)</a>
+                <a class = "dropdown-item bossSelection" href = "#">RK-9 (RK9)</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id = "test" class = "col ml-2 mr-4 rounded">
-          <h3>DEBUFFS</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div id = "test" class = "col ml-1 mr-2 rounded">
+          <h3 class = "mt-1">Debuffs</h3>
         </div>
       </div>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-3">
         <div id = "test" class = "col ml-4 mr-4 rounded">
-          <h3>SKILLS</h3>
+          <h3 class = "mt-1">SKILLS</h3>
         </div>
       </div>
     </div>
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
     <script>
-      $('.dropdown-item').on('click', function() {
-        // $('#classButton').text($(this).text());
+      // $(document).ready(function() {
+      //   $('#edictUptime').val(33);
+      // })
+
+      $('.classSelection').on('click', function() {
         $('#classButton').text($(this).text());
-      })
+        changeClass($(this).text());
+
+        $('.createdBuffs').remove();
+
+        var r;
+        var g;
+        var b;
+
+        for (var i = 0; i < classes[currentClass].buffs.length; i++) {
+          if (i % 2 == 1) {
+            r = 40;
+            b = 40;
+            g = 40;
+          } else {
+            r = 26;
+            b = 26;
+            g = 26;
+          }
+          console.log(classes[currentClass].buffs[i].name);
+          $('#buffs').append(
+            "<div class = 'row pt-2 pb-2 align-items-center createdBuffs' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+              "<div class = 'col-2'>" +
+                "<img src = '" + classes[currentClass].buffs[i].skillImage + "' class = 'img-fluid rounded' alt = 'missing image'>" +
+              "</div>" +
+              "<div class = 'col'>" + 
+                "<h5 class = 'text-light m-0'>" + classes[currentClass].buffs[i].name + "</h5>" +
+              "</div>" +
+              "<div class = 'col-5'>" +
+                "<div class = 'input-group'>" +
+                  "<div class = 'input-group-prepend'>" +
+                    "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
+                  "</div>" +
+                  "<input type = 'text' value = " + classes[currentClass].buffs[i].uptime * 100 + " class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+                  "<div class = 'input-group-append'>" + 
+                    "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
+                      "%" +
+                    "</span>" +
+                  "</div>" +
+                "</div>" +
+              "</div>" +
+            "</div>");
+        }
+
+        // console.log($('#critInput').val());
+        // changeBuffs();
+        $('#baseCrit').text(classes[currentClass].baseCrit);
+      });
+
+      $('.bossSelection').on('click', function() {
+        $('#bossButton').text($(this).text());
+        changeBoss($(this).text());
+      });
+
+      $('.critSelection').on('click', function() {
+        $('#critButton').text($(this).text());
+      });
+
+      $('.healerSelection').on('click', function() {
+        $('#healerButton').text($(this).text());
+        if ($(this).text() == "Priest" || $(this).text() == "Mystic + Priest") {
+          $('#edict').removeClass("invisible");
+        } else {
+          $('#edict').addClass("invisible");
+        }
+      });
+
     </script>
 
   </body>

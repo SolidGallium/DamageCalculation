@@ -100,7 +100,8 @@ var classes = [
         uptime: 0.4, // approximation
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/rapidshot_tex.png"
       }
     ]
   },
@@ -236,6 +237,7 @@ var classes = [
         skillsAffected: [
           "All"
         ],
+        skillImage: "https://teralore.com/items/icon_skills/berserk_tex.png"
       },
       // bloodshed
       {
@@ -249,6 +251,7 @@ var classes = [
         skillsAffected: [
           "All"
         ],
+        skillImage: "https://teralore.com/items/icon_skills/retaliation_tex.png"
       }
     ]
   },
@@ -353,7 +356,8 @@ var classes = [
         uptime: 1,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/rampage_tex.png"
       }
     ]
   },
@@ -516,7 +520,8 @@ var classes = [
         uptime: 1,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/defence_tex.png"
       }
     ]
   },
@@ -693,7 +698,8 @@ var classes = [
         skillsAffected: [
           "Burning Heart",
           "Harmonious Burning Heart"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/c12_chakracharge.png"
       },
       // cyclic chi
       {
@@ -710,6 +716,7 @@ var classes = [
           "Harmonious Burning Heart",
           "Leaves on the Wind"
         ]
+        // skillImage: missing
       }
     ]
   },
@@ -818,6 +825,7 @@ var classes = [
           "Final Reprisal",
           "Metamorphic Blast"
         ],
+        skillImage: "https://teralore.com/items/icon_skills/punishingshield_tex.png"
       }
     ]
   },
@@ -945,7 +953,8 @@ var classes = [
           "Dark Harvest",
           "Shadow Burst",
           "Sundering Strike"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/assassination_tex.png"
       }
       // shadow reaping: weak point (missing info)
     ]
@@ -1061,7 +1070,8 @@ var classes = [
         uptime: 0.3,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/concentration_tex.png"
       },
       // knockdown strike (missing)
       // whirlwind: critical pummel
@@ -1077,7 +1087,8 @@ var classes = [
           "Overhand Strike",
           "Eviscerate",
           "Measured Slice"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/sworddance_tex.png"
       }
     ]
   },
@@ -1222,7 +1233,8 @@ var classes = [
         uptime: 0.4,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/blastball_tex.png"
       },
       // keen nova
       {
@@ -1235,7 +1247,8 @@ var classes = [
         uptime: 0.4,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/manaburst_tex.png"
       }
     ]
   },
@@ -1371,7 +1384,8 @@ var classes = [
         skillsAffected: [
           "Shining Crescent",
           "Runeburst"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/moonlightdash_tex.png"
       },
       // carving spinning death
       {
@@ -1384,7 +1398,8 @@ var classes = [
         uptime: 0.3,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/helicoptercuts_tex.png"
       },
       // spinning death: critical pummel
       {
@@ -1397,7 +1412,8 @@ var classes = [
         uptime: 0.3,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/helicoptercuts_tex.png"
       },
     ]
   },
@@ -1492,7 +1508,8 @@ var classes = [
         uptime: 1,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/ironwilla_tex.png"
       },
       // edge aerial scythe
       {
@@ -1505,7 +1522,8 @@ var classes = [
         uptime: 1,
         skillsAffected: [
           "Aerial Scythe"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/tumblingattack_tex.png"
       },
       // edge scythe
       {
@@ -1518,7 +1536,8 @@ var classes = [
         uptime: 1,
         skillsAffected: [
           "Scythe"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/raker_tex.png"
       },
       // deadly gamble
       {
@@ -1531,7 +1550,8 @@ var classes = [
         uptime: 0.3,
         skillsAffected: [
           "All"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/deadlywill_tex.png"
       },
       // blade waltz chained: critical
       {
@@ -1545,7 +1565,8 @@ var classes = [
         skillsAffected: [
           "Blade Draw",
           "Rain of Blows"
-        ]
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/doublesworddance_tex.png"
       }
     ]
   }
