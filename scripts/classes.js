@@ -1098,7 +1098,7 @@ var classes = [
   // sorcerer
   {
     name: "Sorcerer",
-    baseCrit: "50",
+    baseCrit: 50,
     skills: [
       // elemental fusion
       {

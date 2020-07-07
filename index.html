@@ -82,8 +82,8 @@
               <h3>Buffs</h3>
             </div>
           </div>
-          <div class = "row mt-1 mb-2">
-            <div class = "col">
+          <div class = "row mt-1 mb-2 align-items-end">
+            <div class = "col-4">
               <button type = "button" class = "btn btn-primary btn-responsive dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "healerButton">Healer</button>
                 <div class = "dropdown-menu" aria-labelledby = "healerButton">
                   <a class = "dropdown-item healerSelection" href = "#">Mystic</a>
@@ -91,6 +91,11 @@
                   <a class = "dropdown-item healerSelection" href = "#">Mystic + Priest</a>  
                   <a class = "dropdown-item healerSelection" href = "#">None</a>  
                 </div>
+            </div>
+            <div class = "col text-right">
+              <h5>Buffed Crit: 
+                <span class = "text-white" id = "buffedCrit">0</span>
+              </h5>
             </div>
           </div>
         </div>
@@ -152,10 +157,10 @@
         $('#classButton').text($(this).text());
         changeClass($(this).text());
 
-        renderBuffs()
+        renderBuffs();
 
-        // console.log($('#critInput').val());
-        // changeBuffs();
+        updateCrit();
+
         $('#baseCrit').text(classes[currentClass].baseCrit);
       });
 
@@ -166,19 +171,23 @@
 
       $('.critSelection').on('click', function() {
         $('#critButton').text($(this).text());
+        if ($(this).text() == "Total Crit") {
+          totalCrit = true;
+        } else {
+          totalCrit = false;
+        }
+        updateCrit();
       });
 
       $('.healerSelection').on('click', function() {
         $('#healerButton').text($(this).text());
         if ($(this).text() == "Priest") {
-          //$('#edict').removeClass("invisible");
           priest = true;
-
+          mystic = false;
         } else if ($(this).text() == "Mystic + Priest") {
           priest = true;
           mystic = true;
         } else if ($(this).text() == "Mystic") {
-          //$('#edict').addClass("invisible");
           mystic = true;
           priest = false;
         } else {
@@ -186,6 +195,7 @@
           priest = false;
         }
         renderBuffs();
+        updateCrit();
       });
 
       function renderBuffs() {
@@ -194,6 +204,8 @@
         var r;
         var g;
         var b;
+
+        var last;
 
         if (priest == true) {
           $('#buffs').append(
@@ -230,9 +242,16 @@
             b = 26;
             g = 26;
           }
+
+          if (i == classes[currentClass].buffs.length - 1) {
+            last = "rounded-bottom";
+          } else {
+            last = "";
+          }
+
           console.log(classes[currentClass].buffs[i].name);
           $('#buffs').append(
-            "<div class = 'row pt-2 pb-2 align-items-center createdBuffs' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+            "<div class = 'row pt-2 pb-2 align-items-center createdBuffs " + last + "' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
               "<div class = 'col-2'>" +
                 "<img src = '" + classes[currentClass].buffs[i].skillImage + "' class = 'img-fluid rounded' alt = 'missing image'>" +
               "</div>" +
@@ -255,6 +274,57 @@
             "</div>");
       }
     }
+    
+      function updateCrit() {
+        var crit = 0;
+
+        if (!Number.isNaN(parseInt($("#critInput").val()))) {
+          crit += parseInt($("#critInput").val());
+        }
+        
+        if (totalCrit == true) {
+          if (crit < classes[currentClass].baseCrit) {
+            crit = classes[currentClass].baseCrit;
+          }
+        }
+
+        if (totalCrit == false) {
+          crit += classes[currentClass].baseCrit;
+        }
+
+        if (priest == true) {
+          crit += classes[currentClass].baseCrit * 0.36;
+        }
+
+        if (mystic == true) {
+          crit += classes[currentClass].baseCrit * 1.2;
+        }
+
+        $('#buffedCrit').text(Math.trunc(crit));
+      }
+
+    </script>
+
+    <script>
+      var typingTimer;                //timer identifier
+      var doneTypingInterval = 100;  //time in ms, 5 second for example
+      var $input = $('#critInput');
+
+      // on keyup, start the countdown
+      $input.on('keyup', function () {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+      });
+
+      // on keydown, clear the countdown 
+      $input.on('keydown', function () {
+        clearTimeout(typingTimer);
+      });
+
+      //user is "finished typing," do something
+      function doneTyping () {
+        updateCrit();
+      }
     </script>
 
   </body>

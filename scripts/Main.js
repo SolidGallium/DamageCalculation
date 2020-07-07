@@ -10,7 +10,7 @@ var checkboxPositionSide;
 var checkboxPositionFront;
 var checkboxKaiasjudgement;
 var checkboxTriplenem;
-var mystic = true;
+var mystic = false;
 var priest = false;
 var castanicBool = false;
 var position = 1.6;
@@ -22,6 +22,7 @@ var critSkillDisplay = [];
 var bossSelection;
 var currentBoss = 9;
 var classSelectionCanvas;
+var totalCrit = true;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
