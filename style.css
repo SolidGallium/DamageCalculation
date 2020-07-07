@@ -25,10 +25,7 @@ html, body {
 
 @media (max-width: 1500px) {
   .btn-responsive {
-    padding:2px 4px;
-    font-size:75%;
-    line-height: 1;
-    border-radius:3px;
+    font-size:90%;
   }
   h5 {
     font-size: 100%;
