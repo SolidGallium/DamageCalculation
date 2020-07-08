@@ -715,7 +715,8 @@ var classes = [
           "Burning Heart",
           "Harmonious Burning Heart",
           "Leaves on the Wind"
-        ]
+        ],
+        skillImage: "https://imgur.com/719CMef.png"
         // skillImage: missing
       }
     ]

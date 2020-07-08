@@ -13,6 +13,7 @@
     <script src="scripts/Main.js"></script>
     <script src="scripts/classes.js"></script>
     <script src="scripts/bosses.js"></script>
+    <script src = "scripts/tanks.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
   </head>
 
@@ -76,13 +77,13 @@
           </div>
         </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "buffs" class = "col ml-1 mr-1 rounded h-100">
+        <div id = "buffs" class = "col-4 ml-1 mr-1 rounded h-100">
           <div class = "row">
             <div class = "col mt-1">
               <h3>Buffs</h3>
             </div>
           </div>
-          <div class = "row mt-1 mb-2 align-items-end">
+          <div class = "row mt-1 mb-3 align-items-end">
             <div class = "col-4">
               <button type = "button" class = "btn btn-primary btn-responsive dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "healerButton">Healer</button>
                 <div class = "dropdown-menu" aria-labelledby = "healerButton">
@@ -100,7 +101,7 @@
           </div>
         </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "test" class = "col-3 ml-1 mr-1 rounded h-100">
+        <div id = "bosses" class = "col-2 ml-1 mr-1 rounded h-100">
           <div class = "row">
             <div class = "col mt-1">
               <h3>Boss</h3>
@@ -120,7 +121,7 @@
                 <a class = "dropdown-item bossSelection" href = "#">Akalath Travan (AQ)</a>
                 <a class = "dropdown-item bossSelection" href = "#">Akalath Kashir (AQ)</a>
                 <a class = "dropdown-item bossSelection" href = "#">Hellgramite (GVH)</a>
-                <a class = "dropdown-item bossSelection" href = "#">Nightmare Gossamer Reagent (GVH)</a>
+                <a class = "dropdown-item bossSelection" href = "#">Gossamer Reagent (GVH)</a>
                 <a class = "dropdown-item bossSelection" href = "#">Nightmare Nedra (GLSH)</a>
                 <a class = "dropdown-item bossSelection" href = "#">Nightmare Ptakum (GLSH)</a>
                 <a class = "dropdown-item bossSelection" href = "#">Nightmare Kylos (GLSH)</a>
@@ -136,15 +137,117 @@
               </div>
             </div>
           </div>
+          <div class = "row align-items-center mb-2">
+            <div class = "col">
+              <h5 class = "text-light m-0">Level</h5>
+            </div>
+            <div class = "col">
+              <div class = "input-group">
+                <input type = "text" value = "0" class = "form-control bg-dark border-0 text-light text-center responsiveText" aria-label = "Default" aria-describedby = "inputGroup-sizing-default" id = "bossLevel">
+              </div>
+            </div>
+          </div>
+          <div class = "row align-items-center mb-2">
+            <div class = "col">
+              <h5 class = "text-light m-0">Crit Resist</h5>
+            </div>
+            <div class = "col">
+              <div class = "input-group">
+                <input type = "text" value = "0" class = "form-control bg-dark border-0 text-light text-center responsiveText" aria-label = "Default" aria-describedby = "inputGroup-sizing-default" id = "critResist">
+              </div>
+            </div>
+          </div>
+          <div class = "row align-items-center mb-3">
+            <div class = "col">
+              <h5 class = "text-light m-0">Amp Resist</h5>
+            </div>
+            <div class = "col">
+              <div class = "input-group">
+                <input type = "text" value = "0" class = "form-control bg-dark border-0 text-light text-center responsiveText" aria-label = "Default" aria-describedby = "inputGroup-sizing-default" id = "ampResist">
+              </div>
+            </div>
+          </div>
         </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "test" class = "col ml-1 mr-2 rounded h-100">
-          <h3 class = "mt-1">Debuffs</h3>
+        <div id = "debuffs" class = "col ml-1 mr-1 rounded h-100">
+          <div class = "row mt-1">
+            <div class = "col">
+              <h3>Debuffs</h3>
+            </div>
+          </div>
+
+          <div class = "row mb-3 mt-1">
+            <div class = "col">
+              <button type = "button" class = "btn btn-primary btn-responsive dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "tankButton">Tank</button>
+              <div class = "dropdown-menu" aria-labelledby = "tankButton">
+                <a class = "dropdown-item tankSelection" href = "#">Lancer</a>
+                <a class = "dropdown-item tankSelection" href = "#">Warrior</a>
+                <a class = "dropdown-item tankSelection" href = "#">Brawler</a>  
+                <a class = "dropdown-item tankSelection" href = "#">Berserker</a>  
+              </div>
+            </div>
+          </div>
+
+          <div class = 'row pt-2 pb-2 align-items-center'>
+            <div class = 'col-2'>
+              <img src = 'https://i.imgur.com/9czn5Km.png' class = 'img-fluid rounded' alt = 'missing image'>
+            </div> 
+            <div class = 'col-4'>
+              <h5 class = 'text-light m-0'>Physical Shred</h5>
+            </div>
+            
+            <div class = 'col-2'>
+              <div class = 'input-group'> 
+                <input type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>
+              </div>
+            </div>
+
+            <div class = 'col-4'>
+              <div class = 'input-group'> 
+                <div class = 'input-group-prepend'> 
+                  <span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>
+                </div>
+                <input type = 'text' value = '100' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>
+                  <span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>
+                    %
+                  </span>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class = 'row pt-2 pb-2 align-items-center'>
+            <div class = 'col-2'>
+              <img src = 'https://i.imgur.com/t08SApc.png' class = 'img-fluid rounded' alt = 'missing image'>
+            </div> 
+            <div class = 'col-4'>
+              <h5 class = 'text-light m-0'>Magical Shred</h5>
+            </div>
+            
+            <div class = 'col-2'>
+              <div class = 'input-group'> 
+                <input type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>
+              </div>
+            </div>
+
+            <div class = 'col-4'>
+              <div class = 'input-group'> 
+                <div class = 'input-group-prepend'> 
+                  <span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>
+                </div>
+                <input type = 'text' value = '100' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>
+                  <span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>
+                    %
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-3">
-        <div id = "test" class = "col ml-4 mr-4 rounded h-100">
+        <div id = "skills" class = "col ml-4 mr-4 rounded h-100">
           <h3 class = "mt-1">SKILLS</h3>
         </div>
       </div>
@@ -167,6 +270,7 @@
       $('.bossSelection').on('click', function() {
         $('#bossButton').text($(this).text());
         changeBoss($(this).text());
+        updateBossStats();
       });
 
       $('.critSelection').on('click', function() {
@@ -196,6 +300,12 @@
         }
         renderBuffs();
         updateCrit();
+      });
+
+      $('.tankSelection').on('click', function() {
+        $('#tankButton').text($(this).text());
+        changeTank($(this).text());
+        renderDebuffs();
       });
 
       function renderBuffs() {
@@ -275,6 +385,61 @@
       }
     }
     
+      function renderDebuffs() {
+        $(".createdDebuffs").remove();
+
+        var r;
+        var g;
+        var b;
+
+        var last;
+
+        for (var i = 0; i < tanks[currentTank].debuffSkills.length; i++) {
+
+          if (i % 2 == 0) {
+            r = 40;
+            b = 40;
+            g = 40;
+          } else {
+            r = 26;
+            b = 26;
+            g = 26;
+          }
+
+          if (i == tanks[currentTank].debuffSkills.length - 1) {
+            last = "rounded-bottom";
+          } else {
+            last = "";
+          }
+
+          $("#debuffs").append(
+            "<div class = 'row  pt-2 pb-2 align-items-center createdDebuffs " + last + "' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+              "<div class = 'col-2'>" + 
+                "<img src = 'https://teralore.com/items/icon_skills/armorbreak_tex.png' class = 'img-fluid rounded' alt = 'missing image'>" + 
+              "</div>" + 
+              "<div class = 'col'>" + 
+                "<h5 class = 'text-light m-0'>" + tanks[currentTank].debuffSkills[i].name + "</h5>" +
+              "</div>" +
+              "<div class = 'col-5'>" + 
+                "<div class = 'input-group'>" + 
+                  "<div class = 'input-group-prepend'>" + 
+                    "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
+                  "</div>" + 
+                  "<input type = 'text' value = " + (tanks[currentTank].debuffSkills[i].uptime * 100) + " class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+                    "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
+                      "%" +
+                    "</span>" +
+                  "</div>" +
+                "</div>" +
+              "</div>" +
+            "</div>"
+          ); 
+
+          // $("#debuffs").append("ciao");
+        }
+        
+      }
+
       function updateCrit() {
         var crit = 0;
 
@@ -301,6 +466,12 @@
         }
 
         $('#buffedCrit').text(Math.trunc(crit));
+      }
+
+      function updateBossStats() {
+        $("#bossLevel").val(bosses[currentBoss].level);
+        $("#critResist").val(bosses[currentBoss].critResist);
+        $("#ampResist").val(bosses[currentBoss].ampResist);
       }
 
     </script>

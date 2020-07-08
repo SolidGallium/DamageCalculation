@@ -23,6 +23,7 @@ var bossSelection;
 var currentBoss = 9;
 var classSelectionCanvas;
 var totalCrit = true;
+var currentTank = -1;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -404,6 +405,26 @@ function changeBoss(bossName) {
       break;
   }
   console.log(currentBoss + " - " + bossName);
+}
+
+function changeTank(tankName) {
+  switch (tankName) {
+    case "Lancer":
+      currentTank = 0;
+      break;
+
+    case "Warrior":
+      currentTank = 1;
+      break;
+
+    case "Brawler":
+      currentTank = 2;
+      break;
+
+    case "Berserker":
+      currentTank = 3;
+      break;
+  }
 }
 
 // end :3

@@ -71,7 +71,7 @@ var bosses = [
   },
   // nightmare gossamer reagent
   {
-    name: "Nightmare Gossamer Reagent (GVH)",
+    name: "Gossamer Reagent (GVH)",
     level: 71,
     critResist: 210,
     ampResist: 20000

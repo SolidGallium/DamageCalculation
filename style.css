@@ -5,18 +5,24 @@ html, body {
   font-style: sans-serif;
 }
 
-#test {
-  background: rgb(26, 26, 26);
-  /* height: 200px; */
-}
-
 #buffs {
   background: rgb(26, 26, 26);
 }
 
 #class {
   background: rgb(26, 26, 26);
-  /* height: 200px; */
+}
+
+#bosses {
+  background: rgb(26, 26, 26);
+}
+
+#debuffs {
+  background: rgb(26, 26, 26);
+}
+
+#skills {
+  background: rgb(26, 26, 26);
 }
 
 #container {

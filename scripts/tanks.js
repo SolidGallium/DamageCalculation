@@ -1,0 +1,81 @@
+var tanks = [
+  // lancer
+  {
+    name: "Lancer",
+    debuffSkills: [
+      // debilitate
+      {
+        name: "Debilitate",
+        uptime: 1,
+        enduranceDebuff: 0.12,
+        ampDebuff: 14000,
+        image: "https://teralore.com/items/icon_skills/armorbreak_tex.png"
+      }
+    ]  
+  },
+
+  // warrior
+  {
+    name: "Warrior",
+    debuffSkills: [
+      // combative strike
+      {
+        name: "Combative Strike",
+        uptime: 1,
+        enduranceDebuff: 0.12,
+        ampDebuff: 14000,
+        image: "https://teralore.com/items/icon_skills/aggravatingstrike_tex.png"
+      },
+      // armorbreaker
+      {
+        name: "Armorbreaker",
+        uptime: 1,
+        enduranceDebuff: 0.015,
+        ampDebuff: 14000
+      }
+    ]
+  },
+
+  // brawler
+  {
+    name: "Brawler",
+    debuffSkills: [
+      // jackhammer
+      {
+        name: "Jackhammer",
+        uptime: 1,
+        enduranceDebuff: 0.12,
+        ampDebuff: 14000
+      },
+
+      // internal wounds
+      {
+        name: "Internal Wounds",
+        uptime: 0.33,
+        enduranceDebuff: 0.08,
+        ampDebuff: 0
+      }
+    ]
+  },
+
+  // berserker
+  {
+    name: "Berserker",
+    debuffSkills: [
+      // punishing strike
+      {
+        name: "Punishing Strike",
+        uptime: 1,
+        enduranceDebuff: 0.08,
+        ampDebuff: 0
+      },
+      // flatten
+      {
+        name: "Flatten",
+        uptime: 1,
+        enduranceDebuff: 0.05,
+        ampDebuff: 0
+      }
+    ]
+  }
+];
