@@ -202,7 +202,7 @@
               </div>
             </div>
 
-            <div class = 'col-4'>
+            <div class = 'col-4 pl-2'>
               <div class = 'input-group'> 
                 <div class = 'input-group-prepend'> 
                   <span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>
@@ -230,7 +230,7 @@
               </div>
             </div>
 
-            <div class = 'col-4'>
+            <div class = 'col-4 pl-2'>
               <div class = 'input-group'> 
                 <div class = 'input-group-prepend'> 
                   <span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>
@@ -267,9 +267,33 @@
       </div>
     
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-      <div class = "row mt-3">
+      <div class = "row mt-2">
         <div id = "skills" class = "col ml-2 mr-2 rounded h-100">
-          <h3 class = "mt-1">SKILLS</h3>
+          <div class = "row">
+            <div class = "col">
+              <h3 class = "mt-1  text-center">Skills</h3>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col-1">
+              <h5>Icon</h5>
+            </div>
+            <div class = "col-2">
+              <h5>Name</h5>
+            </div>
+            <div class = "col-1">
+              <h5>DPS</h5>
+            </div>
+            <div class = "col-2">
+              <h5>Crit Chance</h5>
+            </div>
+            <div class = "col-2">
+              <h5>Skill Damage</h5>
+            </div>
+            <div class = "col">
+              <h5>Uptimes</h5>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -285,6 +309,8 @@
 
         updateCrit();
 
+        renderSkills();
+
         $('#baseCrit').text(classes[currentClass].baseCrit);
       });
 
@@ -292,6 +318,8 @@
         $('#bossButton').text($(this).text());
         changeBoss($(this).text());
         updateBossStats();
+        updateCrit();
+        renderSkills();
       });
 
       $('.critSelection').on('click', function() {
@@ -302,6 +330,7 @@
           totalCrit = false;
         }
         updateCrit();
+        renderSkills();
       });
 
       $('.healerSelection').on('click', function() {
@@ -321,6 +350,7 @@
         }
         renderBuffs();
         updateCrit();
+        renderSkills();
       });
 
       $('.tankSelection').on('click', function() {
@@ -461,6 +491,43 @@
         
       }
 
+      function renderSkills() {
+        $('.createdSkills').remove();
+
+        critCalculation();
+
+        for (var i = 0; i < classes[currentClass].skills.length; i++) {
+          var textColor = "text-light";
+
+          if (critSkillDisplay[i].value >= 100) {
+            textColor = "text-success";
+          } else if (critSkillDisplay[i].value <= 50) {
+            textColor = "text-danger";
+          }
+
+          $('#skills').append(
+            "<div class = 'row pt-2 pb-2 align-items-center createdSkills'>" +
+              "<div class = 'col-1'>" +
+                "<img src = " + classes[currentClass].skills[i].image + " class = 'img-fluid rounded' alt = 'missing image'>" +
+              "</div>" +
+              "<div class = 'col-2'>" + 
+                "<h5 class = 'text-light m-0'>" + classes[currentClass].skills[i].name + "</h5>" +
+              "</div>" +
+              "<div class = 'col-1'>" +
+                "<h5 class = 'text-light m-0'>" + Math.trunc((classes[currentClass].skills[i].damagePortion * 100)) + "%</h5>" +
+              "</div>" +
+              "<div class = 'col-2'>" +
+                "<div class = 'row'>" +
+                  "<div class = 'col'>" +
+                    "<h5 class = '" + textColor +" m-0'>" + critSkillDisplay[i].value + "%</h5>" +
+                  "</div>" +
+                "</div>" +
+              "</div>" +
+            "</div>"
+          );
+        }
+      }
+
       function updateCrit() {
         var crit = 0;
 
@@ -474,10 +541,6 @@
           }
         }
 
-        if (totalCrit == false) {
-          crit += classes[currentClass].baseCrit;
-        }
-
         if (priest == true) {
           crit += classes[currentClass].baseCrit * 0.36;
         }
@@ -485,6 +548,17 @@
         if (mystic == true) {
           crit += classes[currentClass].baseCrit * 1.2;
         }
+
+        if (totalCrit == false) {
+          bonusCrit = crit;
+          crit += classes[currentClass].baseCrit;
+        } else if (totalCrit == true) {
+          bonusCrit = crit - classes[currentClass].baseCrit;
+        }
+        
+        
+        console.log(">" + bonusCrit);
+
 
         $('#buffedCrit').text(Math.trunc(crit));
       }
@@ -516,6 +590,7 @@
       //user is "finished typing," do something
       function doneTyping () {
         updateCrit();
+        renderSkills();
       }
     </script>
 

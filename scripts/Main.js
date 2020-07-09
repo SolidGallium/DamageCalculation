@@ -13,17 +13,18 @@ var checkboxTriplenem;
 var mystic = false;
 var priest = false;
 var castanicBool = false;
-var position = 1.6;
+var position = 1;
 var kaiasjudgement = true;
 var triplenem = true;
 var classSelection;
 var currentClass = -1;
 var critSkillDisplay = [];
 var bossSelection;
-var currentBoss = 9;
+var currentBoss = 8;
 var classSelectionCanvas;
 var totalCrit = true;
 var currentTank = -1;
+var bonusCrit;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
@@ -115,28 +116,29 @@ var currentTank = -1;
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
 function critCalculation() {
-  var direction = position;
+  // var direction = position;
+  var direction = 1.6;
   var classCF = classes[currentClass].baseCrit;
-  var inputValue = input.value();
-  var bonusCrit;
+  // var inputValue = 240;
+  
   var tmpBonusCrit;
 
-  if (inputValue < classCF) {
-    inputValue = classCF;
-  }
+  // if (inputValue < classCF) {
+  //   inputValue = classCF;
+  // }
 
-  if (priest == true) {
-    bonusCrit = inputValue - classCF + classCF * 0.36;
-  } else if (mystic == true) {
-    bonusCrit = inputValue - classCF + classCF * 1.2;
-  } else if (priest == false && mystic == false){
-    bonusCrit = inputValue - classCF;
-  }
+  // if (priest == true) {
+  //   bonusCrit = inputValue - classCF + classCF * 0.36;
+  // } else if (mystic == true) {
+  //   bonusCrit = inputValue - classCF + classCF * 1.2;
+  // } else if (priest == false && mystic == false){
+  //   bonusCrit = inputValue - classCF;
+  // }
 
-  if (bonusCrit <= 0) {
-    bonusCrit = 0;
-  }
-
+  // if (bonusCrit <= 0) {
+  //   bonusCrit = 0;
+  // }
+  console.log("bonus crit in crit calc " + bonusCrit);
   tmpBonusCrit = bonusCrit;
 
   var critResist = bosses[currentBoss].critResist;
@@ -195,9 +197,9 @@ function critCalculation() {
         }
 
         // priest edict crit buff, to be better implemented with edict times
-        if (priest == true) {
-          bonusCrit += 38 * 0.3; // 80k magic res priest with 30% edict
-        }
+        // if (priest == true) {
+        //   bonusCrit += 38 * 0.3; // 80k magic res priest with 30% edict
+        // }
       }
 
       // crit chance calculation formula

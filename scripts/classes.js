@@ -7,36 +7,6 @@ var classes = [
     name: "Archer",
     baseCrit: 60,
     skills: [
-      // radiant arrow
-      {
-        name: "Radiant Arrow",
-        guaranteedCrit: false,
-        glyphCrit: 3,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // penetrating arrow
-      {
-        name: "Penetrating Arrow",
-        guaranteedCrit: false,
-        glyphCrit: 2,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // rain of arrows
-      {
-        name: "Rain of Arrows",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0.18,
-        damagePortion: 0
-      },
       // thunderbolt
       {
         name: "Thunderbolt",
@@ -45,7 +15,30 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.2,
+        image: "https://teralore.com/items/icon_skills/thunderdrake_tex.png"
+      },
+       // wind walk
+       {
+        name: "Wind Walk",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0.42,
+        damagePortion: 0.19,
+        image: "https://teralore.com/items/icon_skills/windwalk_tex.png"
+      },
+      // radiant arrow
+      {
+        name: "Radiant Arrow",
+        guaranteedCrit: false,
+        glyphCrit: 3,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.17,
+        image: "https://teralore.com/items/icon_skills/chargearrow_tex.png"
       },
       // rapid fire
       {
@@ -55,17 +48,30 @@ var classes = [
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.21,
+        image: "https://teralore.com/items/icon_skills/rapidshot_tex.png"
       },
-      // wind walk
+      // rain of arrows
       {
-        name: "Wind Walk",
+        name: "Rain of Arrows",
         guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
-        addCrit: 0.42,
-        damagePortion: 0
+        addCrit: 0.18,
+        damagePortion: 0.09,
+        image: "https://teralore.com/items/icon_skills/arrowfall_tex.png"
+      },
+      // penetrating arrow
+      {
+        name: "Penetrating Arrow",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.06,
+        image: "https://teralore.com/items/icon_skills/througharrow_tex.png"
       },
       // gust arrow
       {
@@ -75,18 +81,19 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.05,
+        image: "https://teralore.com/items/icon_skills/eyeoftyphoon_tex.png"
       },
-      // crackshot
-      {
-        name: "Crackshot",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0.05,
-        damagePortion: 0
-      }
+      // crackshot // turn into a passive
+      // {
+      //   name: "Crackshot",
+      //   guaranteedCrit: false,
+      //   glyphCrit: 1,
+      //   innateSkillCrit: 1,
+      //   glyphBaseCrit: 1,
+      //   addCrit: 0.05,
+      //   damagePortion: 0,
+      // }
     ],
     buffs: [
       // rapid fire pummle stack
@@ -121,7 +128,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0, // doesn't take passive into account
-        damagePortion: 0
+        damagePortion: 0.23,
+        image: "https://teralore.com/items/icon_skills/blastslash_tex.png"
       },
       // cyclone
       {
@@ -131,37 +139,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
-      // lethal strike
-      {
-        name: "Lethal Strike",
-        guaranteedCrit: false,
-        glyphCrit: 2,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0.1,
-        damagePortion: 0
-      },
-      // sinister
-      {
-        name: "Sinister",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 2.2,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // dexter
-      {
-        name: "Dexter",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 2.2,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.23,
+        image: "https://teralore.com/items/icon_skills/whirlwind_tex.png"
       },
       // rampage
       {
@@ -171,7 +150,19 @@ var classes = [
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.15,
+        image: "https://teralore.com/items/icon_skills/rageboth_tex.png"
+      },
+      // lethal strike
+      {
+        name: "Lethal Strike",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0.1,
+        damagePortion: 0.14,
+        image: "https://teralore.com/items/icon_skills/soulstrike_tex.png"
       },
       // beast fury
       {
@@ -181,7 +172,19 @@ var classes = [
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.09,
+        image: "https://teralore.com/items/icon_skills/ragerush_tex.png"
+      },
+       // flatten
+       {
+        name: "Flatten",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.05,
+        image: "https://teralore.com/items/icon_skills/bash_tex.png"
       },
       // vampiric blow
       {
@@ -191,17 +194,30 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.04,
+        image: "https://teralore.com/items/icon_skills/vampiricstrike_tex.png"
       },
-      // flatten
+      // sinister
       {
-        name: "Flatten",
+        name: "Sinister",
         guaranteedCrit: false,
         glyphCrit: 1,
-        innateSkillCrit: 1,
+        innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.02,
+        image: "https://teralore.com/items/icon_skills/rageleft_tex.png"
+      },
+      // dexter
+      {
+        name: "Dexter",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 2.2,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.02,
+        image: "https://teralore.com/items/icon_skills/rageright_tex.png"
       },
       // raze
       {
@@ -211,7 +227,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/sideslash_tex.png"
       },
       // tackle
       {
@@ -221,7 +238,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.00,
+        image: "https://teralore.com/items/icon_skills/throwaxe_tex.png"
       }
     ],
     buffs: [
@@ -271,17 +289,8 @@ var classes = [
         innateSkillCrit: 5,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
-      // jackhammer
-      {
-        name: "Jackhammer",
-        guaranteedCrit: false,
-        glyphCrit: 2,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.32,
+        image: "https://teralore.com/items/icon_skills/blowattack_tex.png"
       },
       // piledriver
       {
@@ -291,27 +300,19 @@ var classes = [
         innateSkillCrit: 1.3333, // approximation (4 hits, first 3 @ 1.0, last hit @ 2.0)
         glyphBaseCrit: 1,
         addCrit: 0.09,
-        damagePortion: 0
+        damagePortion: 0.17,
+        image: "https://teralore.com/items/icon_skills/risingblow_tex.png"
       },
-      // counter punch
+      // jackhammer
       {
-        name: "Counter Punch",
+        name: "Jackhammer",
         guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 10,
+        glyphCrit: 2,
+        innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
-      // flying kick
-      {
-        name: "Flying Kick",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 2,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.15,
+        image: "https://teralore.com/items/icon_skills/rapidattack_tex.png"
       },
       // one-inch punch
       {
@@ -321,7 +322,19 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.15,
+        image: "https://teralore.com/items/icon_skills/oneinchpunch_tex.png"
+      },
+      // counter punch
+      {
+        name: "Counter Punch",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/counterattack2_tex.png"
       },
       // rhythmic blows
       {
@@ -331,7 +344,8 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.06,
+        image: "https://teralore.com/items/icon_skills/dampseyroll_tex.png"
       },
       // roundhouse kick
       {
@@ -341,7 +355,19 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.05,
+        image: "https://teralore.com/items/icon_skills/upperkick_tex.png"
+      },
+      // flying kick
+      {
+        name: "Flying Kick",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 2,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.04,
+        image: "https://teralore.com/items/icon_skills/kicker_tex.png"
       }
     ],
     buffs: [
@@ -415,7 +441,8 @@ var classes = [
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.24,
+        image: "https://teralore.com/items/icon_skills/justiceleap_tex.png"
       },
       // wallop
       {
@@ -425,7 +452,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.2,
+        image: "https://teralore.com/items/icon_skills/overhelm_tex.png"
       },
       // spring attack
       {
@@ -435,7 +463,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.2,
+        image: "https://teralore.com/items/icon_skills/leaprampage_tex.png"
       },
       // shield counter
       {
@@ -445,7 +474,8 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.12,
+        image: "https://teralore.com/items/icon_skills/riposte_tex.png"
       },
       // onslaught
       {
@@ -455,7 +485,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.12,
+        image: "https://teralore.com/items/icon_skills/screwthrough_tex.png"
       },
       // shield barrage
       {
@@ -465,7 +496,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/shieldattack_tex.png"
       },
       // lockdown blow
       {
@@ -475,7 +507,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0.36,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/shockblow_tex.png"
       },
       // debilitate
       {
@@ -485,7 +518,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/armorbreak_tex.png"
       },
       // stand fast
       {
@@ -495,7 +529,8 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/defence_tex.png"
       },
       // guardian barrier
       {
@@ -505,7 +540,8 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/shieldwall_tex.png"
       }
     ],
     buffs: [
@@ -541,7 +577,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/healshot_tex.png"
       },
       // arunic release
       {
@@ -551,7 +588,8 @@ var classes = [
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.35,
+        image: "https://teralore.com/items/icon_skills/marbleexplosion_tex.png"
       },
       // boomerang pulse
       {
@@ -561,7 +599,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.1,
+        image: "https://teralore.com/items/icon_skills/mysticorb_tex.png"
       },
       // volley of curses
       {
@@ -571,7 +610,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.3,
+        image: "https://teralore.com/items/icon_skills/painfulshackle_tex.png"
       }
     ],
     buffs: []
@@ -579,7 +619,7 @@ var classes = [
 
 // --------------------------------------------------------------------------------------------- //
 
-  // ninja
+  // ninja (sorta flawed, double check bufftimes)
   {
     name: "Ninja",
     baseCrit: 54,
@@ -592,7 +632,8 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.17,
+        image: "https://teralore.com/items/icon_skills/bumelang_tex.png"
       },
       // burning heart
       {
@@ -602,7 +643,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0.1,
-        damagePortion: 0
+        damagePortion: 0.17,
+        image: "https://teralore.com/items/icon_skills/c12_flamebreath.png"
       },
       // harmonious burning heart
       {
@@ -612,7 +654,8 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0.1,
-        damagePortion: 0
+        damagePortion: 0.13,
+        image: "https://i.imgur.com/BnGbtfG.png"
       },
       // skyfall
       {
@@ -622,7 +665,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.12,
+        image: "https://teralore.com/items/icon_skills/c12_airstepstrike.png"
       },
       // leaves on the wind
       {
@@ -632,7 +676,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.09,
+        image: "https://teralore.com/items/icon_skills/c12_rapidshot.png"
       },
       // quick attack
       {
@@ -642,7 +687,8 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.09,
+        image: "https://teralore.com/items/icon_skills/chakraemission_tex.png"
       },
       // harmonious quick attack
       {
@@ -652,7 +698,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.09,
+        image: "https://teralore.com/items/icon_skills/chakraemission_tex.png"
       },
       // harmonious fire avalanche
       {
@@ -662,7 +709,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.06,
+        image: "https://i.imgur.com/l2Et1wD.png"
       },
       // double cut
       {
@@ -672,7 +720,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.06,
+        image: "https://teralore.com/items/icon_skills/c12_twinslash.png"
       },
       // impact bomb
       {
@@ -682,7 +731,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.03,
+        image: "https://teralore.com/items/icon_skills/c12_flamebomb.png"
       }
     ],
     buffs: [
@@ -736,7 +786,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/curewing_tex.png"
       },
       // holy burst
       {
@@ -746,7 +797,8 @@ var classes = [
         innateSkillCrit: 1.5, // needs new data, all that is known is: <3
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.4,
+        image: "https://teralore.com/items/icon_skills/lightspark_tex.png"
       },
       // zenobia's vortex
       {
@@ -756,7 +808,8 @@ var classes = [
         innateSkillCrit: 1.25, // needs new data, all that is known is: >1
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.24,
+        image: "https://teralore.com/items/icon_skills/godbreath_tex.png"
       },
       // shocking implosion
       {
@@ -766,7 +819,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.22,
+        image: "https://teralore.com/items/icon_skills/damagedeal_tex.png"
       },
       // final reprisal
       {
@@ -776,7 +830,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.1,
+        image: "https://teralore.com/items/icon_skills/punishingtouch_tex.png"
       },
       // metamorphic blast
       {
@@ -786,7 +841,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.1,
+        image: "https://teralore.com/items/icon_skills/punishingshield_tex.png"
       },
       // triple nemesis
       {
@@ -796,7 +852,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/divineretribution_tex.png"
       },
       // Energy Stars
       {
@@ -806,7 +863,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/divinelightning_tex.png"
       }
     ],
     buffs: [
@@ -846,7 +904,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0.1,
-        damagePortion: 0
+        damagePortion: 0.32,
+        image: "https://i.imgur.com/ypw9hXX.png"
       },
       // grim strike
       {
@@ -856,7 +915,8 @@ var classes = [
         innateSkillCrit: 1.3,
         glyphBaseCrit: 3,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.2,
+        image: "https://teralore.com/items/icon_skills/chainsuperblow_tex.png"
       },
       // dark harvest
       {
@@ -866,17 +926,19 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.15,
+        image: "https://teralore.com/items/icon_skills/reversewithdraw_tex.png"
       },
-      // spiral barrage
+      // shadow burst
       {
-        name: "Spiral Barrage",
+        name: "Shadow Burst",
         guaranteedCrit: false,
         glyphCrit: 2,
-        innateSkillCrit: 1, // 0.5 according to data sheet, need to check
+        innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.12,
+        image: "https://i.imgur.com/24UlITc.png"
       },
       // blinding scythes
       {
@@ -886,7 +948,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/sickleofbondage_tex.png"
       },
       // double sheer
       {
@@ -896,17 +959,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
-      // whipsaw
-      {
-        name: "Whipsaw",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0.3, // pendulum strike
-        damagePortion: 0
+        damagePortion: 0.04,
+        image: "https://teralore.com/items/icon_skills/chainsmash_tex.png"
       },
       // recall scythes
       {
@@ -916,7 +970,19 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.03,
+        image: "https://teralore.com/items/icon_skills/withdraw_tex.png"
+      },
+      // whipsaw
+      {
+        name: "Whipsaw",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0.3, // pendulum strike
+        damagePortion: 0.02,
+        image: "https://teralore.com/items/icon_skills/chainblade_tex.png"
       },
       // death spiral
       {
@@ -926,7 +992,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/chainbrandish_tex.png"
       },
       // retribution
       {
@@ -936,7 +1003,19 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/counterattack_tex.png"
+      },
+       // spiral barrage
+       {
+        name: "Spiral Barrage",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 0.5, // 0.5 according to data sheet, need to check
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/comboattack2_tex.png"
       }
     ],
     buffs: [
@@ -976,7 +1055,8 @@ var classes = [
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.25,
+        image: "https://teralore.com/items/icon_skills/gaiacrucsh_tex.png"
       },
       // overhand strike
       {
@@ -986,7 +1066,8 @@ var classes = [
         innateSkillCrit: 1.3,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.2,
+        image: "https://teralore.com/items/icon_skills/cuttingslash_tex.png"
       },
       // measured slice
       {
@@ -996,7 +1077,8 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.2,
+        image: "https://teralore.com/items/icon_skills/cuthead_tex.png"
       },
       // whirlwind
       {
@@ -1006,7 +1088,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 3,
         addCrit: 0.1,
-        damagePortion: 0
+        damagePortion: 0.12,
+        image: "https://teralore.com/items/icon_skills/sworddance_tex.png"
       },
       // unsheathe
       {
@@ -1016,7 +1099,8 @@ var classes = [
         innateSkillCrit: 50, // double check
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/drawsword_tex.png"
       },
       // eviscerate
       {
@@ -1026,7 +1110,8 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/jawbreaker_tex.png"
       },
       // heart thrust
       {
@@ -1036,7 +1121,8 @@ var classes = [
         innateSkillCrit: 1.4,
         glyphBaseCrit: 3,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.03,
+        image: "https://teralore.com/items/icon_skills/stingerblade_tex.png"
       },
       // savage strike
       {
@@ -1046,7 +1132,8 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.03,
+        image: "https://teralore.com/items/icon_skills/slidingslash_tex.png"
       },
       // knockdown strike
       {
@@ -1056,7 +1143,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 3,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.01,
+        image: "https://teralore.com/items/icon_skills/handyslash_tex.png"
       }
     ],
     buffs: [
@@ -1109,17 +1197,8 @@ var classes = [
         innateSkillCrit: 2.4,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
-      // fusion
-      {
-        name: "Fusion",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 2.4,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.2,
+        image: "https://teralore.com/items/icon_skills/fusion_tex.png"
       },
       // meteor strike
       {
@@ -1129,7 +1208,8 @@ var classes = [
         innateSkillCrit: 1.1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.14,
+        image: "https://teralore.com/items/icon_skills/hellfire_tex.png"
       },
       // arcane pulse
       {
@@ -1139,7 +1219,19 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.12,
+        image: "https://teralore.com/items/icon_skills/blastball_tex.png"
+      },
+      // fusion
+      {
+        name: "Fusion",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 2.4,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.10,
+        image: "https://teralore.com/items/icon_skills/fusion_tex.png"
       },
       // ice lance
       {
@@ -1149,47 +1241,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
-      // lightning strike
-      {
-        name: "Lightning Strike",
-        guaranteedCrit: false,
-        glyphCrit: 2,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // nova
-      {
-        name: "Nova",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 1.1,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // implosion
-      {
-        name: "Implosion",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 10,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // hail storm
-      {
-        name: "Hail Storm",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 1.1,
-        glyphBaseCrit: 1,
-        addCrit: 0.15,
-        damagePortion: 0
+        damagePortion: 0.08,
+        image: "https://teralore.com/items/icon_skills/icespear_tex.png"
       },
       // void pulse
       {
@@ -1199,7 +1252,52 @@ var classes = [
         innateSkillCrit: 1.1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/lightofruin_tex.png"
+      },
+      // lightning strike
+      {
+        name: "Lightning Strike",
+        guaranteedCrit: false,
+        glyphCrit: 2,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/c5_lightningstruck.png"
+      },
+      // nova
+      {
+        name: "Nova",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/manaburst_tex.png"
+      },
+      // implosion
+      {
+        name: "Implosion",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 10,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.06,
+        image: "https://teralore.com/items/icon_skills/collapse_tex.png"
+      },
+      // hail storm
+      {
+        name: "Hail Storm",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 1.1,
+        glyphBaseCrit: 1,
+        addCrit: 0.15,
+        damagePortion: 0.06,
+        image: "https://teralore.com/items/icon_skills/icestorm_tex.png"
       },
       // frost sphere
       {
@@ -1209,7 +1307,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/c5_iceorb.png"
       },
       // flaming barrage
       {
@@ -1219,8 +1318,9 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/trackinginferno_tex.png"
+      }
     ],
     buffs: [
       // keen arcane pulse
@@ -1269,7 +1369,8 @@ var classes = [
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.35,
+        image: "https://teralore.com/items/icon_skills/crescentcut_tex.png"
       },
       // twilight waltz
       {
@@ -1279,7 +1380,8 @@ var classes = [
         innateSkillCrit: 4,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.13,
+        image: "https://teralore.com/items/icon_skills/rageslash_tex.png"
       },
       // ground bash
       {
@@ -1289,27 +1391,8 @@ var classes = [
         innateSkillCrit: 4, // data says 5, but 4 feels more accurate
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
-      },
-      // maelstrom
-      {
-        name: "Maelstrom",
-        guaranteedCrit: false,
-        glyphCrit: 3, // 5 hits @ 3 +  last hit @ 6 = 3.5 average (not applied rn)
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // leaping slash
-      {
-        name: "Leaping Slash",
-        guaranteedCrit: false,
-        glyphCrit: 3,
-        innateSkillCrit: 1,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.09,
+        image: "https://teralore.com/items/icon_skills/cutting_tex.png"
       },
       // gnugnir's bite
       {
@@ -1319,7 +1402,30 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.09,
+        image: "https://teralore.com/items/icon_skills/halfmoon_tex.png"
+      },
+      // leaping slash
+      {
+        name: "Leaping Slash",
+        guaranteedCrit: false,
+        glyphCrit: 3,
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.08,
+        image: "https://teralore.com/items/icon_skills/risingshot_tex.png"
+      },
+      // maelstrom
+      {
+        name: "Maelstrom",
+        guaranteedCrit: false,
+        glyphCrit: 3, // 5 hits @ 3 +  last hit @ 6 = 3.5 average (not applied rn)
+        innateSkillCrit: 1,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.07,
+        image: "https://teralore.com/items/icon_skills/twister_tex.png"
       },
       // godsfall
       {
@@ -1329,7 +1435,19 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.06,
+        image: "https://teralore.com/items/icon_skills/warbegin_tex.png"
+      },
+       // runeburst
+       {
+        name: "Runeburst",
+        guaranteedCrit: false,
+        glyphCrit: 1,
+        innateSkillCrit: 3,
+        glyphBaseCrit: 1,
+        addCrit: 0,
+        damagePortion: 0.03,
+        image: "https://teralore.com/items/icon_skills/moonlightdash_tex.png"
       },
       // glaive strike
       {
@@ -1339,27 +1457,19 @@ var classes = [
         innateSkillCrit: 5,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.03,
+        image: "https://teralore.com/items/icon_skills/throwglave_tex.png"
       },
-      // runeburst
+      // bloodflower
       {
-        name: "Runeburst",
-        guaranteedCrit: false,
-        glyphCrit: 1,
-        innateSkillCrit: 3,
-        glyphBaseCrit: 1,
-        addCrit: 0,
-        damagePortion: 0
-      },
-      // blood flower
-      {
-        name: "Blood Flower",
+        name: "Bloodflower",
         guaranteedCrit: false,
         glyphCrit: 1,
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/brust_tex.png"
       },
       // dream slash
       {
@@ -1369,7 +1479,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0,
+        image: "https://teralore.com/items/icon_skills/split_tex.png"
       }
     ],
     buffs: [
@@ -1434,7 +1545,8 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.26,
+        image: "https://teralore.com/items/icon_skills/tumblingattack_tex.png"
       },
       // scythe
       {
@@ -1444,7 +1556,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.25,
+        image: "https://teralore.com/items/icon_skills/raker_tex.png"
       },
       // blade draw
       {
@@ -1454,7 +1567,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.19,
+        image: "https://teralore.com/items/icon_skills/dualslash_tex.png"
       },
       // blade waltz
       {
@@ -1464,7 +1578,8 @@ var classes = [
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.11,
+        image: "https://teralore.com/items/icon_skills/doublesworddance_tex.png"
       },
       // rain of blows
       {
@@ -1474,7 +1589,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.06,
+        image: "https://teralore.com/items/icon_skills/pointattack_tex.png"
       },
       // blade frenzy
       {
@@ -1484,7 +1600,8 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.03,
+        image: "https://teralore.com/items/icon_skills/bladestorm_tex.png"
       },
       // combative strike
       {
@@ -1494,7 +1611,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        damagePortion: 0
+        damagePortion: 0.02,
+        image: "https://teralore.com/items/icon_skills/aggravatingstrike_tex.png"
       }
     ],
     buffs: [
