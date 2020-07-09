@@ -31,7 +31,8 @@ var tanks = [
         name: "Armorbreaker",
         uptime: 1,
         enduranceDebuff: 0.015,
-        ampDebuff: 14000
+        ampDebuff: 0,
+        image: "https://i.imgur.com/ODc2Oho.png"
       }
     ]
   },
@@ -45,7 +46,8 @@ var tanks = [
         name: "Jackhammer",
         uptime: 1,
         enduranceDebuff: 0.12,
-        ampDebuff: 14000
+        ampDebuff: 14000,
+        image: "https://teralore.com/items/icon_skills/rapidattack_tex.png"
       },
 
       // internal wounds
@@ -53,7 +55,8 @@ var tanks = [
         name: "Internal Wounds",
         uptime: 0.33,
         enduranceDebuff: 0.08,
-        ampDebuff: 0
+        ampDebuff: 0,
+        image: "https://teralore.com/items/icon_skills/ribbreaker_tex.png"
       }
     ]
   },
@@ -67,14 +70,16 @@ var tanks = [
         name: "Punishing Strike",
         uptime: 1,
         enduranceDebuff: 0.08,
-        ampDebuff: 0
+        ampDebuff: 0,
+        image: "https://teralore.com/items/icon_skills/upperslashcombo_tex.png"
       },
       // flatten
       {
         name: "Flatten",
         uptime: 1,
         enduranceDebuff: 0.05,
-        ampDebuff: 0
+        ampDebuff: 0,
+        image: "https://teralore.com/items/icon_skills/bash_tex.png"
       }
     ]
   }

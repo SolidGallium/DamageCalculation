@@ -169,7 +169,7 @@
           </div>
         </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div id = "debuffs" class = "col ml-1 mr-1 rounded h-100">
+        <div id = "debuffs" class = "col ml-1 mr-2 rounded h-100">
           <div class = "row mt-1">
             <div class = "col">
               <h3>Debuffs</h3>
@@ -188,7 +188,7 @@
             </div>
           </div>
 
-          <div class = 'row pt-2 pb-2 align-items-center'>
+          <div class = 'row pt-2 pb-2 align-items-center' style = "background: rgb(26, 26, 26)">
             <div class = 'col-2'>
               <img src = 'https://i.imgur.com/9czn5Km.png' class = 'img-fluid rounded' alt = 'missing image'>
             </div> 
@@ -216,7 +216,7 @@
           </div>
           
 
-          <div class = 'row pt-2 pb-2 align-items-center'>
+          <div class = 'row pt-2 pb-2 align-items-center' style = "background: rgb(40, 40, 40)">
             <div class = 'col-2'>
               <img src = 'https://i.imgur.com/t08SApc.png' class = 'img-fluid rounded' alt = 'missing image'>
             </div> 
@@ -239,15 +239,36 @@
                   <span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>
                     %
                   </span>
+              </div>
+            </div>
+          </div>
+
+          <div class = 'row pt-2 pb-2 align-items-center' style = "background: rgb(26, 26, 26)">
+            <div class = 'col-2'>
+              <img src = 'https://i.imgur.com/eBSNI6N.png' class = 'img-fluid rounded' alt = 'missing image'>
+            </div> 
+            <div class = 'col'>
+              <h5 class = 'text-light m-0'>Kaia's Judgement</h5>
+            </div>
+
+            <div class = 'col-5'>
+              <div class = 'input-group'> 
+                <div class = 'input-group-prepend'> 
+                  <span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>
                 </div>
+                <input type = 'text' value = '80' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>
+                  <span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>
+                    %
+                  </span>
               </div>
             </div>
           </div>
         </div>
       </div>
+    
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-3">
-        <div id = "skills" class = "col ml-4 mr-4 rounded h-100">
+        <div id = "skills" class = "col ml-2 mr-2 rounded h-100">
           <h3 class = "mt-1">SKILLS</h3>
         </div>
       </div>
@@ -415,7 +436,7 @@
           $("#debuffs").append(
             "<div class = 'row  pt-2 pb-2 align-items-center createdDebuffs " + last + "' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
               "<div class = 'col-2'>" + 
-                "<img src = 'https://teralore.com/items/icon_skills/armorbreak_tex.png' class = 'img-fluid rounded' alt = 'missing image'>" + 
+                "<img src = " + tanks[currentTank].debuffSkills[i].image + " class = 'img-fluid rounded' alt = 'missing image'>" + 
               "</div>" + 
               "<div class = 'col'>" + 
                 "<h5 class = 'text-light m-0'>" + tanks[currentTank].debuffSkills[i].name + "</h5>" +
