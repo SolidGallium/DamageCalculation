@@ -26,14 +26,19 @@
     <div class = "container-fluid m-0 w-100 text-center" id = "container">
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-2">
+
+<!-- Class tab -->
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <div id = "class" class = "col-2 ml-2 mr-1 rounded h-100">
+          <!-- class title -->
           <div class = "row">
             <div class = "col mt-1">
               <h3>Class</h3>
             </div>
           </div>
+
           <div class = "row text-center">
+            <!-- class input -->
             <div class = "col mb-1 mt-1">
               <button type = "button" class = "btn btn-primary btn-responsive dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "classButton">Class</button>
               <div class = "dropdown-menu" aria-labelledby = "classButton">
@@ -53,6 +58,8 @@
               </div>
             </div>
           </div>
+
+          <!-- base crit -->
           <div class = "row mt-2 align-items-center">
             <div class = "col text-center">
               <h5>Base Crit: 
@@ -60,6 +67,8 @@
               </h5>
             </div>
           </div>
+
+          <!-- crit input -->
           <div class = "row mt-2 mb-3">
             <div class = "col">
               <div class="input-group ">
@@ -78,13 +87,18 @@
             </div>
           </div>
         </div>
+
+<!-- Buffs tab -->
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <div id = "buffs" class = "col-4 ml-1 mr-1 rounded h-100">
+          <!-- buffs title -->
           <div class = "row">
             <div class = "col mt-1">
               <h3>Buffs</h3>
             </div>
           </div>
+
+          <!-- healer input -->
           <div class = "row mt-1 mb-3 align-items-end">
             <div class = "col-4">
               <button type = "button" class = "btn btn-primary btn-responsive dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id = "healerButton">Healer</button>
@@ -95,6 +109,8 @@
                   <a class = "dropdown-item healerSelection" href = "#">None</a>  
                 </div>
             </div>
+
+            <!-- buffed crit -->
             <div class = "col text-right">
               <h5>Buffed Crit: 
                 <span class = "text-white" id = "buffedCrit">0</span>
@@ -102,13 +118,18 @@
             </div>
           </div>
         </div>
+
+<!-- Bosses tab -->
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <div id = "bosses" class = "col-2 ml-1 mr-1 rounded h-100">
+          <!-- boss title -->
           <div class = "row">
             <div class = "col mt-1">
               <h3>Boss</h3>
             </div>
           </div>
+
+          <!-- boss input -->
           <div class = "row mb-3">
             <div class = "col">
               <button type = "button" class = "btn btn-primary btn-responsive dropdown-toggle" data-toggle = "dropdown" aria-hashpopup = "true" aria-expanded="false" id = "bossButton">Boss</button>
@@ -139,6 +160,8 @@
               </div>
             </div>
           </div>
+
+          <!-- boss info -->
           <div class = "row align-items-center mb-2">
             <div class = "col">
               <h5 class = "text-light m-0">Level</h5>
@@ -170,6 +193,8 @@
             </div>
           </div>
         </div>
+
+<!-- Debuffs tab -->
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <div id = "debuffs" class = "col ml-1 mr-2 rounded h-100">
           <div class = "row mt-1">
@@ -268,14 +293,18 @@
         </div>
       </div>
     
+<!-- Skills tab -->
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
       <div class = "row mt-2">
         <div id = "skills" class = "col ml-2 mr-2 rounded h-100">
+          <!-- skills title -->
           <div class = "row">
             <div class = "col">
               <h3 class = "mt-1  text-center">Skills</h3>
             </div>
           </div>
+
+          <!-- skills properties titles -->
           <div class = "row">
             <div class = "col-1">
               <h5>Icon</h5>
@@ -302,6 +331,7 @@
 
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
+    <!-- inputs script -->
     <script src = "scripts/input.js"></script>
 
   </body>
