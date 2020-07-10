@@ -1,143 +1,24 @@
 var critChance = 0;
-var backgroundR = 74;
-var backgroundG = 74;
-var backgroundB = 74;
-var checkboxMystic;
-var checkboxPriest;
-var checkboxCastanic;
-var checkboxPositionBack;
-var checkboxPositionSide;
-var checkboxPositionFront;
-var checkboxKaiasjudgement;
-var checkboxTriplenem;
 var mystic = false;
 var priest = false;
 var castanicBool = false;
-var position = 1;
 var kaiasjudgement = true;
 var triplenem = true;
-var classSelection;
 var currentClass = -1;
 var critSkillDisplay = [];
-var bossSelection;
 var currentBoss = 8;
-var classSelectionCanvas;
 var totalCrit = true;
 var currentTank = -1;
 var bonusCrit;
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
-// function setup() {
-//   classSelectionCanvas = createCanvas();
-//   classSelectionCanvas.parent('class');
-//   background(backgroundR, backgroundG, backgroundB);
-
-//   button = createButton('calculate');
-//   // button.position(20, 130);
-//   // button.size(80, 20);
-//   button.mousePressed(critCalculation);
-
-//   input = createInput("145");
-//   // input.size(72, 20);
-//   // input.position(20, 50);
-
-//   checkboxMystic = createCheckbox("Mystic", true);
-//   checkboxMystic.position(100 + 10, 50);
-//   checkboxMystic.changed(switchMystic);
-//   checkboxPriest = createCheckbox("Priest", false);
-//   checkboxPriest.position(170 + 10, 50);
-//   checkboxPriest.changed(switchPriest);
-//   checkboxCastanic = createCheckbox("Castanic", false);
-//   checkboxCastanic.position(100 + 10, 80);
-//   checkboxCastanic.changed(switchCastanic);
-//   checkboxPositionBack = createCheckbox("Back", true);
-//   checkboxPositionBack.position(100 + 10, 110);
-//   checkboxPositionBack.changed(switchPosition);
-//   checkboxPositionSide = createCheckbox("Side", false);
-//   checkboxPositionSide.position(170 + 10, 110);
-//   checkboxPositionSide.changed(switchPosition);
-//   checkboxPositionFront = createCheckbox("Front", false);
-//   checkboxPositionFront.position(240 + 10, 110);
-//   checkboxPositionFront.changed(switchPosition);
-//   checkboxKaiasjudgement = createCheckbox("Kaia's Judgement", true);
-//   checkboxKaiasjudgement.position(100 + 10, 140);
-//   checkboxKaiasjudgement.changed(switchKaiasjudgement);
-//   checkboxTriplenem = createCheckbox("Triple Nem / Volley", true);
-//   checkboxTriplenem.position(100 + 10, 170);
-//   checkboxTriplenem.changed(switchTriplenem);
-
-//   classSelection = createSelect();
-//   classSelection.position(20, 80);
-//   for (var i = 0; i < classes.length; i++) {
-//     classSelection.option(classes[i].name);
-//   }
-//   classSelection.selected("Brawler");
-//   classSelection.changed(changeClass);
-//   classSelection.size(80, 20);
-
-//   bossSelection = createSelect();
-//   bossSelection.position(20, 105);
-//   for (var i = 0; i < bosses.length; i++) {
-//     bossSelection.option(bosses[i].name);
-//   }
-//   bossSelection.size(80, 20);
-//   bossSelection.selected("Akalath Kashir (AQ)");
-//   bossSelection.changed(changeBoss);
-
-//   textSize(20);
-// }
-
-// function draw() {
-//   var maxWidth = 0;
-//   resizeCanvas(windowWidth, windowHeight);
-//   // background(backgroundR, backgroundG, backgroundB);
-//   fill(255);
-//   text("Crit:", 20, 40);
-
-//   for (var i = 0; i < critSkillDisplay.length; i++) {
-//     if (textWidth(critSkillDisplay[i].name + ": ") > maxWidth) {
-//       maxWidth = textWidth(critSkillDisplay[i].name + ": ");
-//     }
-//   }
-
-//   for (var i = 0; i < critSkillDisplay.length; i++) {
-//     text(critSkillDisplay[i].name + ": ", 350, 65 + 30 * i);
-//     if (critSkillDisplay[i].value >= 100) {
-//       fill(0, 255, 0);
-//     } else if (critSkillDisplay[i].value <= 50) {
-//       fill(255, 71, 71);
-//     }
-//     text(critSkillDisplay[i].value + "%", 350 + maxWidth, 65 + 30 * i);
-//     fill(255);
-//   }
-// }
-
-// ----------------------------------------------------------------------------------------------------------------------------------- //
-
 function critCalculation() {
-  // var direction = position;
   var direction = 1.6;
   var classCF = classes[currentClass].baseCrit;
-  // var inputValue = 240;
   
   var tmpBonusCrit;
 
-  // if (inputValue < classCF) {
-  //   inputValue = classCF;
-  // }
-
-  // if (priest == true) {
-  //   bonusCrit = inputValue - classCF + classCF * 0.36;
-  // } else if (mystic == true) {
-  //   bonusCrit = inputValue - classCF + classCF * 1.2;
-  // } else if (priest == false && mystic == false){
-  //   bonusCrit = inputValue - classCF;
-  // }
-
-  // if (bonusCrit <= 0) {
-  //   bonusCrit = 0;
-  // }
   console.log("bonus crit in crit calc " + bonusCrit);
   tmpBonusCrit = bonusCrit;
 
@@ -219,75 +100,6 @@ function critCalculation() {
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
-
-function switchMystic() {
-  if (mystic == false) {
-    mystic = true;
-    priest = false;
-    checkboxPriest.checked(false);
-  } else {
-    mystic = false;
-  }
-}
-
-function switchPriest() {
-  if (priest == false) {
-    priest = true;
-    mystic = false;
-    checkboxMystic.checked(false);
-  } else {
-    priest = false;
-  }
-}
-
-function switchCastanic() {
-  if (castanicBool == true) {
-    castanicBool = false;
-  } else if (castanicBool == false) {
-    castanicBool = true;
-  }
-}
-
-function switchPosition() {
-  if (this === checkboxPositionBack) {
-    position = 1.6;
-    checkboxPositionSide.checked(false);
-    checkboxPositionFront.checked(false);
-    if (checkboxPositionBack.checked() == false) {
-      checkboxPositionBack.checked(true);
-    }
-  } else if (this === checkboxPositionSide) {
-    position = 1.2;
-    checkboxPositionBack.checked(false);
-    checkboxPositionFront.checked(false);
-    if (checkboxPositionSide.checked() == false) {
-      checkboxPositionSide.checked(true);
-    }
-  } else if (this === checkboxPositionFront) {
-    position = 1.0;
-    checkboxPositionBack.checked(false);
-    checkboxPositionSide.checked(false);
-    if (checkboxPositionFront.checked() == false) {
-      checkboxPositionFront.checked(true);
-    }
-  }
-}
-
-function switchKaiasjudgement() {
-  if (kaiasjudgement == false) {
-    kaiasjudgement = true;
-  } else if (kaiasjudgement == true) {
-    kaiasjudgement = false;
-  }
-}
-
-function switchTriplenem() {
-  if (triplenem == false) {
-    triplenem = true;
-  } else if (triplenem == true) {
-    triplenem = false;
-  }
-}
 
 function changeClass(className) {
   switch (className) {

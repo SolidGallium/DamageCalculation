@@ -537,7 +537,7 @@ var classes = [
         name: "Guardian Barrier",
         guaranteedCrit: false,
         glyphCrit: 1,
-        innateSkillCrit: 10,
+        innateSkillCrit: 2.3,
         glyphBaseCrit: 1,
         addCrit: 0,
         damagePortion: 0.01,
