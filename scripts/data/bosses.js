@@ -160,4 +160,4 @@ var bosses = [
     critResist: 210,
     ampResist: 10000
   }
-]
+];

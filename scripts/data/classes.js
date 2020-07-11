@@ -227,6 +227,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        baseDamage: 1762,
+        physFactor: 1.42,
+        magFactor: 0.45,
+        damageType: "Physical",
         damagePortion: 0.01,
         image: "https://teralore.com/items/icon_skills/sideslash_tex.png"
       },

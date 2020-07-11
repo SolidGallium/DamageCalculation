@@ -52,6 +52,12 @@ $('.tankSelection').on('click', function() {
   renderDebuffs();
 });
 
+$('.directionSelection').on('click', function() {
+  $('#directionButton').text($(this).text());
+  changeDirection($(this).text());
+  renderSkills();
+})
+
 
 var typingTimer;               //timer identifier
 var doneTypingInterval = 100;  //time in ms, 5 second for example
