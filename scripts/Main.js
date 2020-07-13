@@ -251,36 +251,4 @@ function changeDirection(directionName) {
   }
 }
 
-function damageTest() {
-  var targetLV = 68;
-  var characterLV = 70;
-  var damageRed = 0;
-  var attack = 416;
-  var skillDamage = 1762;
-  var damageMod = 1;
-  var defense = 8960;
-  var skillDamage2 = skillDamage * (1 + 0.035 * (characterLV - 9));
-
-  var baseDamage = (1 - (0.03 * (targetLV - characterLV)) * (1 - damageRed) * (attack * skillDamage2 * damageMod)) / (defense);
-  console.log("base damage: " + baseDamage);
-
-  var normalCP = 3.44 * 0.9;
-  var physAmp = 3199;
-  var physCP = 2.04;
-  var skillPhysFactor = 1.42;
-
-  var totalMod = normalCP + ((physAmp * skillPhysFactor) / 100000) * physCP;
-
-  console.log("total damage: " + baseDamage * totalMod);
-
-  var attackMod = 59244;
-  var basePower = 75;
-  var bonusPower = 65;
-
-  var attack2 = (attackMod + 1) * (3 + 0.03 * basePower) * (1 + bonusPower / (basePower + 100));
-  console.log("attack: " + attack2);
-
-  
-}
-
 // end :3

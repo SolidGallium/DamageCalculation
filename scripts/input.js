@@ -1,4 +1,5 @@
-$('.classSelection').on('click', function() {
+$('.classSelection').on('click', function(e) {
+  e.preventDefault();
   $('#classButton').text($(this).text());
   changeClass($(this).text());
   renderBuffs();
@@ -7,7 +8,8 @@ $('.classSelection').on('click', function() {
   $('#baseCrit').text(classes[currentClass].baseCrit);
 });
 
-$('.bossSelection').on('click', function() {
+$('.bossSelection').on('click', function(e) {
+  e.preventDefault();
   $('#bossButton').text($(this).text());
   changeBoss($(this).text());
   updateBossStats();
@@ -15,7 +17,8 @@ $('.bossSelection').on('click', function() {
   renderSkills();
 });
 
-$('.critSelection').on('click', function() {
+$('.critSelection').on('click', function(e) {
+  e.preventDefault();
   $('#critButton').text($(this).text());
   if ($(this).text() == "Total Crit") {
     totalCrit = true;
@@ -26,7 +29,8 @@ $('.critSelection').on('click', function() {
   renderSkills();
 });
 
-$('.healerSelection').on('click', function() {
+$('.healerSelection').on('click', function(e) {
+  e.preventDefault();
   $('#healerButton').text($(this).text());
   if ($(this).text() == "Priest") {
     priest = true;
@@ -46,16 +50,24 @@ $('.healerSelection').on('click', function() {
   renderSkills();
 });
 
-$('.tankSelection').on('click', function() {
+$('.tankSelection').on('click', function(e) {
+  e.preventDefault();
   $('#tankButton').text($(this).text());
   changeTank($(this).text());
   renderDebuffs();
 });
 
-$('.directionSelection').on('click', function() {
+$('.directionSelection').on('click', function(e) {
+  e.preventDefault();
   $('#directionButton').text($(this).text());
   changeDirection($(this).text());
   renderSkills();
+})
+
+$('#addBuild').on('click', function(e) {
+  e.preventDefault();
+  tabs++;
+  renderBuild();
 })
 
 

@@ -5,6 +5,10 @@ html, body {
   font-style: sans-serif;
 }
 
+.greyTab {
+  background: rgb(26, 26, 26);
+}
+
 #buffs {
   background: rgb(26, 26, 26);
 }
@@ -54,3 +58,10 @@ html, body {
     line-height: 1.2;
   }
 } */
+
+.buildButton {
+  border-color: transparent;
+  font-size: 130%;
+  width: 50px;
+  height: 50px;
+}
