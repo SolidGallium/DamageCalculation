@@ -70,7 +70,7 @@
                   <h3>Build</h3>
                 </div>
                 <div class = "col text-right">
-                  <button type="button" class="btn buildButton btn-outline-primary" id = "addBuild">+</button>
+                  <button type="button" class="btn buildButton btn-outline-primary addBuild" id = "firstPlus">+</button>
                 </div>
               </div>
     
@@ -114,12 +114,12 @@
               <div class = "row mt-2 mb-3">
                 <div class = "col">
                   <div class="input-group ">
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "powerInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
                 <div class = "col">
                   <div class="input-group ">
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "critPowerInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
               </div>
@@ -137,11 +137,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Physical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "physAmpInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Magical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "magAmpInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
               </div>
@@ -159,11 +159,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Physical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "physCPInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Magical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "magCPInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
               </div>
@@ -181,11 +181,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Physical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "physPiercingInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Magical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "magPiercingInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
               </div>
@@ -203,11 +203,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Physical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "physIgnoreInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     <div class="input-group-prepend">
                       <span class="input-group-text text-white bg-primary border-0 responsiveText" id="inputGroup-sizing-default">Magical:</span>
                     </div>
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "magIgnoreInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
               </div>
@@ -225,12 +225,12 @@
               <div class = "row mt-2 mb-3">
                 <div class = "col">
                   <div class="input-group ">
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "hpInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
                 <div class = "col">
                   <div class="input-group ">
-                    <input type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input id = "mpInput" type="text" class="form-control bg-dark border-0 text-light text-center responsiveText" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                 </div>
               </div>

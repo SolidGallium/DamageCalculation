@@ -12,6 +12,26 @@ var currentTank = -1;
 var bonusCrit;
 var direction = 1.6;
 
+// var currentStats;
+
+var tabArray = [];
+
+var currentStats = {
+  crit: 0,
+  power: 0,
+  critPower: 0,
+  physAmp: 0,
+  magAmp: 0,
+  physCP: 0,
+  magCP: 0,
+  physPiercing: 0,
+  magPiercing: 0,
+  physIgnore: 0,
+  magIgnore: 0,
+  hp: 0,
+  mp: 0
+}
+
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
 function critCalculation() {
