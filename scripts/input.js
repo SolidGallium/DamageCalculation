@@ -6,6 +6,8 @@ $('.classSelection').on('click', function(e) {
   updateCrit();
   renderSkills();
   $('#baseCrit').text(classes[currentClass].baseCrit);
+  console.log("current class: " + currentClass);
+  renderBuild();
 });
 
 $('.bossSelection').on('click', function(e) {
@@ -64,25 +66,12 @@ $('.directionSelection').on('click', function(e) {
   renderSkills();
 });
 
-$('body').on('click', '.addBuild', function() {
-  //e.preventDefault();
-  tabArray.push({
-    crit: currentStats.crit,
-    power: currentStats.power,
-    critPower: currentStats.critPower,
-    physAmp: currentStats.physAmp,
-    magAmp: currentStats.magAmp,
-    physCP: currentStats.physCP,
-    magCP: currentStats.magCP,
-    physPiercing: currentStats.physPiercing,
-    magPiercing: currentStats.magPiercing,
-    physIgnore: currentStats.physIgnore,
-    magIgnore: currentStats.magIgnore,
-    hp: currentStats.hp,
-    mp: currentStats.mp
-  });
+$('body').on('click', '.addBuild', function(e) {
+  e.preventDefault();
 
-  console.log(currentStats);
+  tabArray.push(Object.assign({}, currentStats));
+
+  console.log(tabArray);
 
   if (tabArray.length >= 1) {
     $("#firstPlus").hide();
@@ -91,15 +80,36 @@ $('body').on('click', '.addBuild', function() {
   renderBuild();
 });
 
-$('body').on('click', '.removeBuild', function(e) {
+$('body').on('click', '.removeBuild0', function(e) {
   e.preventDefault();
-  tabArray.splice($(this).attr("value"), 1);
-
+  tabArray.splice(0, 1);
   if (tabArray.length <= 0) {
     $("#firstPlus").show();
   }
 
   renderBuild();
+});
+
+$('body').on('click', '.removeBuild1', function(e) {
+  e.preventDefault();
+  tabArray.splice(1, 1);
+  if (tabArray.length <= 0) {
+    $("#firstPlus").show();
+  }
+  renderBuild();
+});
+
+$('body').on('click', '.removeBuild2', function(e) {
+  e.preventDefault();
+  tabArray.splice(2, 1);
+  if (tabArray.length <= 0) {
+    $("#firstPlus").show();
+  }
+  renderBuild();
+});
+
+$('body').on('click', '.save0', function(e) {
+  e.preventDefault();
 });
 
 

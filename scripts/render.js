@@ -1,5 +1,3 @@
-var tabs = 0;
-
 // render buffs through html elements
 function renderBuffs() {
   // remove all previous buff elements
@@ -207,6 +205,203 @@ function renderSkills() {
   }
 }
 
+function renderBuild() {
+  var marginRight;
+  var showPlus;
+
+  $('.createdBuild').remove();
+
+  for (var i = 0; i < tabArray.length; i++) {
+    if (i == 2) {
+      marginRight = "mr-2";
+    } else {
+      marginRight = "mr-1";
+    }
+
+    if (i == tabArray.length - 1) {
+      showPlus = "";
+      if (i == 2) {
+        showPlus = "d-none";
+      }
+    } else {
+      showPlus = "d-none";
+    }
+
+    if (currentClass == -1) {
+      displayBaseCrit = 0;
+    } else {
+      displayBaseCrit = classes[currentClass].baseCrit;
+      console.log(displayBaseCrit);
+    }
+
+    $('#buildRow').append(
+      "<div id = 'build" + i + "' class = 'col-3 createdBuild' style = 'align-self: flex-end' value = '" + i + "'>" +
+        "<div class = 'row'>" +
+          "<div class = 'col ml-1 " + marginRight + " rounded h-100 greyTab' style = 'align-self: flex-end'>" +
+            "<div class = 'row align-items-center mt-2'>" +
+              "<div class = 'col text-left'>" +
+                "<button type='button' class='btn buildButton btn-outline-primary removeBuild" + i + "'>-</button>" +
+              "</div>" +
+              "<div class = 'col mt-3'>" +
+                "<h3>Build " + (i + 1) + "</h3>" +
+              "</div>" +
+              "<div class = 'col text-right'>" +
+                "<button type='button' class='btn buildButton btn-outline-primary addBuild " + showPlus + "' id = 'plus" + i + "'>+</button>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-3 mb-3 align-items-end'>" +
+              "<div class = 'col-4 text-center'>" +
+                "<h5>Base Crit: " +
+                  "<span class = 'text-white' id = 'baseCrit'>" + displayBaseCrit + "</span>" +
+                "</h5>" +
+              "</div>" +
+              "<div class = 'col'>" +
+                "<div class='input-group'>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Crit:</span>" +
+                  "</div>" +
+                  "<input id = 'critInput' value = '" + getCrit(i) + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<div class = 'input-group-append'>" +
+                    "<button type = 'button' class = 'btn btn-primary dropdown-toggle responsiveText' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id = 'critButton'>Total Crit</button>" +
+                    "<div class = 'dropdown-menu' aria-labelledby = 'critButton'>" +
+                      "<a class = 'dropdown-item critSelection' href = '#'>Total Crit</a>" +
+                      "<a class = 'dropdown-item critSelection' href = '#'>Bonus Crit</a>" +
+                    "</div>" +
+                  "</div>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 align-items-center'>" +
+              "<div class = 'col text-center'>" +
+                "<h5>Power</h5>" +
+              "</div>" +
+              "<div class = 'col text-center'>" +
+                "<h5>Crit Power</h5>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 mb-3'>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<input value = '" + getpower(i) + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<input value = '" + getcritPower(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 align-items-center'>" +
+              "<div class = 'col text-center'>" +
+                "<h5>Amplification</h5>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 mb-3'>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getphysAmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getmagAmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 align-items-center'>" +
+              "<div class = 'col text-center'>" +
+                "<h5>Special Crit Power</h5>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 mb-3'>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getphysCP(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getmagCP(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 align-items-center'>" +
+              "<div class = 'col text-center'>" +
+                "<h5>Special Resistance Piercing</h5>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 mb-3'>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getphysPiercing(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getmagPiercing(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 align-items-center'>" +
+              "<div class = 'col text-center'>" +
+                "<h5>Special Resistance Ignore</h5>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 mb-3'>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getphysIgnore(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<div class='input-group-prepend'>" +
+                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
+                  "</div>" +
+                  "<input value = '" + getmagIgnore(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 align-items-center'>" +
+              "<div class = 'col text-center text-danger'>" +
+                "<h5>HP</h5>" +
+              "</div>" +
+              "<div class = 'col text-center'>" +
+                "<h5>MP</h5>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 mb-3'>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<input value = '" + gethp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+              "<div class = 'col'>" +
+                "<div class='input-group '>" +
+                  "<input value = '" + getmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+            "<div class = 'row mt-2 mb-3 align-items-end'>" +
+              "<div class = 'col'>" +
+                "<button type='button' class='btn btn-primary'>Save</button>" +
+              "</div>" +
+            "</div>" +
+          "</div>" +
+        "</div>" + 
+      "</div>" +
+    "</div>"
+    );
+  }
+}
+
+
+
 // update crit
 function updateCrit() {
   // default crit value
@@ -257,193 +452,112 @@ function updateBossStats() {
   $("#ampResist").val(bosses[currentBoss].ampResist);
 }
 
-function renderBuild() {
-  var marginRight;
-  var showPlus;
 
-  $('.createdBuild').remove();
 
-  for (var i = 0; i < tabArray.length; i++) {
-    if (i == 2) {
-      marginRight = "mr-2";
-    } else {
-      marginRight = "mr-1";
-    }
-
-    if (i == tabArray.length - 1) {
-      showPlus = "";
-      if (i == 2) {
-        showPlus = "d-none";
-      }
-    } else {
-      showPlus = "d-none";
-    }
-
-    $('#buildRow').append(
-      "<div id = 'build" + i + "' class = 'col-3 createdBuild' style = 'align-self: flex-end' value = '" + i + "'>" +
-        "<div class = 'row'>" +
-          "<div class = 'col ml-1 " + marginRight + " rounded h-100 greyTab' style = 'align-self: flex-end'>" +
-            "<div class = 'row align-items-center mt-2'>" +
-              "<div class = 'col text-left'>" +
-                "<button type='button' class='btn buildButton btn-outline-primary removeBuild'>-</button>" +
-              "</div>" +
-              "<div class = 'col mt-3'>" +
-                "<h3>Build " + (i + 1) + "</h3>" +
-              "</div>" +
-              "<div class = 'col text-right'>" +
-                "<button type='button' class='btn buildButton btn-outline-primary addBuild " + showPlus + "' id = 'plus" + (i + 1) + "'>+</button>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-3 mb-3 align-items-end'>" +
-              "<div class = 'col-4 text-center'>" +
-                "<h5>Base Crit: " +
-                  "<span class = 'text-white' id = 'baseCrit'>0</span>" +
-                "</h5>" +
-              "</div>" +
-              "<div class = 'col'>" +
-                "<div class='input-group'>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Crit:</span>" +
-                  "</div>" +
-                  "<input id = 'critInput' value = '" + tabArray[i].crit + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                  "<div class = 'input-group-append'>" +
-                    "<button type = 'button' class = 'btn btn-primary dropdown-toggle responsiveText' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id = 'critButton'>Total Crit</button>" +
-                    "<div class = 'dropdown-menu' aria-labelledby = 'critButton'>" +
-                      "<a class = 'dropdown-item critSelection' href = '#'>Total Crit</a>" +
-                      "<a class = 'dropdown-item critSelection' href = '#'>Bonus Crit</a>" +
-                    "</div>" +
-                  "</div>" +
-                "</div>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 align-items-center'>" +
-              "<div class = 'col text-center'>" +
-                "<h5>Power</h5>" +
-              "</div>" +
-              "<div class = 'col text-center'>" +
-                "<h5>Crit Power</h5>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3'>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<input value = '" + tabArray[i].power + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<input value = '" + tabArray[i].critPower + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 align-items-center'>" +
-              "<div class = 'col text-center'>" +
-                "<h5>Amplification</h5>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3'>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].physAmp + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].magAmp + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 align-items-center'>" +
-              "<div class = 'col text-center'>" +
-                "<h5>Special Crit Power</h5>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3'>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].physCP + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].magCP + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 align-items-center'>" +
-              "<div class = 'col text-center'>" +
-                "<h5>Special Resistance Piercing</h5>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3'>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].physPiercing + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].magPiercing + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 align-items-center'>" +
-              "<div class = 'col text-center'>" +
-                "<h5>Special Resistance Ignore</h5>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3'>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].physIgnore + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                  "<div class='input-group-prepend'>" +
-                    "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
-                  "</div>" +
-                  "<input value = '" + tabArray[i].magIgnore + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 align-items-center'>" +
-              "<div class = 'col text-center text-danger'>" +
-                "<h5>HP</h5>" +
-              "</div>" +
-              "<div class = 'col text-center'>" +
-                "<h5>MP</h5>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3'>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<input value = '" + tabArray[i].hp + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<input value = '" + tabArray[i].mp + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3 align-items-end'>" +
-              "<div class = 'col'>" +
-                "<button type='button' class='btn btn-primary'>Save</button>" +
-              "</div>" +
-            "</div>" +
-          "</div>" +
-        "</div>" + 
-      "</div>" +
-    "</div>"
-    );
+function getCrit(currentTab) {
+  var critString = tabArray[currentTab].crit;
+  if (tabArray[currentTab].crit == 0) {
+    critString = "";
   }
+  return(critString);
 }
+
+function getpower(currentTab) {
+  var powerString = tabArray[currentTab].power;
+  if (tabArray[currentTab].power == 0) {
+    powerString = "";
+  }
+  return(powerString);
+}
+
+function getcritPower(currentTab) {
+  var critPowerString = tabArray[currentTab].critPower;
+  if (tabArray[currentTab].critPower == 0) {
+    critPowerString = "";
+  }
+  return(critPowerString);
+}
+
+function getphysAmp(currentTab) {
+  var physAmpString = tabArray[currentTab].physAmp;
+  if (tabArray[currentTab].physAmp == 0) {
+    physAmpString = "";
+  }
+  return(physAmpString);
+}
+
+function getmagAmp(currentTab) {
+  var magAmpString = tabArray[currentTab].magAmp;
+  if (tabArray[currentTab].magAmp == 0) {
+    magAmpString = "";
+  }
+  return(magAmpString);
+}
+
+function getphysCP(currentTab) {
+  var physCPString = tabArray[currentTab].physCP;
+  if (tabArray[currentTab].physCP == 0) {
+    physCPString = "";
+  }
+  return(physCPString);
+}
+
+function getmagCP(currentTab) {
+  var magCPString = tabArray[currentTab].magCP;
+  if (tabArray[currentTab].magCP == 0) {
+    magCPString = "";
+  }
+  return(magCPString);
+}
+
+function getphysPiercing(currentTab) {
+  var physPiercingString = tabArray[currentTab].physPiercing;
+  if (tabArray[currentTab].physPiercing == 0) {
+    physPiercingString = "";
+  }
+  return(physPiercingString);
+}
+
+function getmagPiercing(currentTab) {
+  var magPiercingString = tabArray[currentTab].magPiercing;
+  if (tabArray[currentTab].magPiercing == 0) {
+    magPiercingString = "";
+  }
+  return(magPiercingString);
+}
+
+function getphysIgnore(currentTab) {
+  var physIgnoreString = tabArray[currentTab].physIgnore;
+  if (tabArray[currentTab].physIgnore == 0) {
+    physIgnoreString = "";
+  }
+  return(physIgnoreString);
+}
+
+function getmagIgnore(currentTab) {
+  var magIgnoreString = tabArray[currentTab].magIgnore;
+  if (tabArray[currentTab].magIgnore == 0) {
+    magIgnoreString = "";
+  }
+  return(magIgnoreString);
+}
+
+function gethp(currentTab) {
+  var hpString = tabArray[currentTab].hp;
+  if (tabArray[currentTab].hp == 0) {
+    hpString = "";
+  }
+  return(hpString);
+}
+
+function getmp(currentTab) {
+  var mpString = tabArray[currentTab].mp;
+  if (tabArray[currentTab].mp == 0) {
+    mpString = "";
+  }
+  return(mpString);
+}
+
 
 // NOTE
 // skills, debuffs, buffs and builds rendering is done through literal code writing within this script
