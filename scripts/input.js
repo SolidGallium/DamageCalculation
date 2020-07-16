@@ -48,6 +48,7 @@ $('.healerSelection').on('click', function(e) {
     priest = false;
   }
   renderBuffs();
+  renderDebuffs();
   updateCrit();
   renderSkills();
 });
@@ -87,6 +88,8 @@ $('body').on('click', '.removeBuild0', function(e) {
     $("#firstPlus").show();
   }
 
+  console.log(tabArray);
+
   renderBuild();
 });
 
@@ -96,6 +99,7 @@ $('body').on('click', '.removeBuild1', function(e) {
   if (tabArray.length <= 0) {
     $("#firstPlus").show();
   }
+  console.log(tabArray);
   renderBuild();
 });
 
@@ -105,11 +109,96 @@ $('body').on('click', '.removeBuild2', function(e) {
   if (tabArray.length <= 0) {
     $("#firstPlus").show();
   }
+  console.log(tabArray);
   renderBuild();
 });
 
 $('body').on('click', '.save0', function(e) {
   e.preventDefault();
+  console.log("click save0");
+
+  console.log($('#critInput0').val());
+
+  tabArray[0] = {
+    crit: $('#critInput0').val(),
+    power: $('#powerInput0').val(),
+    critPower: $('#critPowerInput0').val(),
+    physAmp: $('#physAmpInput0').val(),
+    magAmp: $('#magAmpInput0').val(),
+    physCP: $('#physCPInput0').val(),
+    magCP: $('#magCPInput0').val(),
+    physPiercing: $('#physPiercingInput0').val(),
+    magPiercing: $('#magPiercingInput0').val(),
+    physIgnore: $('#physIgnoreInput0').val(),
+    magIgnore: $('#magIgnoreInput0').val(),
+    hp: $('#hpInput0').val(),
+    mp: $('#mpInput0').val(),
+  };
+
+  console.log(tabArray);
+
+});
+
+$('body').on('click', '.save1', function(e) {
+  e.preventDefault();
+
+  tabArray[1] = {
+    crit: $('#critInput1').val(),
+    power: $('#powerInput1').val(),
+    critPower: $('#critPowerInput1').val(),
+    physAmp: $('#physAmpInput1').val(),
+    magAmp: $('#magAmpInput1').val(),
+    physCP: $('#physCPInput1').val(),
+    magCP: $('#magCPInput1').val(),
+    physPiercing: $('#physPiercingInput1').val(),
+    magPiercing: $('#magPiercingInput1').val(),
+    physIgnore: $('#physIgnoreInput1').val(),
+    magIgnore: $('#magIgnoreInput1').val(),
+    hp: $('#hpInput1').val(),
+    mp: $('#mpInput1').val(),
+  };
+
+  console.log(tabArray);
+});
+
+$('body').on('click', '.save2', function(e) {
+  e.preventDefault();
+
+  tabArray[2] = {
+    crit: $('#critInput2').val(),
+    power: $('#powerInput2').val(),
+    critPower: $('#critPowerInput2').val(),
+    physAmp: $('#physAmpInput2').val(),
+    magAmp: $('#magAmpInput2').val(),
+    physCP: $('#physCPInput2').val(),
+    magCP: $('#magCPInput2').val(),
+    physPiercing: $('#physPiercingInput2').val(),
+    magPiercing: $('#magPiercingInput2').val(),
+    physIgnore: $('#physIgnoreInput2').val(),
+    magIgnore: $('#magIgnoreInput2').val(),
+    hp: $('#hpInput2').val(),
+    mp: $('#mpInput2').val(),
+  };
+
+  console.log(tabArray);
+});
+
+$('body').on('click', '.critSelection0', function(e) {
+  e.preventDefault();
+
+  $('#critButton0').text($(this).text());
+});
+
+$('body').on('click', '.critSelection1', function(e) {
+  e.preventDefault();
+
+  $('#critButton1').text($(this).text());
+});
+
+$('body').on('click', '.critSelection2', function(e) {
+  e.preventDefault();
+
+  $('#critButton2').text($(this).text());
 });
 
 

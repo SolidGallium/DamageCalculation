@@ -14,7 +14,7 @@ function renderBuffs() {
   // priest edict of judgement
   if (priest == true) {
     $('#buffs').append(
-      "<div class = 'row pt-2 pb-2 align-items-center createdBuffs' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+      "<div class = 'row pt-2 pb-2 align-items-center createdBuffs' style = 'background: rgb(" + 40 + "," + 40 + "," + 40 +")'>" +
         "<div class = 'col-2'>" +
           "<img src = 'https://teralore.com/items/icon_skills/judgment_tex.png' class = 'img-fluid rounded' alt = 'missing image'>" +
         "</div>" +
@@ -37,50 +37,59 @@ function renderBuffs() {
       "</div>");
   }
 
-  // all buffs rendering
-  for (var i = 0; i < classes[currentClass].buffs.length; i++) {
-    // alternates color between buffs
-    if (i % 2 == 0) {
-      r = 40;
-      b = 40;
-      g = 40;
-    } else {
-      r = 26;
-      b = 26;
-      g = 26;
-    }
+  if (currentClass != -1) {
+    // all buffs rendering
+    for (var i = 0; i < classes[currentClass].buffs.length; i++) {
 
-    // makes the last buff rounded
-    if (i == classes[currentClass].buffs.length - 1) {
-      last = "rounded-bottom";
-    } else {
-      last = "";
-    }
+      var healerBuffShow = 0;
 
-    console.log(classes[currentClass].buffs[i].name);
-    // buffs html elements creaction
-    $('#buffs').append(
-      "<div class = 'row pt-2 pb-2 align-items-center createdBuffs " + last + "' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
-        "<div class = 'col-2'>" +
-          "<img src = '" + classes[currentClass].buffs[i].skillImage + "' class = 'img-fluid rounded' alt = 'missing image'>" +
-        "</div>" +
-        "<div class = 'col'>" + 
-          "<h5 class = 'text-light m-0'>" + classes[currentClass].buffs[i].name + "</h5>" +
-        "</div>" +
-        "<div class = 'col-5'>" +
-          "<div class = 'input-group'>" +
-            "<div class = 'input-group-prepend'>" +
-              "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
-            "</div>" +
-            "<input type = 'text' value = " + classes[currentClass].buffs[i].uptime * 100 + " class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
-            "<div class = 'input-group-append'>" + 
-              "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
-                "%" +
-              "</span>" +
+      if (priest == true || mystic == true) {
+        healerBuffShow = 1;
+      }
+
+      // alternates color between buffs
+      if (i % 2 == healerBuffShow) {
+        r = 40;
+        b = 40;
+        g = 40;
+      } else {
+        r = 26;
+        b = 26;
+        g = 26;
+      }
+
+      // makes the last buff rounded
+      if (i == classes[currentClass].buffs.length - 1) {
+        last = "rounded-bottom";
+      } else {
+        last = "";
+      }
+
+      console.log(classes[currentClass].buffs[i].name);
+      // buffs html elements creaction
+      $('#buffs').append(
+        "<div class = 'row pt-2 pb-2 align-items-center createdBuffs " + last + "' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+          "<div class = 'col-2'>" +
+            "<img src = '" + classes[currentClass].buffs[i].skillImage + "' class = 'img-fluid rounded' alt = 'missing image'>" +
+          "</div>" +
+          "<div class = 'col'>" + 
+            "<h5 class = 'text-light m-0'>" + classes[currentClass].buffs[i].name + "</h5>" +
+          "</div>" +
+          "<div class = 'col-5'>" +
+            "<div class = 'input-group'>" +
+              "<div class = 'input-group-prepend'>" +
+                "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
+              "</div>" +
+              "<input type = 'text' value = " + classes[currentClass].buffs[i].uptime * 100 + " class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+              "<div class = 'input-group-append'>" + 
+                "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
+                  "%" +
+                "</span>" +
+              "</div>" +
             "</div>" +
           "</div>" +
-        "</div>" +
-      "</div>");
+        "</div>");
+    }
   }
 }
 
@@ -97,52 +106,149 @@ function renderDebuffs() {
   // variable for making the last element rounded
   var last;
 
-  // all debuffs rendering
-  for (var i = 0; i < tanks[currentTank].debuffSkills.length; i++) {
+  var healerDebuffImage;
+  var healerDebuffName;
 
-    // alternates color between debuffs
-    if (i % 2 == 0) {
-      r = 40;
-      b = 40;
-      g = 40;
-    } else {
-      r = 26;
-      b = 26;
-      g = 26;
-    }
+  if (priest == true) {
+    healerDebuffImage = "https://teralore.com/items/icon_skills/divineretribution_tex.png";
+    healerDebuffName = "Triple Nemesis";
+  } else if (mystic == true) {
+    healerDebuffImage = "https://teralore.com/items/icon_skills/painfulshackle_tex.png";
+    healerDebuffName = "Volley of Curses";
+  }
 
-    // makes the last debuff rounded
-    if (i == tanks[currentTank].debuffSkills.length - 1) {
-      last = "rounded-bottom";
-    } else {
-      last = "";
-    }
-
-    // debuffs html elements creation
-    $("#debuffs").append(
-      "<div class = 'row  pt-2 pb-2 align-items-center createdDebuffs " + last + "' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+  if (priest == true || mystic == true) {
+    $('#debuffs').append(
+      "<div class = 'row pt-2 pb-2 align-items-center createdDebuffs' style = 'background: rgb(26, 26, 26)'>" + 
         "<div class = 'col-2'>" + 
-          "<img src = " + tanks[currentTank].debuffSkills[i].image + " class = 'img-fluid rounded' alt = 'missing image'>" + 
-        "</div>" + 
-        "<div class = 'col'>" + 
-          "<h5 class = 'text-light m-0'>" + tanks[currentTank].debuffSkills[i].name + "</h5>" +
+          "<img src = 'https://i.imgur.com/t08SApc.png' class = 'img-fluid rounded' alt = 'missing image'>" +
         "</div>" +
-        "<div class = 'col-5'>" + 
-          "<div class = 'input-group'>" + 
-            "<div class = 'input-group-prepend'>" + 
+        "<div class = 'col-4'>" +
+          "<h5 class = 'text-light m-0'>Magical Shred</h5>" +
+        "</div>" +
+        "<div class = 'col-2'>" +
+          "<div class = 'input-group'>" +
+            "<input type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+          "</div>" +
+        "</div>" +
+        "<div class = 'col-4 pl-2'>" +
+          "<div class = 'input-group'>" +
+            "<div class = 'input-group-prepend'>" +
               "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
-            "</div>" + 
-            "<input type = 'text' value = " + (tanks[currentTank].debuffSkills[i].uptime * 100) + " class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+            "</div>" +
+            "<input type = 'text' value = '100' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
               "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
                 "%" +
               "</span>" +
-            "</div>" +
           "</div>" +
         "</div>" +
       "</div>"
-    ); 
+    );
+
+    $('#debuffs').append(
+    "<div class = 'row  pt-2 pb-2 align-items-center createdDebuffs " + last + "' style = 'background: rgb(" + 40 + "," + 40 + "," + 40 +")'>" +
+      "<div class = 'col-2'>" + 
+        "<img src = " + healerDebuffImage + " class = 'img-fluid rounded' alt = 'missing image'>" + 
+      "</div>" + 
+      "<div class = 'col'>" + 
+        "<h5 class = 'text-light m-0'>" + healerDebuffName + "</h5>" +
+      "</div>" +
+      "<div class = 'col-5'>" + 
+        "<div class = 'input-group'>" + 
+          "<div class = 'input-group-prepend'>" + 
+            "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
+          "</div>" + 
+          "<input type = 'text' value = " + 100 + " class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+            "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
+              "%" +
+            "</span>" +
+          "</div>" +
+        "</div>" +
+      "</div>" +
+    "</div>");
   }
-  
+
+  if (currentTank != -1) {
+    $('#debuffs').append(
+      "<div class = 'row pt-2 pb-2 align-items-center createdDebuffs' style = 'background: rgb(26, 26, 26)'>" + 
+        "<div class = 'col-2'>" + 
+          "<img src = 'https://i.imgur.com/9czn5Km.png' class = 'img-fluid rounded' alt = 'missing image'>" +
+        "</div>" +
+        "<div class = 'col-4'>" +
+          "<h5 class = 'text-light m-0'>Physical Shred</h5>" +
+        "</div>" +
+        "<div class = 'col-2'>" +
+          "<div class = 'input-group'>" +
+            "<input type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+          "</div>" +
+        "</div>" +
+        "<div class = 'col-4 pl-2'>" +
+          "<div class = 'input-group'>" +
+            "<div class = 'input-group-prepend'>" +
+              "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
+            "</div>" +
+            "<input type = 'text' value = '100' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+              "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
+                "%" +
+              "</span>" +
+          "</div>" +
+        "</div>" +
+      "</div>"
+    );
+
+    // all debuffs rendering
+    for (var i = 0; i < tanks[currentTank].debuffSkills.length; i++) {
+
+      // alternates color between debuffs
+      // var healerDebuffShow = 1;
+      
+      // if (priest == true || mystic == true) {
+      //   healerDebuffShow = 0;
+      // }
+
+      if (i % 2 == 0) {
+        r = 40;
+        b = 40;
+        g = 40;
+      } else {
+        r = 26;
+        b = 26;
+        g = 26;
+      }
+
+      // makes the last debuff rounded
+      if (i == tanks[currentTank].debuffSkills.length - 1) {
+        last = "rounded-bottom";
+      } else {
+        last = "";
+      }
+    
+      // debuffs html elements creation
+      
+      $("#debuffs").append(
+        "<div class = 'row  pt-2 pb-2 align-items-center createdDebuffs " + last + "' style = 'background: rgb(" + r + "," + g + "," + b +")'>" +
+          "<div class = 'col-2'>" + 
+            "<img src = " + tanks[currentTank].debuffSkills[i].image + " class = 'img-fluid rounded' alt = 'missing image'>" + 
+          "</div>" + 
+          "<div class = 'col'>" + 
+            "<h5 class = 'text-light m-0'>" + tanks[currentTank].debuffSkills[i].name + "</h5>" +
+          "</div>" +
+          "<div class = 'col-5'>" + 
+            "<div class = 'input-group'>" + 
+              "<div class = 'input-group-prepend'>" + 
+                "<span class = 'input-group-text text-white bg-primary border-0 responsiveText'>Uptime: </span>" +
+              "</div>" + 
+              "<input type = 'text' value = " + (tanks[currentTank].debuffSkills[i].uptime * 100) + " class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+                "<span class = 'input-group-text text-white bg-primary border-0 responsiveTextHide'>" +
+                  "%" +
+                "</span>" +
+              "</div>" +
+            "</div>" +
+          "</div>" +
+        "</div>"
+      ); 
+    }
+  }
 }
 
 // render skills through html elements
@@ -174,9 +280,12 @@ function renderSkills() {
       b = 26;
     }
 
+    var critToDisplay = critSkillDisplay[i].value;
+
     // set the crit display color according to the value
     if (critSkillDisplay[i].value >= 100) {
       textColor = "text-success";
+      critToDisplay = 100;
     } else if (critSkillDisplay[i].value <= 50) {
       textColor = "text-danger";
     }
@@ -196,7 +305,7 @@ function renderSkills() {
         "<div class = 'col-1'>" +
           "<div class = 'row'>" +
             "<div class = 'col'>" +
-              "<h5 class = '" + textColor +" m-0'>" + critSkillDisplay[i].value + "%</h5>" +
+              "<h5 class = '" + textColor +" m-0'>" + critToDisplay + "%</h5>" +
             "</div>" +
           "</div>" +
         "</div>" +
@@ -260,12 +369,12 @@ function renderBuild() {
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Crit:</span>" +
                   "</div>" +
-                  "<input id = 'critInput' value = '" + getCrit(i) + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'critInput" + i + "' value = '" + getCrit(i) + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                   "<div class = 'input-group-append'>" +
-                    "<button type = 'button' class = 'btn btn-primary dropdown-toggle responsiveText' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id = 'critButton'>Total Crit</button>" +
-                    "<div class = 'dropdown-menu' aria-labelledby = 'critButton'>" +
-                      "<a class = 'dropdown-item critSelection' href = '#'>Total Crit</a>" +
-                      "<a class = 'dropdown-item critSelection' href = '#'>Bonus Crit</a>" +
+                    "<button id = 'critButton" + i + "' type = 'button' class = 'btn btn-primary dropdown-toggle responsiveText' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id = 'critButton'>Total Crit</button>" +
+                    "<div class = 'dropdown-menu' aria-labelledby = 'critButton" + i + "'>" +
+                      "<a class = 'dropdown-item critSelection" + i + "' href = '#'>Total Crit</a>" +
+                      "<a class = 'dropdown-item critSelection" + i + "' href = '#'>Bonus Crit</a>" +
                     "</div>" +
                   "</div>" +
                 "</div>" +
@@ -282,12 +391,12 @@ function renderBuild() {
             "<div class = 'row mt-2 mb-3'>" +
               "<div class = 'col'>" +
                 "<div class='input-group '>" +
-                  "<input value = '" + getpower(i) + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'powerInput" + i + "' value = '" + getpower(i) + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
               "<div class = 'col'>" +
                 "<div class='input-group '>" +
-                  "<input value = '" + getcritPower(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'critPowerInput" + i + "' value = '" + getcritPower(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
             "</div>" +
@@ -302,11 +411,11 @@ function renderBuild() {
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
                   "</div>" +
-                  "<input value = '" + getphysAmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'physAmpInput" + i + "' value = '" + getphysAmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
                   "</div>" +
-                  "<input value = '" + getmagAmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'magAmpInput" + i + "' value = '" + getmagAmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
             "</div>" +
@@ -321,11 +430,11 @@ function renderBuild() {
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
                   "</div>" +
-                  "<input value = '" + getphysCP(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'physCPInput" + i + "' value = '" + getphysCP(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
                   "</div>" +
-                  "<input value = '" + getmagCP(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input  id = 'magCPInput" + i + "'value = '" + getmagCP(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
             "</div>" +
@@ -340,11 +449,11 @@ function renderBuild() {
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
                   "</div>" +
-                  "<input value = '" + getphysPiercing(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'physPiercingInput" + i + "' value = '" + getphysPiercing(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
                   "</div>" +
-                  "<input value = '" + getmagPiercing(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'magPiercingInput" + i + "' value = '" + getmagPiercing(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
             "</div>" +
@@ -359,11 +468,11 @@ function renderBuild() {
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Physical:</span>" +
                   "</div>" +
-                  "<input value = '" + getphysIgnore(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'physIgnoreInput" + i + "' value = '" + getphysIgnore(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                   "<div class='input-group-prepend'>" +
                     "<span class='input-group-text text-white bg-primary border-0 responsiveText' id='inputGroup-sizing-default'>Magical:</span>" +
                   "</div>" +
-                  "<input value = '" + getmagIgnore(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'magIgnoreInput" + i + "' value = '" + getmagIgnore(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
             "</div>" +
@@ -378,18 +487,18 @@ function renderBuild() {
             "<div class = 'row mt-2 mb-3'>" +
               "<div class = 'col'>" +
                 "<div class='input-group '>" +
-                  "<input value = '" + gethp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'hpInput" + i + "' value = '" + gethp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
               "<div class = 'col'>" +
                 "<div class='input-group '>" +
-                  "<input value = '" + getmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+                  "<input id = 'mpInput" + i + "' value = '" + getmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                 "</div>" +
               "</div>" +
             "</div>" +
             "<div class = 'row mt-2 mb-3 align-items-end'>" +
               "<div class = 'col'>" +
-                "<button type='button' class='btn btn-primary'>Save</button>" +
+                "<button type='button' class='btn btn-primary save" + i + "'>Save</button>" +
               "</div>" +
             "</div>" +
           "</div>" +
