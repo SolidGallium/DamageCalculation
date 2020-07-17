@@ -8,6 +8,7 @@ $('.classSelection').on('click', function(e) {
   $('#baseCrit').text(classes[currentClass].baseCrit);
   console.log("current class: " + currentClass);
   renderBuild();
+  renderClassSpecificStat();
 });
 
 $('.bossSelection').on('click', function(e) {
@@ -24,8 +25,10 @@ $('.critSelection').on('click', function(e) {
   $('#critButton').text($(this).text());
   if ($(this).text() == "Total Crit") {
     totalCrit = true;
+    currentStats.critType = 1;
   } else {
     totalCrit = false;
+    currentStats.critType = 0;
   }
   updateCrit();
   renderSkills();
@@ -133,6 +136,7 @@ $('body').on('click', '.save0', function(e) {
     magIgnore: $('#magIgnoreInput0').val(),
     hp: $('#hpInput0').val(),
     mp: $('#mpInput0').val(),
+    physRes: $('#physResInput0').val()
   };
 
   console.log(tabArray);
@@ -156,6 +160,7 @@ $('body').on('click', '.save1', function(e) {
     magIgnore: $('#magIgnoreInput1').val(),
     hp: $('#hpInput1').val(),
     mp: $('#mpInput1').val(),
+    physRes: $('#physResInput1').val()
   };
 
   console.log(tabArray);
@@ -178,6 +183,7 @@ $('body').on('click', '.save2', function(e) {
     magIgnore: $('#magIgnoreInput2').val(),
     hp: $('#hpInput2').val(),
     mp: $('#mpInput2').val(),
+    physRes: $('#physResInput2').val()
   };
 
   console.log(tabArray);
@@ -437,42 +443,61 @@ function saveMagIgnore () {
 
 
 var hpInputTimer;               //timer identifier
-var hpInput = $("body").find("#hpInput");
 
 // on keyup, start the countdown
-hpInput.on('keyup', function () {
+$('body').on('keyup', '#hpInput', function () {
   clearTimeout(hpInputTimer);
   hpInputTimer = setTimeout(saveHp(), doneTypingInterval);
 });
 
 // on keydown, clear the countdown 
-hpInput.on('keydown', function () {
+$('body').on('keydown', '#hpInput', function () {
   clearTimeout(hpInputTimer);
 });
 
 //user is "finished typing," do something
 function saveHp () {
-  currentStats.hp = hpInput.val();
+  currentStats.hp = $('#hpInput').val();
 }
 
 
 
 var mpInputTimer;               //timer identifier
-var mpInput = $("body").find("#mpInput");
 
 // on keyup, start the countdown
-mpInput.on('keyup', function () {
+$('body').on('keyup', '#mpInput', function () {
   clearTimeout(mpInputTimer);
   mpInputTimer = setTimeout(saveMp(), doneTypingInterval);
 });
 
 // on keydown, clear the countdown 
-mpInput.on('keydown', function () {
+$('body').on('keydown', '#mpInput', function () {
   clearTimeout(mpInputTimer);
 });
 
 //user is "finished typing," do something
 function saveMp () {
-  currentStats.mp = mpInput.val();
+  currentStats.mp = $('#mpInput').val();
+}
+
+
+
+var physResInputTimer;               //timer identifier
+var physResInput = $("body").find("#physResInput");
+
+// on keyup, start the countdown
+$('body').on('keyup', '#physResInput', function () {
+  clearTimeout(physResInputTimer);
+  physResInputTimer = setTimeout(savePhysRes(), doneTypingInterval);
+});
+
+// on keydown, clear the countdown 
+$('body').on('keydown', '#physResInput', function () {
+  clearTimeout(physResInputTimer);
+});
+
+//user is "finished typing," do something
+function savePhysRes () {
+  currentStats.physRes = $('#physResInput').val();
 }
 

@@ -17,6 +17,7 @@ var direction = 1.6;
 var tabArray = [];
 
 var currentStats = {
+  critType: 1,
   crit: 0,
   power: 0,
   critPower: 0,
@@ -29,8 +30,9 @@ var currentStats = {
   physIgnore: 0,
   magIgnore: 0,
   hp: 0,
-  mp: 0
-}
+  mp: 0,
+  physRes: 0
+};
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 

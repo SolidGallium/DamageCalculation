@@ -343,6 +343,14 @@ function renderBuild() {
       console.log(displayBaseCrit);
     }
 
+    var critType;
+
+    if (tabArray[i].critType == 1) {
+      critType = "Total Crit";
+    } else {
+      critType = "Bonus Crit";
+    }
+
     $('#buildRow').append(
       "<div id = 'build" + i + "' class = 'col-3 createdBuild' style = 'align-self: flex-end' value = '" + i + "'>" +
         "<div class = 'row'>" +
@@ -371,7 +379,7 @@ function renderBuild() {
                   "</div>" +
                   "<input id = 'critInput" + i + "' value = '" + getCrit(i) + "' class='form-control bg-dark border-0 text-light text-center responsiveText' type='text' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
                   "<div class = 'input-group-append'>" +
-                    "<button id = 'critButton" + i + "' type = 'button' class = 'btn btn-primary dropdown-toggle responsiveText' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id = 'critButton'>Total Crit</button>" +
+                    "<button id = 'critButton" + i + "' type = 'button' class = 'btn btn-primary dropdown-toggle responsiveText' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id = 'critButton'>" + critType + "</button>" +
                     "<div class = 'dropdown-menu' aria-labelledby = 'critButton" + i + "'>" +
                       "<a class = 'dropdown-item critSelection" + i + "' href = '#'>Total Crit</a>" +
                       "<a class = 'dropdown-item critSelection" + i + "' href = '#'>Bonus Crit</a>" +
@@ -476,27 +484,15 @@ function renderBuild() {
                 "</div>" +
               "</div>" +
             "</div>" +
-            "<div class = 'row mt-2 align-items-center'>" +
-              "<div class = 'col text-center text-danger'>" +
-                "<h5>HP</h5>" +
+            "<div class = 'row mt-4 align-items-center'>" +
+              "<div class = 'col-1'>" +
               "</div>" +
-              "<div class = 'col text-center'>" +
-                "<h5>MP</h5>" +
+              "<div class = 'col' id = 'classSpecificStat" + i + "'>" +
               "</div>" +
-            "</div>" +
-            "<div class = 'row mt-2 mb-3'>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<input id = 'hpInput" + i + "' value = '" + gethp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
-              "</div>" +
-              "<div class = 'col'>" +
-                "<div class='input-group '>" +
-                  "<input id = 'mpInput" + i + "' value = '" + getmp(i) + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
-                "</div>" +
+              "<div class = 'col-1'>" +
               "</div>" +
             "</div>" +
-            "<div class = 'row mt-2 mb-3 align-items-end'>" +
+            "<div class = 'row mt-4 mb-3 align-items-end'>" +
               "<div class = 'col'>" +
                 "<button type='button' class='btn btn-primary save" + i + "'>Save</button>" +
               "</div>" +
@@ -506,6 +502,86 @@ function renderBuild() {
       "</div>" +
     "</div>"
     );
+
+    renderClassSpecificStat();
+  }
+}
+
+function renderClassSpecificStat() {
+  $('.createdStat').remove();
+
+  var name;
+  var id;
+  var render = false;
+
+  if (currentClass != -1) {
+    if (classes[currentClass].name == "Berserker") {
+      name = "HP";
+      id = "hpInput";
+      render = true;
+    } else if (classes[currentClass].name == "Sorcerer") {
+      name = "MP";
+      id = "mpInput";
+      render = true;
+    } else if (classes[currentClass].name == "Lancer") {
+      name = "Physical Res";
+      id = "physResInput";
+      render = true;
+    }
+  
+    if (render == true) {
+      console.log("render class specific stat");
+      for (var i = -1; i < tabArray.length; i++) {
+        var target;
+        var value;
+  
+        if (i == -1) {
+          target = "";
+          if (name == "HP") {
+            if (currentStats.hp == 0) {
+              value = "";
+            } else {
+              value = currentStats.hp;
+            }
+          } else if (name == "MP") {
+            if (currentStats.mp == 0) {
+              value = "";
+            } else {
+              value = currentStats.mp;
+            }
+          } else if (name == "Physical Res") {
+            if (currentStats.physRes == 0) {
+              value = "";
+            } else {
+              value = currentStats.physRes;
+            }
+          }
+        } else {
+          target = i;
+          if (name == "HP") {
+            value = gethp(i);
+            console.log(value);
+          } else if (name == "MP") {
+            value = getmp(i);
+          } else if (name == "Physical Res") {
+            value = getphysres(i);
+          }
+        }
+  
+        $('#classSpecificStat' + target).append(
+          "<div class = 'row align-items-end createdStat'>" +
+            "<div class = 'col text-center text-primary'>" +
+              "<h5>" + name + "</h5>" +
+            "</div>" +
+            "<div class = 'col'>" +
+              "<div class='input-group '>" +
+                "<input id = '" + id + target + "' value = '" + value + "' type='text' class='form-control bg-dark border-0 text-light text-center responsiveText' aria-label='Default' aria-describedby='inputGroup-sizing-default'>" +
+              "</div>" +
+            "</div>" +
+          "</div>"
+        );
+      }
+    }
   }
 }
 
@@ -665,6 +741,14 @@ function getmp(currentTab) {
     mpString = "";
   }
   return(mpString);
+}
+
+function getphysres(currentTab) {
+  var physResString = tabArray[currentTab].physRes;
+  if (tabArray[currentTab].physRes == 0) {
+    physResString = "";
+  }
+  return(physResString);
 }
 
 
