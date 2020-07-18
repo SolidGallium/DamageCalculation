@@ -128,6 +128,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0, // doesn't take passive into account
+        critChance: 0,
+        physFactor: 1.77,
+        magFactor: 0.3,
+        damageType: "Physical",
         damagePortion: 0.23,
         image: "https://teralore.com/items/icon_skills/blastslash_tex.png"
       },
@@ -139,6 +143,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.4,
+        magFactor: 0.7,
+        damageType: "Physical",
         damagePortion: 0.23,
         image: "https://teralore.com/items/icon_skills/whirlwind_tex.png"
       },
@@ -150,6 +158,10 @@ var classes = [
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.52,
+        magFactor: 0.2,
+        damageType: "Physical",
         damagePortion: 0.15,
         image: "https://teralore.com/items/icon_skills/rageboth_tex.png"
       },
@@ -161,6 +173,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0.1,
+        critChance: 0,
+        physFactor: 1.4,
+        magFactor: 0.6,
+        damageType: "Physical",
         damagePortion: 0.14,
         image: "https://teralore.com/items/icon_skills/soulstrike_tex.png"
       },
@@ -172,6 +188,10 @@ var classes = [
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.62,
+        magFactor: 0.24,
+        damageType: "Physical",
         damagePortion: 0.09,
         image: "https://teralore.com/items/icon_skills/ragerush_tex.png"
       },
@@ -183,6 +203,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.47,
+        magFactor: 0.6,
+        damageType: "Physical",
         damagePortion: 0.05,
         image: "https://teralore.com/items/icon_skills/bash_tex.png"
       },
@@ -194,6 +218,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.40,
+        magFactor: 0.3,
+        damageType: "Physical",
         damagePortion: 0.04,
         image: "https://teralore.com/items/icon_skills/vampiricstrike_tex.png"
       },
@@ -205,6 +233,10 @@ var classes = [
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.45,
+        magFactor: 0.2,
+        damageType: "Physical",
         damagePortion: 0.02,
         image: "https://teralore.com/items/icon_skills/rageleft_tex.png"
       },
@@ -216,6 +248,10 @@ var classes = [
         innateSkillCrit: 2.2,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.45,
+        magFactor: 0.2,
+        damageType: "Physical",
         damagePortion: 0.02,
         image: "https://teralore.com/items/icon_skills/rageright_tex.png"
       },
@@ -227,7 +263,8 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
-        baseDamage: 1762,
+        critChance: 0,
+        baseDamage: 1762, // unused
         physFactor: 1.42,
         magFactor: 0.45,
         damageType: "Physical",
@@ -242,6 +279,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.3,
+        magFactor: 2,
+        damageType: "Magical",
         damagePortion: 0.00,
         image: "https://teralore.com/items/icon_skills/throwaxe_tex.png"
       }

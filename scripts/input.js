@@ -9,6 +9,8 @@ $('.classSelection').on('click', function(e) {
   console.log("current class: " + currentClass);
   renderBuild();
   renderClassSpecificStat();
+
+  console.log("total damage: " + damageCalculation(currentStats));
 });
 
 $('.bossSelection').on('click', function(e) {
@@ -250,7 +252,7 @@ powerInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePower () {
-  currentStats.power = powerInput.val();
+  currentStats.power = parseInt(powerInput.val());
 }
 
 
@@ -270,7 +272,7 @@ critPowerInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function saveCritPower () {
-  currentStats.critPower = critPowerInput.val();
+  currentStats.critPower = parseInt(critPowerInput.val());
 }
 
 
@@ -290,7 +292,7 @@ physAmpInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePhysAmp () {
-  currentStats.physAmp = physAmpInput.val();
+  currentStats.physAmp = parseInt(physAmpInput.val());
 }
 
 
@@ -311,7 +313,7 @@ magAmpInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function magAmpPower () {
-  currentStats.magAmp = magAmpInput.val();
+  currentStats.magAmp = parseInt(magAmpInput.val());
 }
 
 
@@ -332,7 +334,7 @@ physCPInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePhysCP () {
-  currentStats.physCP = physCPInput.val();
+  currentStats.physCP = parseInt(physCPInput.val());
 }
 
 
@@ -353,7 +355,7 @@ magCPInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function saveMagCP () {
-  currentStats.magCP = magCPInput.val();
+  currentStats.magCP = parseInt(magCPInput.val());
 }
 
 
@@ -374,7 +376,7 @@ physPiercingInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePhysPiercing () {
-  currentStats.physPiercing = physPiercingInput.val();
+  currentStats.physPiercing = parseInt(physPiercingInput.val());
 }
 
 
@@ -395,7 +397,7 @@ magPiercingInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function saveMagPiercing () {
-  currentStats.magPiercing = magPiercingInput.val();
+  currentStats.magPiercing = parseInt(magPiercingInput.val());
 }
 
 
@@ -416,7 +418,7 @@ physIgnoreInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePhysIgnore () {
-  currentStats.physIgnore = physIgnoreInput.val();
+  currentStats.physIgnore = parseInt(physIgnoreInput.val());
 }
 
 
@@ -437,7 +439,7 @@ magIgnoreInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function saveMagIgnore () {
-  currentStats.magIgnore = magIgnoreInput.val();
+  currentStats.magIgnore = parseInt(magIgnoreInput.val());
 }
 
 
@@ -457,7 +459,7 @@ $('body').on('keydown', '#hpInput', function () {
 
 //user is "finished typing," do something
 function saveHp () {
-  currentStats.hp = $('#hpInput').val();
+  currentStats.hp = parseInt($('#hpInput').val());
 }
 
 
@@ -477,7 +479,7 @@ $('body').on('keydown', '#mpInput', function () {
 
 //user is "finished typing," do something
 function saveMp () {
-  currentStats.mp = $('#mpInput').val();
+  currentStats.mp = parseInt($('#mpInput').val());
 }
 
 
@@ -498,6 +500,6 @@ $('body').on('keydown', '#physResInput', function () {
 
 //user is "finished typing," do something
 function savePhysRes () {
-  currentStats.physRes = $('#physResInput').val();
+  currentStats.physRes = parseInt($('#physResInput').val());
 }
 
