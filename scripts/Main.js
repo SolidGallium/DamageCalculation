@@ -128,16 +128,12 @@ function damageCalculation(build) {
   var damageNonCrit;
   var skillDamage;
 
-  var totalDamage;
+  var totalDamage = 0;
 
   for (var i = 0; i < classes[currentClass].skills.length; i++) {
-    // console.log(classes[currentClass].skills[i].name + " > " + Math.min(classes[currentClass].skills[i].critChance, 100));
     damageCrit = skillDamageCalculation(classes[currentClass].skills[i], build, true) * Math.min(classes[currentClass].skills[i].critChance, 100);
-    console.log(classes[currentClass].skills[i].name + " > " + damageCrit);
-    damageNonCrit = skillDamageCalculation(classes[currentClass].skills[i], build, false) * (1 - Math.min(classes[currentClass].skills[i].critChance, 100));
-    console.log(classes[currentClass].skills[i].name + " > " + damageNonCrit);
+    damageNonCrit = skillDamageCalculation(classes[currentClass].skills[i], build, false) * (100 - Math.min(classes[currentClass].skills[i].critChance, 100));
     skillDamage = (damageCrit + damageNonCrit) * classes[currentClass].skills[i].damagePortion;
-    console.log(classes[currentClass].skills[i].name + " > " + skillDamage);
 
     totalDamage += skillDamage;
   }
@@ -156,8 +152,7 @@ function skillDamageCalculation(skill, build, isACrit) {
   var physShred = 14000;
   var magShred = 14000;
 
-  var normalCritPower = build.normalCritPower * 0.9;
-  console.log("normalCritPower: " + normalCritPower);
+  var normalCritPower = build.critPower * 0.9;
   var physCritPower = build.physCP;
   var magCritPower = build.magCP;
 
@@ -168,25 +163,19 @@ function skillDamageCalculation(skill, build, isACrit) {
   }
 
   physPiercing = build.physPiercing / (build.physPiercing + 10000);
-  console.log("physPiercing: " + physPiercing);
 
   magPiercing = build.magPiercing / (build.magPiercing + 10000);
-  console.log("magPiercing: " + magPiercing);
 
   specialPhysDef = (bosses[currentBoss].ampResist - physShred - build.physIgnore) * (1 - physPiercing);
-  console.log("specialPhysDef: " + specialPhysDef);
 
   specialMagDef = (bosses[currentBoss].ampResist - magShred - build.magIgnore) * (1 - magPiercing);
-  console.log("specialMagDef: " + specialMagDef);
 
   physMod = (build.physAmp * skill.physFactor) / (100000 + specialPhysDef);
-  console.log("physMod: " + physMod);
 
   magMod = (build.magAmp * skill.magFactor) / (100000 + specialMagDef);
-  console.log("magMod: " + magMod);
 
   totalMod = normalCritPower + physMod * physCritPower + magMod * magCritPower;
-  console.log("totalMod: " + totalMod);
+  console.log(skill.name + " totalMod: " + totalMod + " crit = " + isACrit);
   
   return(totalMod);
 }

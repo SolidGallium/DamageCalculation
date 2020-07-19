@@ -230,7 +230,7 @@ critInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function doneTyping () {
-  currentStats.crit = critInput.val();
+  currentStats.crit = parseInt(critInput.val());
   updateCrit();
   renderSkills();
 }
@@ -272,7 +272,7 @@ critPowerInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function saveCritPower () {
-  currentStats.critPower = parseInt(critPowerInput.val());
+  currentStats.critPower = parseFloat(critPowerInput.val());
 }
 
 
@@ -334,7 +334,7 @@ physCPInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePhysCP () {
-  currentStats.physCP = parseInt(physCPInput.val());
+  currentStats.physCP = parseFloat(physCPInput.val());
 }
 
 
@@ -355,7 +355,7 @@ magCPInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function saveMagCP () {
-  currentStats.magCP = parseInt(magCPInput.val());
+  currentStats.magCP = parseFloat(magCPInput.val());
 }
 
 
