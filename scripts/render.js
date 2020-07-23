@@ -351,10 +351,36 @@ function renderBuild() {
       critType = "Bonus Crit";
     }
 
+    var damageColor = "text-light";
+
+    if (tabArray[i].damageDiff > 0) {
+      damageColor = "text-success";
+    } else if (tabArray[i].damageDiff < 0) {
+      damageColor = "text-danger";
+    }
+
     $('#buildRow').append(
       "<div id = 'build" + i + "' class = 'col-3 createdBuild' style = 'align-self: flex-end' value = '" + i + "'>" +
         "<div class = 'row'>" +
-          "<div class = 'col ml-1 " + marginRight + " rounded h-100 greyTab' style = 'align-self: flex-end'>" +
+          "<div class = 'col ml-1 " + marginRight + " h-100 greyTab rounded'>" +
+            "<div class = 'row'>" +
+              "<div class = 'col greyTab ml-1 mr-1 align-items-end'>" +
+                "<div class = 'row'>" +
+                  "<div class = 'col rounded-top'>" +
+                    "<h3 class = 'mt-1'>" +
+                      "Damage Difference" +
+                    "</h3>" + 
+                  "</div>" + 
+                "</div>" +
+                "<div class = 'row'>" +
+                  "<div class = 'col mt-1'>" +
+                    "<h4 style = 'font-size: 1.4rem' class = '" + damageColor + "'>" +
+                      tabArray[i].damageDiff + "%" +
+                    "</h4>" + 
+                  "</div>" + 
+                "</div>" +
+              "</div>" +
+            "</div>" +
             "<div class = 'row align-items-center mt-2'>" +
               "<div class = 'col text-left'>" +
                 "<button type='button' class='btn buildButton btn-outline-primary removeBuild" + i + "'>-</button>" +

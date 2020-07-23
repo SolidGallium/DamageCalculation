@@ -31,7 +31,8 @@ var currentStats = {
   magIgnore: 0,
   hp: 0,
   mp: 0,
-  physRes: 0
+  physRes: 0,
+  damageDiff: 0
 };
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
@@ -131,10 +132,9 @@ function damageCalculation(build) {
   var totalDamage = 0;
 
   for (var i = 0; i < classes[currentClass].skills.length; i++) {
-    damageCrit = skillDamageCalculation(classes[currentClass].skills[i], build, true) * Math.min(classes[currentClass].skills[i].critChance, 100);
+    damageCrit = skillDamageCalculation(classes[currentClass].skills[i], build, true) * (Math.min(classes[currentClass].skills[i].critChance, 100));
     damageNonCrit = skillDamageCalculation(classes[currentClass].skills[i], build, false) * (100 - Math.min(classes[currentClass].skills[i].critChance, 100));
-    skillDamage = (damageCrit + damageNonCrit) * classes[currentClass].skills[i].damagePortion;
-
+    skillDamage = (damageCrit + damageNonCrit) * (classes[currentClass].skills[i].damagePortion / 100);
     totalDamage += skillDamage;
   }
 
@@ -145,12 +145,11 @@ function skillDamageCalculation(skill, build, isACrit) {
   var totalMod;
   var physMod;
   var magMod;
-  var specialPhysDef;
-  var specialMagDef;
+  var specialDef;
   var physPiercing;
   var magPiercing;
-  var physShred = 14000;
-  var magShred = 14000;
+  var physShred = 14000 + (2000 * 0.8);
+  var magShred = 14000 + (2000 * 0.8);
 
   var normalCritPower = build.critPower * 0.9;
   var physCritPower = build.physCP;
@@ -162,22 +161,26 @@ function skillDamageCalculation(skill, build, isACrit) {
     magCritPower = 1;
   }
 
-  physPiercing = build.physPiercing / (build.physPiercing + 10000);
+  if (skill.damageType == "Physical") {
+    physPiercing = build.physPiercing / (build.physPiercing + 10000);
+    specialDef = (bosses[currentBoss].ampResist - physShred - build.physIgnore) * (1 - physPiercing);
+  } else if (skill.damageType == "Magical") {
+    magPiercing = build.magPiercing / (build.magPiercing + 10000);
+    specialDef = (bosses[currentBoss].ampResist - magShred - build.magIgnore) * (1 - magPiercing);
+  }
+  
+  physMod = (build.physAmp * skill.physFactor) / (100000 + specialDef);
 
-  magPiercing = build.magPiercing / (build.magPiercing + 10000);
-
-  specialPhysDef = (bosses[currentBoss].ampResist - physShred - build.physIgnore) * (1 - physPiercing);
-
-  specialMagDef = (bosses[currentBoss].ampResist - magShred - build.magIgnore) * (1 - magPiercing);
-
-  physMod = (build.physAmp * skill.physFactor) / (100000 + specialPhysDef);
-
-  magMod = (build.magAmp * skill.magFactor) / (100000 + specialMagDef);
+  magMod = (build.magAmp * skill.magFactor) / (100000 + specialDef);
 
   totalMod = normalCritPower + physMod * physCritPower + magMod * magCritPower;
   console.log(skill.name + " totalMod: " + totalMod + " crit = " + isACrit);
   
   return(totalMod);
+}
+
+function powerDamageDifference(power1, power2) {
+  return((power1 - power2) / (power2 + 100));
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
@@ -330,6 +333,10 @@ function changeDirection(directionName) {
   } else if (directionName == "Front") {
     direction = 1;
   }
+}
+
+function calculateDiff(num1, num2) {
+  return(100 - ((100 * num1) / num2));
 }
 
 // end :3

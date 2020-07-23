@@ -177,7 +177,7 @@ var classes = [
         physFactor: 1.4,
         magFactor: 0.6,
         damageType: "Physical",
-        damagePortion: 0.14,
+        damagePortion: 0.15,
         image: "https://teralore.com/items/icon_skills/soulstrike_tex.png"
       },
       // beast fury
@@ -207,7 +207,7 @@ var classes = [
         physFactor: 1.47,
         magFactor: 0.6,
         damageType: "Physical",
-        damagePortion: 0.05,
+        damagePortion: 0.03,
         image: "https://teralore.com/items/icon_skills/bash_tex.png"
       },
       // vampiric blow
@@ -222,7 +222,7 @@ var classes = [
         physFactor: 1.40,
         magFactor: 0.3,
         damageType: "Physical",
-        damagePortion: 0.04,
+        damagePortion: 0.03,
         image: "https://teralore.com/items/icon_skills/vampiricstrike_tex.png"
       },
       // sinister
