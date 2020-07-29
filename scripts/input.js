@@ -77,6 +77,7 @@ $('body').on('click', '.addBuild', function(e) {
 
   tabArray.push(Object.assign({}, currentStats));
 
+  console.log(currentStats);
   console.log(tabArray);
 
   if (tabArray.length >= 1) {
@@ -122,36 +123,60 @@ $('body').on('click', '.save0', function(e) {
   e.preventDefault();
 
   tabArray[0] = {
-    crit: parseInt($('#critInput0').val()),
-    power: parseInt($('#powerInput0').val()),
-    critPower: parseFloat($('#critPowerInput0').val()),
-    physAmp: parseInt($('#physAmpInput0').val()),
-    magAmp: parseInt($('#magAmpInput0').val()),
-    physCP: parseFloat($('#physCPInput0').val()),
-    magCP: parseFloat($('#magCPInput0').val()),
-    physPiercing: parseInt($('#physPiercingInput0').val()),
-    magPiercing: parseInt($('#magPiercingInput0').val()),
-    physIgnore: parseInt($('#physIgnoreInput0').val()),
-    magIgnore: parseInt($('#magIgnoreInput0').val()),
-    hp: parseInt($('#hpInput0').val()),
-    mp: parseInt($('#mpInput0').val()),
-    physRes: parseInt($('#physResInput0').val()),
-    damageDiff: 0,
-    critType: 1
+    crit:         (isNaN(parseInt($('#critInput0').val())) ? 0 : parseInt($('#critInput0').val())),
+    power:        (isNaN(parseInt($('#powerInput0').val())) ? 0 : parseInt($('#powerInput0').val())),
+    critPower:    (isNaN(parseFloat($('#critPowerInput0').val())) ? 0 : parseFloat($('#critPowerInput0').val())),
+    physAmp:      (isNaN(parseInt($('#physAmpInput0').val())) ? 0 : parseInt($('#physAmpInput0').val())),
+    magAmp:       (isNaN(parseInt($('#magAmpInput0').val())) ? 0 : parseInt($('#magAmpInput0').val())),
+    physCP:       (isNaN(parseFloat($('#physCPInput0').val())) ? 0 : parseFloat($('#physCPInput0').val())),
+    magCP:        (isNaN(parseFloat($('#magCPInput0').val())) ? 0 : parseFloat($('#magCPInput0').val())),
+    physPiercing: (isNaN(parseInt($('#physPiercingInput0').val())) ? 0 : parseInt($('#physPiercingInput0').val())),
+    magPiercing:  (isNaN(parseInt($('#magPiercingInput0').val())) ? 0 : parseInt($('#magPiercingInput0').val())),
+    physIgnore:   (isNaN(parseInt($('#physIgnoreInput0').val())) ? 0 : parseInt($('#physIgnoreInput0').val())),
+    magIgnore:    (isNaN(parseInt($('#magIgnoreInput0').val())) ? 0 : parseInt($('#magIgnoreInput0').val())),
+    hp:           (isNaN(parseInt($('#hpInput0').val())) ? 0 : parseInt($('#hpInput0').val())),
+    mp:           (isNaN(parseInt($('#mpInput0').val())) ? 0 : parseInt($('#mpInput0').val())),
+    physRes:      (isNaN(parseInt($('#physResInput0').val())) ? 0 : parseInt($('#physResInput0').val())),
+    damageDiff:   0,
+    critType:     $('#critButton0').text() == "Total Crit" ? 1 : 0
   };
 
+  critCalculation(bonusCrit);
+
   var baseDamage = damageCalculation(currentStats);
+
+  var newBonusCrit = tabArray[0].crit;
+
+  if (tabArray[0].critType == 1) {
+    newBonusCrit -= classes[currentClass].baseCrit;
+    if (newBonusCrit < 0) {
+      newBonusCrit = 0;
+    }
+  }
+
+  if (priest == true) {
+    newBonusCrit += classes[currentClass].baseCrit * 0.36;
+  }
+
+  if (mystic == true) {
+    newBonusCrit += classes[currentClass].baseCrit * 1.2;
+  }
+
+  critCalculation(newBonusCrit);
+
   var newBuildDamage = damageCalculation(tabArray[0]);
 
   var diff = calculateDiff(baseDamage, newBuildDamage);
 
-  tabArray[0].damageDiff = Math.trunc(diff * 100) / 100;
-
-  var powerDiff = powerDamageDifference(tabArray[0].power, currentStats.power) * 100;
+  var powerDiff = powerDamageDifference(currentStats.power, tabArray[0].power) * 100;
 
   diff += powerDiff;
 
+  tabArray[0].damageDiff = Math.trunc(diff * 100) / 100;
+
   console.log("damage diff: " + diff);
+
+  console.log(tabArray[0]);
 
   renderBuild();
 });
@@ -160,36 +185,60 @@ $('body').on('click', '.save1', function(e) {
   e.preventDefault();
 
   tabArray[1] = {
-    crit: parseInt($('#critInput1').val()),
-    power: parseInt($('#powerInput1').val()),
-    critPower: parseFloat($('#critPowerInput1').val()),
-    physAmp: parseInt($('#physAmpInput1').val()),
-    magAmp: parseInt($('#magAmpInput1').val()),
-    physCP: parseFloat($('#physCPInput1').val()),
-    magCP: parseFloat($('#magCPInput1').val()),
-    physPiercing: parseInt($('#physPiercingInput1').val()),
-    magPiercing: parseInt($('#magPiercingInput1').val()),
-    physIgnore: parseInt($('#physIgnoreInput1').val()),
-    magIgnore: parseInt($('#magIgnoreInput1').val()),
-    hp: parseInt($('#hpInput1').val()),
-    mp: parseInt($('#mpInput1').val()),
-    physRes: parseInt($('#physResInput1').val()),
-    damageDiff: 0,
-    critType: 1
+    crit:         (isNaN(parseInt($('#critInput1').val())) ? 0 : parseInt($('#critInput1').val())),
+    power:        (isNaN(parseInt($('#powerInput1').val())) ? 0 : parseInt($('#powerInput1').val())),
+    critPower:    (isNaN(parseFloat($('#critPowerInput1').val())) ? 0 : parseFloat($('#critPowerInput1').val())),
+    physAmp:      (isNaN(parseInt($('#physAmpInput1').val())) ? 0 : parseInt($('#physAmpInput1').val())),
+    magAmp:       (isNaN(parseInt($('#magAmpInput1').val())) ? 0 : parseInt($('#magAmpInput1').val())),
+    physCP:       (isNaN(parseFloat($('#physCPInput1').val())) ? 0 : parseFloat($('#physCPInput1').val())),
+    magCP:        (isNaN(parseFloat($('#magCPInput1').val())) ? 0 : parseFloat($('#magCPInput1').val())),
+    physPiercing: (isNaN(parseInt($('#physPiercingInput1').val())) ? 0 : parseInt($('#physPiercingInput1').val())),
+    magPiercing:  (isNaN(parseInt($('#magPiercingInput1').val())) ? 0 : parseInt($('#magPiercingInput1').val())),
+    physIgnore:   (isNaN(parseInt($('#physIgnoreInput1').val())) ? 0 : parseInt($('#physIgnoreInput1').val())),
+    magIgnore:    (isNaN(parseInt($('#magIgnoreInput1').val())) ? 0 : parseInt($('#magIgnoreInput1').val())),
+    hp:           (isNaN(parseInt($('#hpInput1').val())) ? 0 : parseInt($('#hpInput1').val())),
+    mp:           (isNaN(parseInt($('#mpInput1').val())) ? 0 : parseInt($('#mpInput1').val())),
+    physRes:      (isNaN(parseInt($('#physResInput1').val())) ? 0 : parseInt($('#physResInput1').val())),
+    damageDiff:   0,
+    critType:     $('#critButton1').text() == "Total Crit" ? 1 : 0
   };
 
+  critCalculation(bonusCrit);
+
   var baseDamage = damageCalculation(currentStats);
+
+  var newBonusCrit = tabArray[1].crit;
+
+  if (tabArray[1].critType == 1) {
+    newBonusCrit -= classes[currentClass].baseCrit;
+    if (newBonusCrit < 0) {
+      newBonusCrit = 0;
+    }
+  }
+
+  if (priest == true) {
+    newBonusCrit += classes[currentClass].baseCrit * 0.36;
+  }
+
+  if (mystic == true) {
+    newBonusCrit += classes[currentClass].baseCrit * 1.2;
+  }
+
+  critCalculation(newBonusCrit);
+
   var newBuildDamage = damageCalculation(tabArray[1]);
 
   var diff = calculateDiff(baseDamage, newBuildDamage);
 
-  tabArray[1].damageDiff = Math.trunc(diff * 100) / 100;
-
-  var powerDiff = powerDamageDifference(tabArray[1].power, currentStats.power) * 100;
+  var powerDiff = powerDamageDifference(currentStats.power, tabArray[1].power) * 100;
 
   diff += powerDiff;
 
+  tabArray[1].damageDiff = Math.trunc(diff * 100) / 100;
+
   console.log("damage diff: " + diff);
+
+  console.log(tabArray[1]);
 
   renderBuild();
 });
@@ -198,36 +247,60 @@ $('body').on('click', '.save2', function(e) {
   e.preventDefault();
 
   tabArray[2] = {
-    crit: parseInt($('#critInput2').val()),
-    power: parseInt($('#powerInput2').val()),
-    critPower: parseFloat($('#critPowerInput2').val()),
-    physAmp: parseInt($('#physAmpInput2').val()),
-    magAmp: parseInt($('#magAmpInput2').val()),
-    physCP: parseFloat($('#physCPInput2').val()),
-    magCP: parseFloat($('#magCPInput2').val()),
-    physPiercing: parseInt($('#physPiercingInput2').val()),
-    magPiercing: parseInt($('#magPiercingInput2').val()),
-    physIgnore: parseInt($('#physIgnoreInput2').val()),
-    magIgnore: parseInt($('#magIgnoreInput2').val()),
-    hp: parseInt($('#hpInput2').val()),
-    mp: parseInt($('#mpInput2').val()),
-    physRes: parseInt($('#physResInput2').val()),
-    damageDiff: 0,
-    critType: 1
+    crit:         (isNaN(parseInt($('#critInput2').val())) ? 0 : parseInt($('#critInput2').val())),
+    power:        (isNaN(parseInt($('#powerInput2').val())) ? 0 : parseInt($('#powerInput2').val())),
+    critPower:    (isNaN(parseFloat($('#critPowerInput2').val())) ? 0 : parseFloat($('#critPowerInput2').val())),
+    physAmp:      (isNaN(parseInt($('#physAmpInput2').val())) ? 0 : parseInt($('#physAmpInput2').val())),
+    magAmp:       (isNaN(parseInt($('#magAmpInput2').val())) ? 0 : parseInt($('#magAmpInput2').val())),
+    physCP:       (isNaN(parseFloat($('#physCPInput2').val())) ? 0 : parseFloat($('#physCPInput2').val())),
+    magCP:        (isNaN(parseFloat($('#magCPInput2').val())) ? 0 : parseFloat($('#magCPInput2').val())),
+    physPiercing: (isNaN(parseInt($('#physPiercingInput2').val())) ? 0 : parseInt($('#physPiercingInput2').val())),
+    magPiercing:  (isNaN(parseInt($('#magPiercingInput2').val())) ? 0 : parseInt($('#magPiercingInput2').val())),
+    physIgnore:   (isNaN(parseInt($('#physIgnoreInput2').val())) ? 0 : parseInt($('#physIgnoreInput2').val())),
+    magIgnore:    (isNaN(parseInt($('#magIgnoreInput2').val())) ? 0 : parseInt($('#magIgnoreInput2').val())),
+    hp:           (isNaN(parseInt($('#hpInput2').val())) ? 0 : parseInt($('#hpInput2').val())),
+    mp:           (isNaN(parseInt($('#mpInput2').val())) ? 0 : parseInt($('#mpInput2').val())),
+    physRes:      (isNaN(parseInt($('#physResInput2').val())) ? 0 : parseInt($('#physResInput2').val())),
+    damageDiff:   0,
+    critType:     $('#critButton2').text() == "Total Crit" ? 1 : 0
   };
 
+  critCalculation(bonusCrit);
+
   var baseDamage = damageCalculation(currentStats);
+
+  var newBonusCrit = tabArray[2].crit;
+
+  if (tabArray[2].critType == 1) {
+    newBonusCrit -= classes[currentClass].baseCrit;
+    if (newBonusCrit < 0) {
+      newBonusCrit = 0;
+    }
+  }
+
+  if (priest == true) {
+    newBonusCrit += classes[currentClass].baseCrit * 0.36;
+  }
+
+  if (mystic == true) {
+    newBonusCrit += classes[currentClass].baseCrit * 1.2;
+  }
+
+  critCalculation(newBonusCrit);
+
   var newBuildDamage = damageCalculation(tabArray[2]);
 
   var diff = calculateDiff(baseDamage, newBuildDamage);
 
-  var powerDiff = powerDamageDifference(tabArray[2].power, currentStats.power) * 100;
+  var powerDiff = powerDamageDifference(currentStats.power, tabArray[2].power) * 100;
 
   diff += powerDiff;
 
   tabArray[2].damageDiff = Math.trunc(diff * 100) / 100;
 
   console.log("damage diff: " + diff);
+
+  console.log(tabArray[2]);
 
   renderBuild();
 });
@@ -236,16 +309,34 @@ $('body').on('click', '.critSelection0', function(e) {
   e.preventDefault();
 
   $('#critButton0').text($(this).text());
+
+  if ($(this).text() == "Total Crit") {
+    tabArray[0].critType = 1;
+  } else if ($(this).text() == "Bonus Crit") {
+    tabArray[0].critType = 0;
+  }
 });
 
 $('body').on('click', '.critSelection1', function(e) {
   e.preventDefault();
+
+  if ($(this).text() == "Total Crit") {
+    tabArray[0].critType = 1;
+  } else if ($(this).text() == "Bonus Crit") {
+    tabArray[0].critType = 0;
+  }
 
   $('#critButton1').text($(this).text());
 });
 
 $('body').on('click', '.critSelection2', function(e) {
   e.preventDefault();
+
+  if ($(this).text() == "Total Crit") {
+    tabArray[0].critType = 1;
+  } else if ($(this).text() == "Bonus Crit") {
+    tabArray[0].critType = 0;
+  }
 
   $('#critButton2').text($(this).text());
 });

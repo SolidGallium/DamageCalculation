@@ -1735,3 +1735,42 @@ var classes = [
     ]
   }
 ];
+
+/* format:
+
+classes = [
+  {
+    name: "string"
+    baseCrit: int
+    skills: [
+      {
+        name: "string"
+        guaranteedCrit: bool
+        glyphCrit: float
+        innateSkillCrit: float
+        glyphBaseCrit: float
+        addCrit: float
+        critChance: float
+        physFactor: float
+        magFactor: float
+        damageType: "string"
+        damagePortion: float
+        image: "string"
+      }
+    ],
+    buffs: [
+      {
+        name: "string"
+        guaranteedCrit: bool
+        glyphCrit: float
+        addCrit: float
+        glyphBaseCrit: float
+        bonusCrit: float
+        uptime: float
+        skillsAffected: ["string"]
+        skillImage: "string"
+      }
+    ]
+  }
+];
+*/

@@ -257,7 +257,8 @@ function renderSkills() {
   $('.createdSkills').remove();
   
   // calculate crit chance of every skill
-  critCalculation();
+  critCalculation(bonusCrit);
+  console.log(classes[currentClass]);
 
   // color variables for background color
   var r;
@@ -556,7 +557,6 @@ function renderClassSpecificStat() {
     }
   
     if (render == true) {
-      console.log("render class specific stat");
       for (var i = -1; i < tabArray.length; i++) {
         var target;
         var value;
@@ -586,7 +586,6 @@ function renderClassSpecificStat() {
           target = i;
           if (name == "HP") {
             value = gethp(i);
-            console.log(value);
           } else if (name == "MP") {
             value = getmp(i);
           } else if (name == "Physical Res") {

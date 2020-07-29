@@ -37,13 +37,14 @@ var currentStats = {
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
-function critCalculation() {
+function critCalculation(calcCrit) {
+  console.log(calcCrit);
   var classCF = classes[currentClass].baseCrit;
   
   var tmpBonusCrit;
 
-  console.log("bonus crit in crit calc " + bonusCrit);
-  tmpBonusCrit = bonusCrit;
+  // console.log("bonus crit in crit calc " + bonusCrit);
+  tmpBonusCrit = calcCrit;
 
   var critResist = bosses[currentBoss].critResist;
 
@@ -93,11 +94,11 @@ function critCalculation() {
       for (var j = 0; j < classes[currentClass].buffs.length; j++) {
         // check if the current skill being calculated is affected by the current buff being applied
         if (classes[currentClass].buffs[j].skillsAffected.includes(classes[currentClass].skills[i].name) || classes[currentClass].buffs[j].skillsAffected.includes("All")) {
-          console.log("Skill: " + classes[currentClass].skills[i].name + " > Buff: " + classes[currentClass].buffs[j].name);
+          // console.log("Skill: " + classes[currentClass].skills[i].name + " > Buff: " + classes[currentClass].buffs[j].name);
           glyphCrit += (classes[currentClass].buffs[j].glyphCrit * classes[currentClass].buffs[j].uptime);
           addCrit += (classes[currentClass].buffs[j].addCrit * classes[currentClass].buffs[j].uptime);
           glyphBaseCrit += (classes[currentClass].buffs[j].glyphBaseCrit * classes[currentClass].buffs[j].uptime);
-          bonusCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
+          calcCrit += (classes[currentClass].buffs[j].bonusCrit * classes[currentClass].buffs[j].uptime);
         }
 
         // priest edict crit buff, to be better implemented with edict times
@@ -108,20 +109,20 @@ function critCalculation() {
 
       // crit chance calculation formula
       //                       ((    D     * (  Cfo   *       B       +     Cf   )) / (5.625 *    CR     )) *     G     *       I         +    A    +     F
-      critChance = Math.trunc((((direction * (classCF * glyphBaseCrit + bonusCrit)) / (5.625 * critResist)) * glyphCrit * innateSkillCrit + addCrit + levelDiff + castanic) * 100);
+      critChance = Math.trunc((((direction * (classCF * glyphBaseCrit + calcCrit)) / (5.625 * critResist)) * glyphCrit * innateSkillCrit + addCrit + levelDiff + castanic) * 100);
 
       // crit calculation in case of healing skills
       if ((classes[currentClass].name == "Mystic" || classes[currentClass].name == "Priest") && i == 0){
-        critChance = Math.trunc((bonusCrit + classes[currentClass].baseCrit) * 0.2);
+        critChance = Math.trunc((calcCrit + classes[currentClass].baseCrit) * 0.2);
       }
 
-      console.log("Total Crit: " + (bonusCrit + classes[currentClass].baseCrit));
-      bonusCrit = tmpBonusCrit;
+      calcCrit = tmpBonusCrit;
       critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
       classes[currentClass].skills[i].critChance = critChance;
-      console.log("skill crit: " + critChance);
+      console.log(classes[currentClass].skills[i].critChance);
     }
   }
+  console.log(classes[currentClass]);
 }
 
 function damageCalculation(build) {
@@ -174,13 +175,13 @@ function skillDamageCalculation(skill, build, isACrit) {
   magMod = (build.magAmp * skill.magFactor) / (100000 + specialDef);
 
   totalMod = normalCritPower + physMod * physCritPower + magMod * magCritPower;
-  console.log(skill.name + " totalMod: " + totalMod + " crit = " + isACrit);
+  // console.log(skill.name + " totalMod: " + totalMod + " crit = " + isACrit);
   
   return(totalMod);
 }
 
 function powerDamageDifference(power1, power2) {
-  return((power1 - power2) / (power2 + 100));
+  return((power2 - power1) / (power1 + 100));
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //
