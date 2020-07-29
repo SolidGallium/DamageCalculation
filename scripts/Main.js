@@ -12,6 +12,9 @@ var currentTank = -1;
 var bonusCrit;
 var direction = 1.6;
 
+var magShred = 14000;
+var physShred = 14000;
+
 // var currentStats;
 
 var tabArray = [];
@@ -149,8 +152,9 @@ function skillDamageCalculation(skill, build, isACrit) {
   var specialDef;
   var physPiercing;
   var magPiercing;
-  var physShred = 14000 + (2000 * 0.8);
-  var magShred = 14000 + (2000 * 0.8);
+  var newPhysShred = physShred + (2000 * 0.8);
+  var newMagShred = magShred + (2000 * 0.8);
+  //console.log("mag shred")
 
   var normalCritPower = build.critPower * 0.9;
   var physCritPower = build.physCP;
@@ -164,10 +168,10 @@ function skillDamageCalculation(skill, build, isACrit) {
 
   if (skill.damageType == "Physical") {
     physPiercing = build.physPiercing / (build.physPiercing + 10000);
-    specialDef = (bosses[currentBoss].ampResist - physShred - build.physIgnore) * (1 - physPiercing);
+    specialDef = (bosses[currentBoss].ampResist - newPhysShred - build.physIgnore) * (1 - physPiercing);
   } else if (skill.damageType == "Magical") {
     magPiercing = build.magPiercing / (build.magPiercing + 10000);
-    specialDef = (bosses[currentBoss].ampResist - magShred - build.magIgnore) * (1 - magPiercing);
+    specialDef = (bosses[currentBoss].ampResist - newMagShred - build.magIgnore) * (1 - magPiercing);
   }
   
   physMod = (build.physAmp * skill.physFactor) / (100000 + specialDef);

@@ -56,6 +56,10 @@ $('.healerSelection').on('click', function(e) {
   renderDebuffs();
   updateCrit();
   renderSkills();
+
+  if (priest == true || mystic == true) {
+    magShredInput = $("body").find("#magShredInput");
+  }
 });
 
 $('.tankSelection').on('click', function(e) {
@@ -63,6 +67,7 @@ $('.tankSelection').on('click', function(e) {
   $('#tankButton').text($(this).text());
   changeTank($(this).text());
   renderDebuffs();
+  physShredInput = $("body").find("#physShredInput");
 });
 
 $('.directionSelection').on('click', function(e) {
@@ -633,5 +638,49 @@ $('body').on('keydown', '#physResInput', function () {
 //user is "finished typing," do something
 function savePhysRes () {
   currentStats.physRes = parseInt($('#physResInput').val());
+}
+
+
+
+var physShredInputTimer;               //timer identifier
+var physShredInput = $("body").find("#physShredInput");
+
+// on keyup, start the countdown
+$('body').on('keyup', '#physShredInput', function () {
+  clearTimeout(physShredInputTimer);
+  physShredInputTimer = setTimeout(savePhysShred(), doneTypingInterval);
+});
+
+// on keydown, clear the countdown 
+$('body').on('keydown', '#physResInput', function () {
+  clearTimeout(physShredInputTimer);
+});
+
+//user is "finished typing," do something
+function savePhysShred () {
+  physShred = parseInt($('#physShredInput').val());
+  console.log(physShred);
+}
+
+
+
+var magShredInputTimer;               //timer identifier
+var magShredInput = $("body").find("#magShredInput");
+
+// on keyup, start the countdown
+$('body').on('keyup', '#magShredInput', function () {
+  clearTimeout(magShredInputTimer);
+  magShredInputTimer = setTimeout(saveMagShred(), doneTypingInterval);
+});
+
+// on keydown, clear the countdown 
+$('body').on('keydown', '#magResInput', function () {
+  clearTimeout(magShredInputTimer);
+});
+
+//user is "finished typing," do something
+function saveMagShred () {
+  magShred = parseInt($('#magShredInput').val());
+  console.log(magShred);
 }
 

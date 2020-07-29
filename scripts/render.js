@@ -128,7 +128,7 @@ function renderDebuffs() {
         "</div>" +
         "<div class = 'col-2'>" +
           "<div class = 'input-group'>" +
-            "<input type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+            "<input id = 'magShredInput' type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
           "</div>" +
         "</div>" +
         "<div class = 'col-4 pl-2'>" +
@@ -179,7 +179,7 @@ function renderDebuffs() {
         "</div>" +
         "<div class = 'col-2'>" +
           "<div class = 'input-group'>" +
-            "<input type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
+            "<input id = 'physShredInput' type = 'text' value = '14000' class = 'form-control bg-dark border-0 text-light text-center responsiveText' aria-label = 'Default' aria-describedby = 'inputGroup-sizing-default'>" +
           "</div>" +
         "</div>" +
         "<div class = 'col-4 pl-2'>" +
@@ -609,7 +609,6 @@ function renderClassSpecificStat() {
     }
   }
 }
-
 
 
 // update crit
