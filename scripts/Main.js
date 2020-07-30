@@ -154,7 +154,7 @@ function skillDamageCalculation(skill, build, isACrit) {
   var magPiercing;
   var newPhysShred = physShred + (2000 * 0.8);
   var newMagShred = magShred + (2000 * 0.8);
-  //console.log("mag shred")
+  // console.log("mag shred")
 
   var normalCritPower = build.critPower * 0.9;
   var physCritPower = build.physCP;

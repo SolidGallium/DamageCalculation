@@ -1,3 +1,7 @@
+// static one time inputs
+// ------------------------------------------------------------------------------------------------
+
+// class selection dropdown input
 $('.classSelection').on('click', function(e) {
   e.preventDefault();
   $('#classButton').text($(this).text());
@@ -6,13 +10,11 @@ $('.classSelection').on('click', function(e) {
   updateCrit();
   renderSkills();
   $('#baseCrit').text(classes[currentClass].baseCrit);
-  console.log("current class: " + currentClass);
   renderBuild();
   renderClassSpecificStat();
-
-  // console.log("total damage: " + damageCalculation(currentStats));
 });
 
+// boss selection dropdown input
 $('.bossSelection').on('click', function(e) {
   e.preventDefault();
   $('#bossButton').text($(this).text());
@@ -22,6 +24,7 @@ $('.bossSelection').on('click', function(e) {
   renderSkills();
 });
 
+// bonus / total crit selection input for base stats
 $('.critSelection').on('click', function(e) {
   e.preventDefault();
   $('#critButton').text($(this).text());
@@ -36,6 +39,7 @@ $('.critSelection').on('click', function(e) {
   renderSkills();
 });
 
+// healer selection input for healer dropdown
 $('.healerSelection').on('click', function(e) {
   e.preventDefault();
   $('#healerButton').text($(this).text());
@@ -62,6 +66,7 @@ $('.healerSelection').on('click', function(e) {
   }
 });
 
+// tank selection input for tank dropdown
 $('.tankSelection').on('click', function(e) {
   e.preventDefault();
   $('#tankButton').text($(this).text());
@@ -70,6 +75,7 @@ $('.tankSelection').on('click', function(e) {
   physShredInput = $("body").find("#physShredInput");
 });
 
+// hit direction selection input
 $('.directionSelection').on('click', function(e) {
   e.preventDefault();
   $('#directionButton').text($(this).text());
@@ -77,13 +83,15 @@ $('.directionSelection').on('click', function(e) {
   renderSkills();
 });
 
+
+// dinamically created one time inputs
+// ------------------------------------------------------------------------------------------------
+
+// build create button ("+")
 $('body').on('click', '.addBuild', function(e) {
   e.preventDefault();
 
   tabArray.push(Object.assign({}, currentStats));
-
-  console.log(currentStats);
-  console.log(tabArray);
 
   if (tabArray.length >= 1) {
     $("#firstPlus").hide();
@@ -92,14 +100,13 @@ $('body').on('click', '.addBuild', function(e) {
   renderBuild();
 });
 
+// build remove button ("-"), one for each build
 $('body').on('click', '.removeBuild0', function(e) {
   e.preventDefault();
   tabArray.splice(0, 1);
   if (tabArray.length <= 0) {
     $("#firstPlus").show();
   }
-
-  console.log(tabArray);
 
   renderBuild();
 });
@@ -110,7 +117,6 @@ $('body').on('click', '.removeBuild1', function(e) {
   if (tabArray.length <= 0) {
     $("#firstPlus").show();
   }
-  console.log(tabArray);
   renderBuild();
 });
 
@@ -120,10 +126,10 @@ $('body').on('click', '.removeBuild2', function(e) {
   if (tabArray.length <= 0) {
     $("#firstPlus").show();
   }
-  console.log(tabArray);
   renderBuild();
 });
 
+// build save button, one for each build
 $('body').on('click', '.save0', function(e) {
   e.preventDefault();
 
@@ -178,10 +184,6 @@ $('body').on('click', '.save0', function(e) {
   diff += powerDiff;
 
   tabArray[0].damageDiff = Math.trunc(diff * 100) / 100;
-
-  console.log("damage diff: " + diff);
-
-  console.log(tabArray[0]);
 
   renderBuild();
 });
@@ -241,10 +243,6 @@ $('body').on('click', '.save1', function(e) {
 
   tabArray[1].damageDiff = Math.trunc(diff * 100) / 100;
 
-  console.log("damage diff: " + diff);
-
-  console.log(tabArray[1]);
-
   renderBuild();
 });
 
@@ -303,13 +301,10 @@ $('body').on('click', '.save2', function(e) {
 
   tabArray[2].damageDiff = Math.trunc(diff * 100) / 100;
 
-  console.log("damage diff: " + diff);
-
-  console.log(tabArray[2]);
-
   renderBuild();
 });
 
+// crit type selection button (bonus / total), one for each build
 $('body').on('click', '.critSelection0', function(e) {
   e.preventDefault();
 
@@ -347,17 +342,20 @@ $('body').on('click', '.critSelection2', function(e) {
 });
 
 
+// real time inputs (updates as soon as the user finishes the input)
+// ------------------------------------------------------------------------------------------------
 
+// time threshold to update the result
 var doneTypingInterval = 100;     //time in ms, 5 second for example
 
 
-var critInputTimer;               //timer identifier
+var critInputTimer;
 var critInput = $("body").find("#critInput");
 
 // on keyup, start the countdown
 critInput.on('keyup', function () {
   clearTimeout(critInputTimer);
-  critInputTimer = setTimeout(doneTyping, doneTypingInterval);
+  critInputTimer = setTimeout(saveCrit(), doneTypingInterval);
 });
 
 // on keydown, clear the countdown 
@@ -366,7 +364,7 @@ critInput.on('keydown', function () {
 });
 
 //user is "finished typing," do something
-function doneTyping () {
+function saveCrit () {
   currentStats.crit = parseInt(critInput.val());
   updateCrit();
   renderSkills();
