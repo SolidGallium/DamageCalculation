@@ -258,7 +258,6 @@ function renderSkills() {
   
   // calculate crit chance of every skill
   critCalculation(bonusCrit);
-  console.log(classes[currentClass]);
 
   // color variables for background color
   var r;

@@ -41,7 +41,6 @@ var currentStats = {
 // ----------------------------------------------------------------------------------------------------------------------------------- //
 
 function critCalculation(calcCrit) {
-  console.log(calcCrit);
   var classCF = classes[currentClass].baseCrit;
   
   var tmpBonusCrit;
@@ -125,13 +124,15 @@ function critCalculation(calcCrit) {
       console.log(classes[currentClass].skills[i].critChance);
     }
   }
-  console.log(classes[currentClass]);
 }
 
 function damageCalculation(build) {
   var damageCrit;
   var damageNonCrit;
   var skillDamage;
+  var tmpBuild = Object.assign({}, build);
+  
+  tmpBuild = addBuffs(tmpBuild);
 
   var totalDamage = 0;
 
@@ -186,6 +187,16 @@ function skillDamageCalculation(skill, build, isACrit) {
 
 function powerDamageDifference(power1, power2) {
   return((power2 - power1) / (power1 + 100));
+}
+
+function addBuffs(build) {
+  console.log("add buffs");
+  for (var i = 0; i < classes[currentClass].buffs.length; i++) {
+    console.log("add power: " + classes[currentClass].buffs[i].power * classes[currentClass].buffs[i].uptime);
+    build.power += classes[currentClass].buffs[i].power * classes[currentClass].buffs[i].uptime;
+  }
+
+  return(build);
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //

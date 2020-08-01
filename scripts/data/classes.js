@@ -296,6 +296,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 5,
+        power: 0,
         uptime: 1,
         skillsAffected: [
           "All"
@@ -310,6 +311,7 @@ var classes = [
         addCrit: 0.1,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 0.1,
         skillsAffected: [
           "All"
@@ -639,6 +641,7 @@ var classes = [
         glyphBaseCrit: 0,
         bonusCrit: 50,
         uptime: 1,
+        power: 0,
         skillsAffected: [
           "All"
         ],
@@ -1454,6 +1457,10 @@ var classes = [
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.77,
+        magFactor: 0,
+        damageType: "Physical",
         damagePortion: 0.35,
         image: "https://teralore.com/items/icon_skills/crescentcut_tex.png"
       },
@@ -1465,6 +1472,10 @@ var classes = [
         innateSkillCrit: 4,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.85,
+        magFactor: 0.45,
+        damageType: "Physical",
         damagePortion: 0.13,
         image: "https://teralore.com/items/icon_skills/rageslash_tex.png"
       },
@@ -1476,6 +1487,10 @@ var classes = [
         innateSkillCrit: 4, // data says 5, but 4 feels more accurate
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.74,
+        magFactor: 0.55,
+        damageType: "Physical",
         damagePortion: 0.09,
         image: "https://teralore.com/items/icon_skills/cutting_tex.png"
       },
@@ -1487,6 +1502,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.55,
+        magFactor: 0.20,
+        damageType: "Physical",
         damagePortion: 0.09,
         image: "https://teralore.com/items/icon_skills/halfmoon_tex.png"
       },
@@ -1498,6 +1517,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.65,
+        magFactor: 0.60,
+        damageType: "Physical",
         damagePortion: 0.08,
         image: "https://teralore.com/items/icon_skills/risingshot_tex.png"
       },
@@ -1509,6 +1532,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.62,
+        magFactor: 0.45,
+        damageType: "Physical",
         damagePortion: 0.07,
         image: "https://teralore.com/items/icon_skills/twister_tex.png"
       },
@@ -1520,6 +1547,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.87,
+        magFactor: 0.50,
+        damageType: "Physical",
         damagePortion: 0.06,
         image: "https://teralore.com/items/icon_skills/warbegin_tex.png"
       },
@@ -1531,6 +1562,10 @@ var classes = [
         innateSkillCrit: 3,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.20,
+        magFactor: 2.80,
+        damageType: "Magical",
         damagePortion: 0.03,
         image: "https://teralore.com/items/icon_skills/moonlightdash_tex.png"
       },
@@ -1542,6 +1577,10 @@ var classes = [
         innateSkillCrit: 5,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.70,
+        magFactor: 0.76,
+        damageType: "Physical",
         damagePortion: 0.03,
         image: "https://teralore.com/items/icon_skills/throwglave_tex.png"
       },
@@ -1553,6 +1592,10 @@ var classes = [
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.55,
+        magFactor: 0.20,
+        damageType: "Physical",
         damagePortion: 0,
         image: "https://teralore.com/items/icon_skills/brust_tex.png"
       },
@@ -1564,11 +1607,45 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.7,
+        magFactor: 1.70,
+        damageType: "Magical",
         damagePortion: 0,
         image: "https://teralore.com/items/icon_skills/split_tex.png"
       }
     ],
     buffs: [
+      // ragnarok
+      {
+        name: "Ragnarok",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        power: 50,
+        uptime: 0.3,
+        skillsAffected: [
+          "All"
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/redmoon_tex.png"
+      },
+      // godsfall
+      {
+        name: "Godsfall",
+        guaranteedCrit: false,
+        glyphCrit: 0,
+        addCrit: 0,
+        glyphBaseCrit: 0,
+        bonusCrit: 0,
+        power: 60,
+        uptime: 0.23,
+        skillsAffected: [
+          "All"
+        ],
+        skillImage: "https://teralore.com/items/icon_skills/warbegin_tex.png"
+      },
       // enhanced runeburst
       {
         name: "Enhanced Runeburst",
@@ -1577,6 +1654,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 1,
         skillsAffected: [
           "Shining Crescent",
@@ -1592,6 +1670,7 @@ var classes = [
         addCrit: 0.3,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 0.3,
         skillsAffected: [
           "All"
@@ -1606,6 +1685,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 20,
+        power: 0,
         uptime: 0.3,
         skillsAffected: [
           "All"
