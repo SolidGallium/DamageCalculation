@@ -181,7 +181,13 @@ $('body').on('click', '.save0', function(e) {
 
   var powerDiff = powerDamageDifference(currentStats.power, tabArray[0].power) * 100;
 
-  diff += powerDiff;
+  var classSpecificDamageDiff = 0;
+
+  if (currentClass == 1) {
+    classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[0].hp);
+  }
+  
+  diff += powerDiff + classSpecificDamageDiff;
 
   tabArray[0].damageDiff = Math.trunc(diff * 100) / 100;
 
@@ -239,7 +245,13 @@ $('body').on('click', '.save1', function(e) {
 
   var powerDiff = powerDamageDifference(currentStats.power, tabArray[1].power) * 100;
 
-  diff += powerDiff;
+  var classSpecificDamageDiff = 0;
+
+  if (currentClass == 1) {
+    classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[1].hp);
+  }
+  
+  diff += powerDiff + classSpecificDamageDiff;
 
   tabArray[1].damageDiff = Math.trunc(diff * 100) / 100;
 
@@ -297,7 +309,13 @@ $('body').on('click', '.save2', function(e) {
 
   var powerDiff = powerDamageDifference(currentStats.power, tabArray[2].power) * 100;
 
-  diff += powerDiff;
+  var classSpecificDamageDiff = 0;
+
+  if (currentClass == 1) {
+    classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[2].hp);
+  }
+  
+  diff += powerDiff + classSpecificDamageDiff;
 
   tabArray[2].damageDiff = Math.trunc(diff * 100) / 100;
 

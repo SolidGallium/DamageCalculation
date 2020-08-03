@@ -189,6 +189,10 @@ function powerDamageDifference(power1, power2) {
   return((power2 - power1) / (power1 + 100));
 }
 
+function hpDamageDifference(hp1, hp2) {
+  return(((hp2 - hp1) * 0.0906) / 2000);
+}
+
 function addBuffs(build) {
   console.log("add buffs");
   for (var i = 0; i < classes[currentClass].buffs.length; i++) {
