@@ -296,7 +296,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 5,
-        power: 0,
+        power: 15,
         uptime: 1,
         skillsAffected: [
           "All"
@@ -640,6 +640,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 50,
+        power: 40,
         uptime: 1,
         power: 0,
         skillsAffected: [
@@ -720,6 +721,10 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.65,
+        magFactor: 1.25,
+        damageType: "Magical",
         damagePortion: 0.17,
         image: "https://teralore.com/items/icon_skills/bumelang_tex.png"
       },
@@ -731,6 +736,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0.1,
+        critChance: 0,
+        physFactor: 0.20,
+        magFactor: 1.60,
+        damageType: "Magical",
         damagePortion: 0.17,
         image: "https://teralore.com/items/icon_skills/c12_flamebreath.png"
       },
@@ -742,6 +751,10 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0.1,
+        critChance: 0,
+        physFactor: 0.20,
+        magFactor: 1.60,
+        damageType: "Magical",
         damagePortion: 0.13,
         image: "https://i.imgur.com/BnGbtfG.png"
       },
@@ -753,6 +766,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.60,
+        magFactor: 2.00,
+        damageType: "Magical",
         damagePortion: 0.12,
         image: "https://teralore.com/items/icon_skills/c12_airstepstrike.png"
       },
@@ -764,6 +781,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.65,
+        magFactor: 1.45,
+        damageType: "Magical",
         damagePortion: 0.09,
         image: "https://teralore.com/items/icon_skills/c12_rapidshot.png"
       },
@@ -775,6 +796,10 @@ var classes = [
         innateSkillCrit: 1.5,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.75,
+        magFactor: 1.88,
+        damageType: "Magical",
         damagePortion: 0.09,
         image: "https://teralore.com/items/icon_skills/chakraemission_tex.png"
       },
@@ -786,6 +811,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.75,
+        magFactor: 1.88,
+        damageType: "Magical",
         damagePortion: 0.09,
         image: "https://teralore.com/items/icon_skills/chakraemission_tex.png"
       },
@@ -797,6 +826,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.72,
+        magFactor: 1.50,
+        damageType: "Magical",
         damagePortion: 0.06,
         image: "https://i.imgur.com/l2Et1wD.png"
       },
@@ -808,6 +841,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.45,
+        magFactor: 1.75,
+        damageType: "Magical",
         damagePortion: 0.06,
         image: "https://teralore.com/items/icon_skills/c12_twinslash.png"
       },
@@ -819,6 +856,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.48,
+        magFactor: 1.25,
+        damageType: "Magical",
         damagePortion: 0.03,
         image: "https://teralore.com/items/icon_skills/c12_flamebomb.png"
       }
@@ -832,6 +873,7 @@ var classes = [
         addCrit: 0.1,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 1,  // to double check (thanks to roy and redkillerdragon for their input)
         skillsAffected: [
           "Burning Heart",
@@ -847,6 +889,7 @@ var classes = [
         addCrit: 0.3,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 0.8, // to double check (thanks to roy and redkillerdragon for their input)
         skillsAffected: [
           "Boomerang Shuriken",
@@ -1285,6 +1328,10 @@ var classes = [
         innateSkillCrit: 2.4,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.30,
+        magFactor: 1.70,
+        damageType: "Magical",
         damagePortion: 0.2,
         image: "https://teralore.com/items/icon_skills/fusion_tex.png"
       },
@@ -1296,6 +1343,10 @@ var classes = [
         innateSkillCrit: 1.1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.70,
+        magFactor: 1.60,
+        damageType: "Magical",
         damagePortion: 0.14,
         image: "https://teralore.com/items/icon_skills/hellfire_tex.png"
       },
@@ -1307,6 +1358,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.38,
+        magFactor: 1.28,
+        damageType: "Magical",
         damagePortion: 0.12,
         image: "https://teralore.com/items/icon_skills/blastball_tex.png"
       },
@@ -1318,6 +1373,10 @@ var classes = [
         innateSkillCrit: 2.4,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.30,
+        magFactor: 1.70,
+        damageType: "Magical",
         damagePortion: 0.10,
         image: "https://teralore.com/items/icon_skills/fusion_tex.png"
       },
@@ -1329,6 +1388,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.70,
+        magFactor: 1.20,
+        damageType: "Magical",
         damagePortion: 0.08,
         image: "https://teralore.com/items/icon_skills/icespear_tex.png"
       },
@@ -1340,6 +1403,10 @@ var classes = [
         innateSkillCrit: 1.1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.66,
+        magFactor: 1.40,
+        damageType: "Magical",
         damagePortion: 0.07,
         image: "https://teralore.com/items/icon_skills/lightofruin_tex.png"
       },
@@ -1351,6 +1418,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.41,
+        magFactor: 1.15,
+        damageType: "Magical",
         damagePortion: 0.07,
         image: "https://teralore.com/items/icon_skills/c5_lightningstruck.png"
       },
@@ -1362,6 +1433,10 @@ var classes = [
         innateSkillCrit: 1.1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.47,
+        magFactor: 1.30,
+        damageType: "Magical",
         damagePortion: 0.07,
         image: "https://teralore.com/items/icon_skills/manaburst_tex.png"
       },
@@ -1373,6 +1448,10 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.50,
+        magFactor: 2.50,
+        damageType: "Magical",
         damagePortion: 0.06,
         image: "https://teralore.com/items/icon_skills/collapse_tex.png"
       },
@@ -1384,6 +1463,10 @@ var classes = [
         innateSkillCrit: 1.1,
         glyphBaseCrit: 1,
         addCrit: 0.15,
+        critChance: 0,
+        physFactor: 0.45,
+        magFactor: 1.10,
+        damageType: "Magical",
         damagePortion: 0.06,
         image: "https://teralore.com/items/icon_skills/icestorm_tex.png"
       },
@@ -1395,6 +1478,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.70,
+        magFactor: 1.22,
+        damageType: "Magical",
         damagePortion: 0,
         image: "https://teralore.com/items/icon_skills/c5_iceorb.png"
       },
@@ -1406,6 +1493,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 0.50,
+        magFactor: 1.40,
+        damageType: "Magical",
         damagePortion: 0,
         image: "https://teralore.com/items/icon_skills/trackinginferno_tex.png"
       }
@@ -1419,6 +1510,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 75,
+        power: 0,
         uptime: 0.4,
         skillsAffected: [
           "All"
@@ -1433,6 +1525,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 75,
+        power: 0,
         uptime: 0.4,
         skillsAffected: [
           "All"
@@ -1710,6 +1803,10 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.80,
+        magFactor: 0.36,
+        damageType: "Physical",
         damagePortion: 0.26,
         image: "https://teralore.com/items/icon_skills/tumblingattack_tex.png"
       },
@@ -1721,6 +1818,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.70,
+        magFactor: 0.87,
+        damageType: "Physical",
         damagePortion: 0.25,
         image: "https://teralore.com/items/icon_skills/raker_tex.png"
       },
@@ -1732,6 +1833,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.35,
+        magFactor: 0.40,
+        damageType: "Physical",
         damagePortion: 0.19,
         image: "https://teralore.com/items/icon_skills/dualslash_tex.png"
       },
@@ -1743,6 +1848,10 @@ var classes = [
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.25,
+        magFactor: 0.55,
+        damageType: "Physical",
         damagePortion: 0.11,
         image: "https://teralore.com/items/icon_skills/doublesworddance_tex.png"
       },
@@ -1754,6 +1863,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.40,
+        magFactor: 0.25,
+        damageType: "Physical",
         damagePortion: 0.06,
         image: "https://teralore.com/items/icon_skills/pointattack_tex.png"
       },
@@ -1765,6 +1878,10 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.70,
+        magFactor: 1.20,
+        damageType: "Physical",
         damagePortion: 0.03,
         image: "https://teralore.com/items/icon_skills/bladestorm_tex.png"
       },
@@ -1776,6 +1893,10 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.35,
+        magFactor: 0.25,
+        damageType: "Physical",
         damagePortion: 0.02,
         image: "https://teralore.com/items/icon_skills/aggravatingstrike_tex.png"
       }
@@ -1789,6 +1910,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 55,
+        power: 18,
         uptime: 1,
         skillsAffected: [
           "All"
@@ -1803,6 +1925,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 1,
         skillsAffected: [
           "Aerial Scythe"
@@ -1817,6 +1940,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 1,
         skillsAffected: [
           "Scythe"
@@ -1831,6 +1955,7 @@ var classes = [
         addCrit: 0.5,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 0.3,
         skillsAffected: [
           "All"
@@ -1845,6 +1970,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 0,
+        power: 0,
         uptime: 0.5, // just an estimate
         skillsAffected: [
           "Blade Draw",

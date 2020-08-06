@@ -15,8 +15,6 @@ var direction = 1.6;
 var magShred = 14000;
 var physShred = 14000;
 
-// var currentStats;
-
 var tabArray = [];
 
 var currentStats = {
@@ -121,7 +119,6 @@ function critCalculation(calcCrit) {
       calcCrit = tmpBonusCrit;
       critSkillDisplay.push({name: classes[currentClass].skills[i].name, value: critChance});
       classes[currentClass].skills[i].critChance = critChance;
-      console.log(classes[currentClass].skills[i].critChance);
     }
   }
 }
@@ -155,7 +152,6 @@ function skillDamageCalculation(skill, build, isACrit) {
   var magPiercing;
   var newPhysShred = physShred + (2000 * 0.8);
   var newMagShred = magShred + (2000 * 0.8);
-  // console.log("mag shred")
 
   var normalCritPower = build.critPower * 0.9;
   var physCritPower = build.physCP;
@@ -180,7 +176,6 @@ function skillDamageCalculation(skill, build, isACrit) {
   magMod = (build.magAmp * skill.magFactor) / (100000 + specialDef);
 
   totalMod = normalCritPower + physMod * physCritPower + magMod * magCritPower;
-  // console.log(skill.name + " totalMod: " + totalMod + " crit = " + isACrit);
   
   return(totalMod);
 }
@@ -193,14 +188,44 @@ function hpDamageDifference(hp1, hp2) {
   return(((hp2 - hp1) * 0.0906) / 2000);
 }
 
+function mpDamageDifference(mp1, mp2) {
+  return(((mp2 - mp1) * 0.09) / 100);
+}
+
+function physCPDamageDifference(cp1, cp2) {
+  var baseBuildDamageScythe = cp1 * 0.058 * classes[currentClass].skills[1].damagePortion;
+  var baseBuildDamageAScythe = cp1 * 0.074 * classes[currentClass].skills[0].damagePortion;
+
+  var newBuildDamageScythe = cp2 * 0.058 * classes[currentClass].skills[1].damagePortion;
+  var newBuildDamageAScythe = cp2 * 0.074 * classes[currentClass].skills[0].damagePortion;
+
+  return((newBuildDamageScythe + newBuildDamageAScythe) - (baseBuildDamageScythe + baseBuildDamageAScythe));
+}
+
 function addBuffs(build) {
-  console.log("add buffs");
   for (var i = 0; i < classes[currentClass].buffs.length; i++) {
-    console.log("add power: " + classes[currentClass].buffs[i].power * classes[currentClass].buffs[i].uptime);
-    build.power += classes[currentClass].buffs[i].power * classes[currentClass].buffs[i].uptime;
+    if (classes[currentClass].buffs[i].name == "Ragnarok" || classes[currentClass].buffs[i].name == "Godsfall") {
+      build.power += (classes[currentClass].buffs[i].power + Math.trunc(build.magAmp / 10000)) * classes[currentClass].buffs[i].uptime;
+    } else {
+      build.power += classes[currentClass].buffs[i].power * classes[currentClass].buffs[i].uptime;
+    }
   }
 
   return(build);
+}
+
+function updateClassSpecificStats(build) {
+  if (classes[currentClass].name == "Ninja") {
+    if (build.magPiercing < (build.magAmp / 100)) {
+      build.magPiercing = Math.trunc(build.magAmp / 100);
+    }
+  }
+
+  if (classes[currentClass].name == "Valkyrie") {
+    if (build.magAmp < (build.physAmp / 2)) {
+      build.magAmp = Math.trunc(build.physAmp / 2);
+    }
+  }
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------- //

@@ -175,6 +175,8 @@ $('body').on('click', '.save0', function(e) {
 
   critCalculation(newBonusCrit);
 
+  updateClassSpecificStats(tabArray[0]);
+
   var newBuildDamage = damageCalculation(tabArray[0]);
 
   var diff = calculateDiff(baseDamage, newBuildDamage);
@@ -185,8 +187,14 @@ $('body').on('click', '.save0', function(e) {
 
   if (currentClass == 1) {
     classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[0].hp);
+  } else if (currentClass == 10) {
+    classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[0].mp);
+  } else if (currentClass == 12) {
+    classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[0].physCP);
   }
   
+  console.log("class specific damage diff: " + classSpecificDamageDiff);
+
   diff += powerDiff + classSpecificDamageDiff;
 
   tabArray[0].damageDiff = Math.trunc(diff * 100) / 100;
@@ -239,6 +247,8 @@ $('body').on('click', '.save1', function(e) {
 
   critCalculation(newBonusCrit);
 
+  updateClassSpecificStats(tabArray[1]);
+
   var newBuildDamage = damageCalculation(tabArray[1]);
 
   var diff = calculateDiff(baseDamage, newBuildDamage);
@@ -249,6 +259,10 @@ $('body').on('click', '.save1', function(e) {
 
   if (currentClass == 1) {
     classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[1].hp);
+  } else if (currentClass == 10) {
+    classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[1].mp);
+  } else if (currentClass == 12) {
+    classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[1].physCP);
   }
   
   diff += powerDiff + classSpecificDamageDiff;
@@ -282,6 +296,8 @@ $('body').on('click', '.save2', function(e) {
 
   critCalculation(bonusCrit);
 
+  updateClassSpecificStats(tabArray[2]);
+
   var baseDamage = damageCalculation(currentStats);
 
   var newBonusCrit = tabArray[2].crit;
@@ -313,6 +329,10 @@ $('body').on('click', '.save2', function(e) {
 
   if (currentClass == 1) {
     classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[2].hp);
+  } else if (currentClass == 10) {
+    classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[2].mp);
+  } else if (currentClass == 12) {
+    classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[2].physCP);
   }
   
   diff += powerDiff + classSpecificDamageDiff;
@@ -445,7 +465,11 @@ physAmpInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePhysAmp () {
-  currentStats.physAmp = parseInt(physAmpInput.val());
+  currentStats.physAmp = (isNaN(parseInt(physAmpInput.val())) ? 0 : parseInt(physAmpInput.val()));
+  updateClassSpecificStats(currentStats);
+  if (classes[currentClass].name == "Valkyrie") {
+    updateCurrentStatsDisplay();
+  }
 }
 
 
@@ -456,7 +480,7 @@ var magAmpInput = $("body").find("#magAmpInput");
 // on keyup, start the countdown
 magAmpInput.on('keyup', function () {
   clearTimeout(magAmpInputTimer);
-  magAmpInputTimer = setTimeout(magAmpPower(), doneTypingInterval);
+  magAmpInputTimer = setTimeout(saveMagAmp(), doneTypingInterval);
 });
 
 // on keydown, clear the countdown 
@@ -465,8 +489,13 @@ magAmpInput.on('keydown', function () {
 });
 
 //user is "finished typing," do something
-function magAmpPower () {
-  currentStats.magAmp = parseInt(magAmpInput.val());
+function saveMagAmp () {
+  currentStats.magAmp = (isNaN(parseInt(magAmpInput.val())) ? 0 : parseInt(magAmpInput.val()));
+  updateClassSpecificStats(currentStats);
+  
+  if (classes[currentClass].name == "Ninja") {
+    updateCurrentStatsDisplay();
+  }
 }
 
 
@@ -550,7 +579,7 @@ magPiercingInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function saveMagPiercing () {
-  currentStats.magPiercing = parseInt(magPiercingInput.val());
+  currentStats.magPiercing = (isNaN(parseInt(magPiercingInput.val())) ? 0 : parseInt(magPiercingInput.val()));
 }
 
 
@@ -571,7 +600,7 @@ physIgnoreInput.on('keydown', function () {
 
 //user is "finished typing," do something
 function savePhysIgnore () {
-  currentStats.physIgnore = parseInt(physIgnoreInput.val());
+  currentStats.physIgnore = (isNaN(parseInt(physIgnoreInput.val())) ? 0 : parseInt(physIgnoreInput.val()));
 }
 
 

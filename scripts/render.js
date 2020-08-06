@@ -661,6 +661,26 @@ function updateBossStats() {
 }
 
 
+function updateCurrentStatsDisplay() {
+  if (currentStats.magAmp == 0) {
+    $("body").find("#magAmpInput").val("");
+  } else {
+    $("body").find("#magAmpInput").val(currentStats.magAmp);
+  }
+
+  if (currentStats.magPiercing == 0) {
+    $("body").find("#magPiercingInput").val("");
+  } else {
+    $("body").find("#magPiercingInput").val(currentStats.magPiercing);
+  }
+
+  if (currentStats.physIgnore == 0) {
+    $("body").find("#physIgnoreInput").val("");
+  } else {
+    $("body").find("#physIgnoreInput").val(currentStats.physIgnore);
+  }
+}
+
 
 function getCrit(currentTab) {
   var critString = tabArray[currentTab].crit;
