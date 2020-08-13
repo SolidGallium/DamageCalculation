@@ -185,12 +185,14 @@ $('body').on('click', '.save0', function(e) {
 
   var classSpecificDamageDiff = 0;
 
-  if (currentClass == 1) {
+  if (classes[currentClass].name == "Berserker") {
     classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[0].hp);
-  } else if (currentClass == 10) {
+  } else if (classes[currentClass].name == "Sorcerer") {
     classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[0].mp);
-  } else if (currentClass == 12) {
+  } else if (classes[currentClass].name == "Warrior") {
     classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[0].physCP);
+  } else if (classes[currentClass].name == "Brawler") {
+    classSpecificDamageDiff = physAmpReflectDamageDifference(currentStats.physAmp, tabArray[0].physAmp);
   }
   
   console.log("class specific damage diff: " + classSpecificDamageDiff);
@@ -257,12 +259,14 @@ $('body').on('click', '.save1', function(e) {
 
   var classSpecificDamageDiff = 0;
 
-  if (currentClass == 1) {
-    classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[1].hp);
-  } else if (currentClass == 10) {
-    classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[1].mp);
-  } else if (currentClass == 12) {
-    classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[1].physCP);
+  if (classes[currentClass].name == "Berserker") {
+    classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[0].hp);
+  } else if (classes[currentClass].name == "Sorcerer") {
+    classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[0].mp);
+  } else if (classes[currentClass].name == "Warrior") {
+    classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[0].physCP);
+  } else if (classes[currentClass].name == "Brawler") {
+    classSpecificDamageDiff = physAmpReflectDamageDifference(currentStats.physAmp, tabArray[0].physAmp);
   }
   
   diff += powerDiff + classSpecificDamageDiff;
@@ -327,12 +331,14 @@ $('body').on('click', '.save2', function(e) {
 
   var classSpecificDamageDiff = 0;
 
-  if (currentClass == 1) {
-    classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[2].hp);
-  } else if (currentClass == 10) {
-    classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[2].mp);
-  } else if (currentClass == 12) {
-    classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[2].physCP);
+  if (classes[currentClass].name == "Berserker") {
+    classSpecificDamageDiff = hpDamageDifference(currentStats.hp, tabArray[0].hp);
+  } else if (classes[currentClass].name == "Sorcerer") {
+    classSpecificDamageDiff = mpDamageDifference(currentStats.mp, tabArray[0].mp);
+  } else if (classes[currentClass].name == "Warrior") {
+    classSpecificDamageDiff = physCPDamageDifference(currentStats.physCP, tabArray[0].physCP);
+  } else if (classes[currentClass].name == "Brawler") {
+    classSpecificDamageDiff = physAmpReflectDamageDifference(currentStats.physAmp, tabArray[0].physAmp);
   }
   
   diff += powerDiff + classSpecificDamageDiff;

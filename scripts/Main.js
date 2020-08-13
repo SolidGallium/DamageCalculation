@@ -176,7 +176,7 @@ function skillDamageCalculation(skill, build, isACrit) {
   magMod = (build.magAmp * skill.magFactor) / (100000 + specialDef);
 
   totalMod = normalCritPower + physMod * physCritPower + magMod * magCritPower;
-  
+
   return(totalMod);
 }
 
@@ -202,10 +202,30 @@ function physCPDamageDifference(cp1, cp2) {
   return((newBuildDamageScythe + newBuildDamageAScythe) - (baseBuildDamageScythe + baseBuildDamageAScythe));
 }
 
+function physAmpReflectDamageDifference(physAmp1, physAmp2) {
+  var reflectDPS = 0.125;
+
+  return((calculateReflectDamage(physAmp2) - calculateReflectDamage(physAmp1)) * reflectDPS);
+}
+
+function calculateReflectDamage(physAmp) {
+  var physAmpDamageIncrease = Math.trunc(physAmp / 10000) / 100;
+
+  var totalReflectDamage = 0;
+
+  for (var i = 0; i < classes[currentClass].skills.length; i++) {
+    totalReflectDamage += classes[currentClass].skills[i].reflectDamage * physAmpDamageIncrease;
+  }
+
+  return(totalReflectDamage);
+}
+
 function addBuffs(build) {
   for (var i = 0; i < classes[currentClass].buffs.length; i++) {
     if (classes[currentClass].buffs[i].name == "Ragnarok" || classes[currentClass].buffs[i].name == "Godsfall") {
       build.power += (classes[currentClass].buffs[i].power + Math.trunc(build.magAmp / 10000)) * classes[currentClass].buffs[i].uptime;
+    } else if (classes[currentClass].buffs[i].name == "Growing Fury") {
+      build.power += (classes[currentClass].buffs[i].power + Math.trunc(build.physAmp / 20000)) * classes[currentClass].buffs[i].uptime;
     } else {
       build.power += classes[currentClass].buffs[i].power * classes[currentClass].buffs[i].uptime;
     }

@@ -336,6 +336,11 @@ var classes = [
         innateSkillCrit: 5,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.44,
+        magFactor: 0.60,
+        damageType: "Physical",
+        reflectDamage: 0.4,
         damagePortion: 0.32,
         image: "https://teralore.com/items/icon_skills/blowattack_tex.png"
       },
@@ -347,6 +352,11 @@ var classes = [
         innateSkillCrit: 1.3333, // approximation (4 hits, first 3 @ 1.0, last hit @ 2.0)
         glyphBaseCrit: 1,
         addCrit: 0.09,
+        critChance: 0,
+        physFactor: 1.40,
+        magFactor: 0.30,
+        damageType: "Physical",
+        reflectDamage: 0.23,
         damagePortion: 0.17,
         image: "https://teralore.com/items/icon_skills/risingblow_tex.png"
       },
@@ -358,6 +368,11 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.70,
+        magFactor: 0.80,
+        damageType: "Physical",
+        reflectDamage: 0.17,
         damagePortion: 0.15,
         image: "https://teralore.com/items/icon_skills/rapidattack_tex.png"
       },
@@ -369,6 +384,11 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.50,
+        magFactor: 0.47,
+        damageType: "Physical",
+        reflectDamage: 0.4,
         damagePortion: 0.15,
         image: "https://teralore.com/items/icon_skills/oneinchpunch_tex.png"
       },
@@ -380,6 +400,11 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 2.00,
+        magFactor: 0.30,
+        damageType: "Physical",
+        reflectDamage: 0.25,
         damagePortion: 0.07,
         image: "https://teralore.com/items/icon_skills/counterattack2_tex.png"
       },
@@ -391,6 +416,11 @@ var classes = [
         innateSkillCrit: 10,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.75,
+        magFactor: 0.50,
+        damageType: "Physical",
+        reflectDamage: 0.08,
         damagePortion: 0.06,
         image: "https://teralore.com/items/icon_skills/dampseyroll_tex.png"
       },
@@ -402,6 +432,11 @@ var classes = [
         innateSkillCrit: 1,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.38,
+        magFactor: 0.42,
+        damageType: "Physical",
+        reflectDamage: 0.4,
         damagePortion: 0.05,
         image: "https://teralore.com/items/icon_skills/upperkick_tex.png"
       },
@@ -413,6 +448,11 @@ var classes = [
         innateSkillCrit: 2,
         glyphBaseCrit: 1,
         addCrit: 0,
+        critChance: 0,
+        physFactor: 1.30,
+        magFactor: 0.27,
+        damageType: "Physical",
+        reflectDamage: 0.4,
         damagePortion: 0.04,
         image: "https://teralore.com/items/icon_skills/kicker_tex.png"
       }
@@ -426,6 +466,7 @@ var classes = [
         addCrit: 0,
         glyphBaseCrit: 0,
         bonusCrit: 50,
+        power: 45,
         uptime: 1,
         skillsAffected: [
           "All"
